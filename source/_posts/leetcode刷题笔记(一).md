@@ -6,7 +6,7 @@ tags:
   - 算法刷题笔记
 date: 2021-04-18 11:26:27
 updated: 2021-04-18 11:26:32
-cover: https://proxy.qnoss.seeln.com/images/X3PIEBb-black-hole-wallpaper.jpg
+
 ---
 
 准备写一个系列，不是题解（~~力扣里的题解有很多，我写的太烂了~~），只是把平时刷题遇到的一些相似题拿出来记一下，这样更容易记忆和理解。

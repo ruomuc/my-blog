@@ -8,7 +8,7 @@ tags:
   - nginx
 date: 2018-09-03 21:54:04
 updated: 2018-09-03 21:54:04
-cover: https://proxy.qnoss.seeln.com/images/ifBUets-black-hole-wallpaper.jpg
+
 ---
 前段时间做了一个主页部署到了vps上面，当时遇到一个问题没有解决：关于URL分发的问题。刚好我重装了一个vps，之前那个太贵了，装了一个低配一点的，然后我的主站就要重新部署。
 

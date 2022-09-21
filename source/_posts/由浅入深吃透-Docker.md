@@ -7,7 +7,7 @@ tags:
   - k8s
 date: 2020-10-12 22:47:41
 updated: 2020-11-15 23:19:08
-cover: https://proxy.qnoss.seeln.com/images/wp4221790-asteroid-belt-wallpapers.jpg
+
 ---
 上次在拉钩买的《重学数据结构与算法》感觉讲的还不错，又碰到Docker的课打折，就顺便买了。。
 

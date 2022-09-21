@@ -6,7 +6,7 @@ tags:
   - linux
 date: 2018-08-15 23:24:00
 updated: 2018-08-15 23:24:00
-cover: https://proxy.qnoss.seeln.com/images/Z7pDgOx-black-hole-wallpaper.jpg
+
 ---
 ##### 平常常用的linux命令，持续更新。。主要是centos6/7，有差异。
 

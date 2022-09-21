@@ -6,7 +6,7 @@ tags:
   - go
 date: 2021-04-18 14:50:13
 updated: 2021-04-18 14:50:13
-cover: https://proxy.qnoss.seeln.com/images/wp4221856-asteroid-belt-wallpapers.jpg
+
 ---
 
 在 golang 中，格式化输出的占位符有很多种。这里整理一下方便用的时候查阅

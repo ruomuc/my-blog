@@ -6,7 +6,7 @@ tags:
   - js
 date: 2021-04-09 22:33:10
 updated: 2021-04-09 22:33:10
-cover: https://proxy.qnoss.seeln.com/images/Hso6vi4-black-hole-wallpaper.jpg
+
 ---
 
 类型转换和强制类型转换？

@@ -6,7 +6,7 @@ tags:
   - node.js
 date: 2018-07-30 23:34:18
 updated: 2018-07-30 23:34:18
-cover: https://proxy.qnoss.seeln.com/images/wp4221773-asteroid-belt-wallpapers.jpg
+
 ---
 ## Bagpipe
 朴大的bagpipe感觉是比async的解决方案好用一些。

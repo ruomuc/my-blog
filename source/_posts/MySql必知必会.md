@@ -6,7 +6,7 @@ tags:
   - mysql
 date: 2019-02-12 22:05:50
 updated: 2019-02-12 22:05:50
-cover: https://proxy.qnoss.seeln.com/images/axfU4p2-black-hole-wallpaper.jpg
+
 ---
 虽然mysql已经用了很久了，但都是一些零零散散的，前不久买了《mysql必知必会》这本书看了两遍。然后整理一下，忘了还可以来查。
 

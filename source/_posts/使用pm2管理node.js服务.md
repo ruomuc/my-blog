@@ -7,7 +7,7 @@ tags:
   - pm2
 date: 2019-01-10 21:09:12
 updated: 2019-01-10 21:09:12
-cover: https://proxy.qnoss.seeln.com/images/wp4202395-aconcagua-wallpapers.jpg
+
 ---
 今天研究了一下使用pm2来管理node服务器，这样不仅可以看到每个服务占用的内存和cpu，还可以很方便的启动和重启，也可以使用`--watch`，自动重启，而且官方说`pm2 reload`来重启服务器是‘无缝’重启的。。
 

@@ -6,7 +6,7 @@ tags:
   - 面试题
 date: 2018-07-03 13:07:57
 updated: 2018-07-03 13:07:57
-cover: https://proxy.qnoss.seeln.com/images/mJMhjjY-black-hole-wallpaper.jpg
+
 ---
 
 ## 模块机制

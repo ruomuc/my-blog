@@ -6,7 +6,7 @@ tags:
   - node.js
 date: 2021-04-19 23:50:53
 updated: 2021-04-19 23:50:53
-cover: https://proxy.qnoss.seeln.com/images/axfU4p2-black-hole-wallpaper.jpg
+
 ---
 
 首先，js 不同宿主环境对 event loop 的实现是有区别的，这里说的都是 node.js 中的 event loop

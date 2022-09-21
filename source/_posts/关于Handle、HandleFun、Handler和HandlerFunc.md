@@ -7,7 +7,7 @@ tags:
   - http
 date: 2021-06-10 12:48:20
 updated: 2021-06-10 12:48:20
-cover: https://proxy.qnoss.seeln.com/images/wp4202327-aconcagua-wallpapers.jpg
+
 ---
 
 在go中，可以很简单实现一个http服务器。

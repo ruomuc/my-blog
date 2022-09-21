@@ -6,7 +6,7 @@ tags:
   - go
 date: 2021-06-22 23:15:45
 updated: 2021-06-22 23:15:45
-cover: https://proxy.qnoss.seeln.com/images/wp4221871-asteroid-belt-wallpapers.jpg
+
 ---
 
 go语言中 math/rand 包来提供随机数相关功能。

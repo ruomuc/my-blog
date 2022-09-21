@@ -7,7 +7,7 @@ tags:
   - es6
 date: 2020-05-28 21:14:19
 updated: 2020-05-28 21:14:19
-cover: https://proxy.qnoss.seeln.com/images/wp4221815-asteroid-belt-wallpapers.jpg
+
 ---
 我前面写过一篇整理es6的文章[关于ES6]([https://ruomuc.gitee.io/blog/2019/02/23/%E5%85%B3%E4%BA%8EES6/](https://ruomuc.gitee.io/blog/2019/02/23/关于ES6/))。但是好像太监了。。。因为太长了。
 

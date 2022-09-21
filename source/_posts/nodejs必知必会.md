@@ -7,7 +7,7 @@ tags:
   - 面试题
 date: 2020-05-13 13:10:48
 updated: 2020-05-13 13:10:48
-cover: https://proxy.qnoss.seeln.com/images/nSorqZO-black-hole-wallpaper.jpg
+
 ---
 
 ## 前言

@@ -7,7 +7,7 @@ tags:
   - 单元测试
 date: 2018-09-12 20:29:31
 updated: 2018-09-12 20:29:31
-cover: https://proxy.qnoss.seeln.com/images/wp2682958-asteroid-belt-wallpapers.jpg
+
 ---
 ## 单元测试的必要性
 比如创建 add.js：

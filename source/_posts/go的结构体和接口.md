@@ -6,7 +6,7 @@ tags:
   - go
 date: 2021-02-07 15:24:36
 updated: 2021-02-07 15:24:36
-cover: https://proxy.qnoss.seeln.com/images/wp4221820-asteroid-belt-wallpapers.jpg
+
 ---
 
 刚开始学go的时候，第一遍文档看完，没有搞懂结构体和接口的意思，现在大概明白了，记录一下。

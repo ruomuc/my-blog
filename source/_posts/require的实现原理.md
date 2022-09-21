@@ -6,7 +6,7 @@ tags:
   - node.js
 date: 2018-07-03 18:31:16
 updated: 2018-07-03 18:31:16
-cover: https://proxy.qnoss.seeln.com/images/wp4202323-aconcagua-wallpapers.jpg
+
 ---
 
 ##### <font color = grat>几乎所有Node.js开发人员都可以告诉你这个require()函数的作用，但是我们中有多少人真的知道它是如何工作的？我们每天都使用它来加载库和模块，但它的行为却是一个谜。</br>好奇，我挖掘了Node核心，了解幕后发生了什么。但是，我没有找到单一功能，而是成为Node模块系统的核心：module.js。该文件包含一个令人惊讶的功能但相对未知的核心模块，它控制所使用的每个文件的加载，编译和缓存。require()事实证明，这只是冰山一角。</font>

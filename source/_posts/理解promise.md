@@ -7,7 +7,7 @@ tags:
   - promise
 date: 2018-07-30 12:42:59
 updated: 2018-08-26 22:28:01
-cover: https://proxy.qnoss.seeln.com/images/wp4202354-aconcagua-wallpapers.jpg
+
 ---
 ## promise的基本理解
 - es6原生支持Promise对象

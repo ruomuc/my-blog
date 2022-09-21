@@ -6,7 +6,7 @@ tags:
   - node.js
 date: 2018-07-30 21:36:36
 updated: 2018-07-30 21:36:36
-cover: https://proxy.qnoss.seeln.com/images/wp4221773-asteroid-belt-wallpapers.jpg
+
 ---
 异步的解决方案，主要了解一下async、step加上一个比较奇葩的wind应该足够了。实在不行还可以写恶魔金字塔嘛。
 ## async

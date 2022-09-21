@@ -6,7 +6,7 @@ tags:
   - linux
 date: 2018-08-13 23:31:05
 updated: 2018-08-13 23:31:05
-cover: https://proxy.qnoss.seeln.com/images/X3PIEBb-black-hole-wallpaper.jpg
+
 ---
 ## 安装nodejs
 这个是真的难安，装了卸，卸了装。。。orz

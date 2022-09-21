@@ -6,7 +6,7 @@ tags:
   - linux
 date: 2019-10-26 16:35:05
 updated: 2019-10-26 16:35:05
-cover: https://proxy.qnoss.seeln.com/images/X3PIEBb-black-hole-wallpaper.jpg
+
 ---
 
 很久没写博客了，因为之前写的东西够消化很久了。而且现在也不想搬运文档之类的东西，写就写点自己的东西吧。。。

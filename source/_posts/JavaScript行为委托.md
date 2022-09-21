@@ -7,7 +7,7 @@ tags:
   - 原型链
 date: 2021-03-21 16:04:52
 updated: 2021-03-21 16:04:52
-cover: https://proxy.qnoss.seeln.com/images/K2QQujd-black-hole-wallpaper.jpg
+
 ---
 
 在 java 、c# 等语言中，类是一种必须使用的”设计模式“，但是在 JavaScript 等语言中，它是可选的，并且在JavaScript中实现类总是会有各种缺陷。

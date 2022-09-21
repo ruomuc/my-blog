@@ -6,7 +6,7 @@ tags:
   - go
 date: 2021-05-17 21:30:47
 updated: 2021-05-17 21:30:47
-cover: https://proxy.qnoss.seeln.com/images/wp4221866-asteroid-belt-wallpapers.jpg
+
 ---
 
 本来想写一片关于 slice 切片的文章，但是又复习了一下《go程序设计语言》，并且网上类似的东西数不胜数。。

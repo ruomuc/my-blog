@@ -6,7 +6,7 @@ tags:
   - node.js
 date: 2018-09-08 22:25:34
 updated: 2018-09-08 22:25:34
-cover: https://proxy.qnoss.seeln.com/images/wp4202391-aconcagua-wallpapers.jpg
+
 ---
 好久没更博客了，最近没看书了，买了辆公路车沉迷骑行无法自拔 -.-
 

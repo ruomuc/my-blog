@@ -7,7 +7,7 @@ tags:
   - 原型链
 date: 2020-05-21 18:33:13
 updated: 2020-05-21 18:33:13
-cover: https://proxy.qnoss.seeln.com/images/KfNTA42-black-hole-wallpaper.jpg
+
 ---
 
 阮一峰老师的说原型链开始是为了解决继承的，因为JavaScript没有子类父类的概念，只有原型对象。

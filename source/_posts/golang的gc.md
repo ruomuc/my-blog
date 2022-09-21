@@ -7,7 +7,7 @@ tags:
   - gc
 date: 2021-05-15 22:49:08
 updated: 2021-05-15 22:49:08
-cover: https://proxy.qnoss.seeln.com/images/wsSyjUq-black-hole-wallpaper.jpg
+
 ---
 
 和node.js一样，go语言也是有 GC 的，但是 GC 的方式和 node.js 有很大的区别。

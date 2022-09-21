@@ -7,7 +7,7 @@ tags:
   - 索引
 date: 2019-05-11 14:43:37
 updated: 2021-7-18 15:25:19
-cover: https://proxy.qnoss.seeln.com/images/wp4202328-aconcagua-wallpapers.jpg
+
 ---
 ---
 

@@ -6,7 +6,7 @@ tags:
   - koa
 date: 2018-08-26 22:33:25
 updated: 2018-08-26 22:33:25
-cover: https://proxy.qnoss.seeln.com/images/V1QE59N-black-hole-wallpaper.jpg
+
 ---
 ## koa的安装
 安装

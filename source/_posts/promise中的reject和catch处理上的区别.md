@@ -6,7 +6,7 @@ tags:
   - promise
 date: 2018-07-17 16:19:35
 updated: 2018-07-17 16:19:35
-cover: https://proxy.qnoss.seeln.com/images/sFc6Uil-black-hole-wallpaper.jpg
+
 ---
 
 ## reject 和 catch 的处理上

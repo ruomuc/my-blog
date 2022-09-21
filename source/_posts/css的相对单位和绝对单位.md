@@ -6,7 +6,7 @@ tags:
   - 前端
 date: 2020-05-19 23:19:18
 updated: 2020-05-19 23:19:18
-cover: https://proxy.qnoss.seeln.com/images/wp4221806-asteroid-belt-wallpapers.jpg
+
 ---
 
 在查资料的时候，发现网上有的人说 `px`是相对单位，有的人说`px`是绝对单位。。[px是相对单位还是绝对单位？](https://www.zhihu.com/question/67571440)

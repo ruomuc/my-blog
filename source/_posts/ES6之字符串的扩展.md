@@ -7,7 +7,7 @@ tags:
   - es6
 date: 2020-06-09 22:15:37
 updated: 2020-06-09 22:15:37
-cover: https://proxy.qnoss.seeln.com/images/wp4221813-asteroid-belt-wallpapers.jpg
+
 ---
 本文整理一下`ES6`中字符串的扩展和新增的方法。
 

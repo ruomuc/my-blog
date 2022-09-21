@@ -7,7 +7,7 @@ tags:
   - 错误处理
 date: 2021-07-24 14:22:27
 updated: 2021-07-24 14:22:27
-cover: https://proxy.qnoss.seeln.com/images/Hso6vi4-black-hole-wallpaper.jpg
+
 ---
 
 用 go 写过业务代码之后，就会发现，go的错误处理很让人头痛。。（事实上被吐槽的确实很多~）

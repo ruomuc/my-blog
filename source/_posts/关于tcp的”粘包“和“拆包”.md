@@ -6,7 +6,7 @@ tags:
   - tcp
 date: 2021-06-04 18:19:04
 updated: 2021-06-04 18:19:04
-cover: https://proxy.qnoss.seeln.com/images/wp4202332-aconcagua-wallpapers.jpg
+
 ---
 
 第一次听到“粘包”这个名词，还是用 websocket 做游戏的时候，当时服务端收到的消息出现了乱码，因为中文汉字在utf-8中用三个字节表示，如果被截断了话，解析出来就是乱码。

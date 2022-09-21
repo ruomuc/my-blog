@@ -7,7 +7,7 @@ tags:
   - es6
 date: 2020-06-04 22:34:42
 updated: 2020-06-04 22:34:42
-cover: https://proxy.qnoss.seeln.com/images/wp4221809-asteroid-belt-wallpapers.jpg
+
 ---
 ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
 ## 数组的解构赋值

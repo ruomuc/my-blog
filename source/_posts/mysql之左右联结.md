@@ -6,7 +6,7 @@ tags:
   - mysql
 date: 2019-04-14 20:17:48
 updated: 2019-04-14 20:17:48
-cover: https://proxy.qnoss.seeln.com/images/foCyHXt-black-hole-wallpaper.jpg
+
 ---
 
 之前对联结表的看理解好像不是很明确，于是又看了一些资料。

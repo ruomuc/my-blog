@@ -6,7 +6,7 @@ tags:
   - go
 date: 2021-05-01 20:09:03
 updated: 2021-05-01 20:09:03
-cover: https://proxy.qnoss.seeln.com/images/VahhRYI-black-hole-wallpaper.jpg
+
 ---
 
 在 java 等语言中，有char类型，而在go语言中，使用的是 rune 类型。

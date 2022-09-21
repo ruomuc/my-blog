@@ -6,7 +6,7 @@ tags:
   - 内存
 date: 2021-12-25 11:26:22
 updated: 2021-12-25 11:26:22
-cover: https://proxy.qnoss.seeln.com/images/node.js内存的生命周期.png
+
 
 ---
 

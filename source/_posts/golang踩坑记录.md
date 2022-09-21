@@ -6,7 +6,7 @@ tags:
   - go
 date: 2020-12-13 18:38:11
 updated: 2020-12-17 23:18:16
-cover: https://proxy.qnoss.seeln.com/images/wp4221821-asteroid-belt-wallpapers.jpg
+
 ---
 
 很久没发博客了，这个本来是记在有道云笔记上面的，分享一下吧。

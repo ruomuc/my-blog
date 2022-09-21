@@ -6,7 +6,7 @@ tags:
   - mysql
 date: 2021-08-13 23:21:21
 updated: 2021-08-13 23:21:21
-cover: https://proxy.qnoss.seeln.com/images/mysql%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg
+
 ---
 
 整理下 mysql 的 redo log 和 binlog 相关知识。

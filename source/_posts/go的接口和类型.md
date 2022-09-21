@@ -6,7 +6,7 @@ tags:
   - go
 date: 2022-02-27 14:01:33
 updated: 2022-02-27 14:01:33
-cover: https://proxy.qnoss.seeln.com/images/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%B1%BB%E5%9E%8B.png
+
 ---
 
 二刷 the go programming language，接口这块第一遍没太懂，第二遍大概懂了。

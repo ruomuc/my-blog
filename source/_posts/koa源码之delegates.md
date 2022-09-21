@@ -7,7 +7,7 @@ tags:
   - koa
 date: 2020-08-04 19:49:35
 updated: 2020-08-04 19:49:35
-cover: https://proxy.qnoss.seeln.com/images/VTJgx3C-black-hole-wallpaper.jpg
+
 ---
 
 最近看koa的源码，看到了了一个`TJ`大神写的包[delegates](https://www.npmjs.com/package/delegates)，实现了[委托模式/代理模式](https://www.runoob.com/design-pattern/proxy-pattern.html)。

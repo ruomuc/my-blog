@@ -7,7 +7,7 @@ tags:
   - 排序算法
 date: 2020-11-06 21:55:41
 updated: 2020-11-06 22:55:41
-cover: https://proxy.qnoss.seeln.com/images/wp4221822-asteroid-belt-wallpapers.jpg
+
 ---
 
 今天力扣每日一题是[根据数字二进制下 1 的数目排序](https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits/)，题目本身是简单，但是我用`golang`实现的时候遇到了排序的问题。

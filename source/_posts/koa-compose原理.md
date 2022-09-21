@@ -7,7 +7,7 @@ tags:
   - koa
 date: 2020-10-01 20:32:53
 updated: 2020-10-01 20:32:53
-cover: https://proxy.qnoss.seeln.com/images/TNoSBtf-black-hole-wallpaper.jpg
+
 ---
 
 `koa`是一个很优秀的轻量级web框架，一般我自己写个小东西都会用它。

@@ -6,7 +6,7 @@ tags:
   - mysql
 date: 2019-11-17 13:24:56
 updated: 2019-11-17 13:24:56
-cover: https://proxy.qnoss.seeln.com/images/dXpGmjf-black-hole-wallpaper.jpg
+
 ---
 
 ## show processlist

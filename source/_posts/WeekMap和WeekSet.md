@@ -7,7 +7,7 @@ tags:
   - gc
 date: 2021-04-10 22:46:07
 updated: 2021-04-10 22:46:07
-cover: https://proxy.qnoss.seeln.com/images/wp4202331-aconcagua-wallpapers.jpg
+
 ---
 
 在es6中，不仅引入了 Map 和 Set， 还有 WeekMap和WeekSet，不过我没怎么用过。

@@ -7,7 +7,7 @@ tags:
   - es6
 date: 2020-07-11 13:51:59
 updated: 2020-07-11 13:51:59
-cover: https://proxy.qnoss.seeln.com/images/wp4221808-asteroid-belt-wallpapers.jpg
+
 ---
 
 ## 函数参数的默认值

@@ -6,7 +6,7 @@ tags:
   - 其它
 date: 2020-05-22 17:10:19
 updated: 2020-05-22 17:10:19
-cover: https://proxy.qnoss.seeln.com/images/wp4221822-asteroid-belt-wallpapers.jpg
+
 ---
 
 今天hexo的搜索功能一直转菊花，对于我这种强迫症来说，博客没有搜索也太难受了吧。

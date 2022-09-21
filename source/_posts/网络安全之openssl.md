@@ -6,7 +6,7 @@ tags:
   - 安全
 date: 2018-11-06 19:04:11
 updated: 2018-11-06 19:04:11
-cover: https://proxy.qnoss.seeln.com/images/wp4221764-asteroid-belt-wallpapers.jpg
+
 ---
 客户端和服务端的数据传输如果不加密就会被别人截取而泄露数据。对于开发者而言，加密和解密最好是放在传输层，而应用层的数据处理仍然是透明的。
 node在网络安全提供了，tls、https、crypto三个模块。tls类似net、https是http安全版。crypto提供了SHA1、MD5等加密算法。

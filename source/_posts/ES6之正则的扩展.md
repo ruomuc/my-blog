@@ -7,7 +7,7 @@ tags:
   - es6
 date: 2020-06-30 20:24:54
 updated: 2020-06-30 20:24:54
-cover: https://proxy.qnoss.seeln.com/images/wp4221811-asteroid-belt-wallpapers.jpg
+
 ---
 ## RegExp构造函数
 

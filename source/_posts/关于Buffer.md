@@ -7,7 +7,7 @@ tags:
   - node.js
 date: 2018-08-15 00:35:48
 updated: 2018-08-15 00:35:48
-cover: https://proxy.qnoss.seeln.com/images/wp3996099-aconcagua-wallpapers.jpg
+
 ---
 ## Buffer结构
 #### 模块结构

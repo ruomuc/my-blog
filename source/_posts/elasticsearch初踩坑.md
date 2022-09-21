@@ -6,7 +6,7 @@ tags:
   - elasticsearch
 date: 2020-07-04 22:41:45
 updated: 2020-07-04 22:41:45
-cover: https://proxy.qnoss.seeln.com/images/wp4221807-asteroid-belt-wallpapers.jpg
+
 ---
 大概说一下前段时间用`elasticsearch`遇到的几个坑
 

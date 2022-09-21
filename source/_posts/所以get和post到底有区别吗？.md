@@ -6,7 +6,7 @@ tags:
   - http
 date: 2018-11-09 18:41:59
 updated: 2018-11-09 18:41:59
-cover: https://proxy.qnoss.seeln.com/images/wp4221759-asteroid-belt-wallpapers.jpg
+
 ---
 
 ## 如题

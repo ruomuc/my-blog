@@ -7,7 +7,7 @@ tags:
   - es6
 date: 2020-08-23 16:27:22
 updated: 2020-08-23 16:27:22
-cover: https://proxy.qnoss.seeln.com/images/wp4221763-asteroid-belt-wallpapers.jpg
+
 ---
 
 最近在熟悉新公司的一些基础服务和核心库的代码，说真的想吐槽一下`JavaScript`了，风格太灵活多变了，一样的操作可以用`n`多种方式或者语法实现，读代码太痛苦了。。

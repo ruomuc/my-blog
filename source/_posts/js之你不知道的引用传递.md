@@ -6,7 +6,7 @@ tags:
   - js
 date: 2019-05-22 22:49:03
 updated: 2019-05-22 22:49:03
-cover: https://proxy.qnoss.seeln.com/images/RyrSQBK-black-hole-wallpaper.jpg
+
 ---
 
 之前有一篇文章[深拷贝和浅拷贝]([https://ruomuc.gitee.io/blog/2018/06/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/](https://ruomuc.gitee.io/blog/2018/06/26/深拷贝和浅拷贝/))说明了js中传值和传引用，或者叫值传递和引用传递。

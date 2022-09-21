@@ -6,7 +6,7 @@ tags:
   - npm
 date: 2018-08-23 22:35:31
 updated: 2018-08-23 22:35:31
-cover: https://proxy.qnoss.seeln.com/images/qiUBWWK-black-hole-wallpaper.jpg
+
 ---
 ## npm的几种install的区别
 ```

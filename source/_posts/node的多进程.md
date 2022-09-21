@@ -6,7 +6,7 @@ tags:
   - node.js
 date: 2018-12-31 16:30:15
 updated: 2018-12-31 16:30:15
-cover: https://proxy.qnoss.seeln.com/images/mXFvHn4-black-hole-wallpaper.jpg
+
 ---
 现行的软件架构主要有两种：多线程单进程(如：memcached、redis、mongodb等)和单线程多进程(nginx、node)。
 多线程单进程的主要特点：

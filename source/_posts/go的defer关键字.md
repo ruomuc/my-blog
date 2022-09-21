@@ -6,7 +6,7 @@ tags:
   - go
 date: 2021-05-30 19:55:29
 updated: 2021-05-30 19:55:29
-cover: https://proxy.qnoss.seeln.com/images/wp4221867-asteroid-belt-wallpapers.jpg
+
 ---
 
 go 语言中的 defer 关键字常用语关闭文件描述符、数据库连接或解锁资源。（这是 node.js 没有的）

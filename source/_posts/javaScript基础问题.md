@@ -6,7 +6,7 @@ tags:
   - js
 date: 2018-06-26 11:34:03
 updated: 2018-06-26 11:34:03
-cover: https://proxy.qnoss.seeln.com/images/GO220fH-black-hole-wallpaper.jpg
+
 ---
 ###### ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来 <font color = pink size = 6> =.=!</font>  
 

@@ -6,7 +6,7 @@ tags:
   - redis
 date: 2019-03-26 20:06:13
 updated: 2019-4-13 23:37:28
-cover: https://proxy.qnoss.seeln.com/images/wp4202328-aconcagua-wallpapers.jpg
+
 ---
 前面还有个mysql必知必会和es6没写完。flag先放哪里，闲下来了再搞。
 看了一个《redis入门指南》来深入了解下redis，作者好像是ioredis模块的作者。在cnode论坛上看到的巨佬。

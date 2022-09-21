@@ -7,7 +7,7 @@ tags:
   - 原型链
 date: 2021-03-28 10:23:44
 updated: 2021-03-28 10:23:44
-cover: https://proxy.qnoss.seeln.com/images/ILj74id-black-hole-wallpaper.jpg
+
 ---
 
 本篇文章需要对 JavaScript 的**原型链**和**属性描述符**有一定的了解。

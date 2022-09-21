@@ -7,7 +7,7 @@ tags:
   - this
 date: 2020-05-24 01:11:21
 updated: 2020-05-24 01:11:21
-cover: https://proxy.qnoss.seeln.com/images/OFQfUAk-black-hole-wallpaper.jpg
+
 ---
 
 ## 默认绑定规则

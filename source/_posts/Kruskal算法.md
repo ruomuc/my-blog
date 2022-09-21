@@ -9,7 +9,7 @@ tags:
   - 并查集
 date: 2021-02-28 16:37:50
 updated: 2021-02-28 16:37:50
-cover: https://proxy.qnoss.seeln.com/images/VahhRYI-black-hole-wallpaper.jpg
+
 ---
 
 一月份力扣出了一个月的图论题，可惜那时在封闭开发（爆粗口），有些没时间做。

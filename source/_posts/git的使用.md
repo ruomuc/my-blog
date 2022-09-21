@@ -6,7 +6,7 @@ tags:
   - git
 date: 2019-01-04 21:36:35
 updated: 2019-01-04 21:36:35
-cover: https://proxy.qnoss.seeln.com/images/wp4221815-asteroid-belt-wallpapers.jpg
+
 ---
 看了几篇很好的文章，分享一下，git我都是当svn用的。就是 `add .  commit  push`.
 

@@ -6,7 +6,7 @@ tags:
   - js
 date: 2021-03-03 21:48:38
 updated: 2021-03-03 21:48:38
-cover: https://proxy.qnoss.seeln.com/images/RqdShYZ-black-hole-wallpaper.jpg
+
 ---
 
 之前对js的类型判断用到的比较少，只知道typeof 和 instanceof。。

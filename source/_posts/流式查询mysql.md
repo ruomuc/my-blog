@@ -7,7 +7,7 @@ tags:
   - stream
 date: 2020-07-13 21:30:54
 updated: 2020-07-13 21:30:54
-cover: https://proxy.qnoss.seeln.com/images/wp4202356-aconcagua-wallpapers.jpg
+
 ---
 简单记录一下，使用node的流读取mysql数据，解决分页扫表慢的问题。
 

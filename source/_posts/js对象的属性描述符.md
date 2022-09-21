@@ -7,7 +7,7 @@ tags:
   - 属性描述符
 date: 2021-02-21 15:24:48
 updated: 2021-02-21 15:24:48
-cover: https://proxy.qnoss.seeln.com/images/QTVoVUT-black-hole-wallpaper.jpg
+
 ---
 
 ## 属性描述符
