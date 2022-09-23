@@ -17,7 +17,7 @@ updated: 2021-08-13 23:21:21
 
 **需要注意的是：mysql8.0 干掉了查询缓存这个模块。**（因为查询缓存失效的很频繁，本来就很鸡肋，默认都是关闭的）
 
-<img src="https://proxy.qnoss.seeln.com/images/mysql%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" style="zoom: 50%;" />
+<img src="//image.seeln.com/images/mysql%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" style="zoom: 50%;" />
 
 ##### 什么是物理日志 和 逻辑日志？
 
@@ -47,11 +47,11 @@ redo log 保证了数据库即使发生异常重启（这种能力称为 crash-s
 
 InnoDB 的 redo log 大小是固定的，我们可以使用： `show variables like '%innodb_log_file%';`  命令查看。
 
-<img src="https://proxy.qnoss.seeln.com/images/redolog%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE.PNG" style="zoom:150%;" />
+<img src="//image.seeln.com/images/redolog%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE.PNG" style="zoom:150%;" />
 
 默认是两个文件，一个文件 48 M。
 
-<img src="https://proxy.qnoss.seeln.com/images/redolog%E8%AF%BB%E5%86%99%E6%96%B9%E5%BC%8F.jpg" style="zoom: 80%;" />
+<img src="//image.seeln.com/images/redolog%E8%AF%BB%E5%86%99%E6%96%B9%E5%BC%8F.jpg" style="zoom: 80%;" />
 
 - write pos 是当前记录的位置，一边写一边后移。
 - checkpoint 是当前要擦除的位置，也是往后推移并且循环的。
@@ -93,7 +93,7 @@ binlog 是一个逻辑日志。
 update tableA set c = c+1 where id = 2;
 ```
 
-<img src="https://proxy.qnoss.seeln.com/images/%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4.png" style="zoom:80%;" />
+<img src="//image.seeln.com/images/%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4.png" style="zoom:80%;" />
 
 
 

@@ -14,7 +14,7 @@ updated: 2020-05-21 18:33:13
 
 看着别人的讲解，自己跟着画了张图加深理解，对比着图比较容易理解。
 
-<img src="https://proxy.qnoss.seeln.com/images/prototype.png" style="zoom:25%;" />
+<img src="//image.seeln.com/images/prototype.png" style="zoom:25%;" />
 
 #### 什么是`prototype`、`__proto__`和`constructor`?
 
