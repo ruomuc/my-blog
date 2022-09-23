@@ -153,7 +153,7 @@ var globalRand = New(&lockedSource{src: NewSource(1).(*rngSource)})
 
 创建出来的对象，我断点出来是这样的：
 
-<img src="//image.seeln.com/images/WX20210623-001621%402x.png" style="zoom:50%;" />
+<img src="https://image.seeln.com/images/WX20210623-001621%402x.png" style="zoom:50%;" />
 
 以 rand.Int() 为例，差不多是如下调用顺序：
 ```go

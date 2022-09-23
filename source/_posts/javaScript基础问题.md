@@ -105,7 +105,7 @@ Number(undefined)
 NaN  //undefined 表示"缺少值"，就是此处应该有一个值，但是还没有定义。
 ```
 附：  
-![](//image.seeln.com/images/compare.png)
+![](https://image.seeln.com/images/compare.png)
   
   
 ```js
@@ -150,7 +150,7 @@ ps: mmp好晕
 5种基本数据类型有Undefined、Null、Boolean、Number 和 String，它们是直接按值存放的，所以可以直接访问。
 - 引用类型：存放在堆内存中的对象，变量实际保存的是一个指针，这个指针指向另一个位置。每个空间大小不一样，要根据情况开进行特定的分配。
 当我们需要访问引用类型（如对象，数组，函数等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。
-![](//image.seeln.com/images/20180322141202_19288.png)
+![](https://image.seeln.com/images/20180322141202_19288.png)
 另外设计到深度拷贝和浅拷贝，到时候重写一篇。
 
 ## 内存释放

@@ -42,7 +42,7 @@ ps: `var Koa = require('koa');` 如果`K`是大写就是koa2，小写就是koa�
 ## Koa中间件的级联
 洋葱模型：
 <!--more-->
-![](//image.seeln.com/images/yangcongmoxing.png)
+![](https://image.seeln.com/images/yangcongmoxing.png)
 
 比如下面这段代码：
 ```js
@@ -146,7 +146,7 @@ aync function getUserNameById(id){
 	console.log(name);
 }
 ```
-简直惊呆了有木有！谁他喵的还写回调地狱哦。![回调地狱了解一下](//image.seeln.com/images/huidiaodiyu.jpg)
+简直惊呆了有木有！谁他喵的还写回调地狱哦。![回调地狱了解一下](https://image.seeln.com/images/huidiaodiyu.jpg)
 
 上面那种写法要注意：
 - async 卸载function前面代表这是一个异步函数

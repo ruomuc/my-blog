@@ -59,7 +59,7 @@ updated: 2021-7-18 15:25:19
 
 **非主键索引**叶子结点的卫星数据，保存的是**主键的值**。
 
-<img src="//image.seeln.com/images/dcda101051f28502bd5c4402b292e38d.png" style="zoom:25%;" />
+<img src="https://image.seeln.com/images/dcda101051f28502bd5c4402b292e38d.png" style="zoom:25%;" />
 
 ### 回表
 
@@ -118,7 +118,7 @@ select * from t where name=ruomu and age=23;
 - 去 (a,b) 索引对应b+树，查询到满足 name=ruomu 的结点
 - 回表去判断是否满足 age=23 这个条件
 
-<img src="//image.seeln.com/images/b32aa8b1f75611e0759e52f5915539ac.jpg" style="zoom:25%;" />
+<img src="https://image.seeln.com/images/b32aa8b1f75611e0759e52f5915539ac.jpg" style="zoom:25%;" />
 
 有了索引下推之后：
 
@@ -126,7 +126,7 @@ select * from t where name=ruomu and age=23;
 - 因为是联合索引，所以 b 的值应该也在结点中呀，所以直接排除掉不满足 age=23 的
 - 用满足条件的数据取回表，(因为是 select * 嘛。。还是会回表)，这样会少很多次回表。
 
-<img src="//image.seeln.com/images/76e385f3df5a694cc4238c7b65acfe1b.jpg" style="zoom:25%;" />
+<img src="https://image.seeln.com/images/76e385f3df5a694cc4238c7b65acfe1b.jpg" style="zoom:25%;" />
 
 ### 唯一索引
 

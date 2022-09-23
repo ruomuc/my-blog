@@ -58,7 +58,7 @@ go 语言中的类型可以分为 具体类型 和 接口类型：
 - 具体类型，又称为 接口的动态类型。
 - 具体类型的值，又称为 接口的动态值。
 
-![](//image.seeln.com/images/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%B1%BB%E5%9E%8B.png)
+![](https://image.seeln.com/images/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%B1%BB%E5%9E%8B.png)
 
 ```go
 var w io.Writer

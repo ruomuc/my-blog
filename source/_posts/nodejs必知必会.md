@@ -442,7 +442,7 @@ var constantize = (obj) => {
 
 ​	先来看一张图
 
-![](//image.seeln.com/images/20180322141202_19288.png)
+![](https://image.seeln.com/images/20180322141202_19288.png)
 
 - 由图可知，非基本类型，栈内存储的是实际值在堆中的一个地址，通过这个地址找到实际的值。
 - 关于引用传递和传引用，js到有没有传引用，移步[js之你不知道的引用传递]([https://ruomuc.gitee.io/blog/2019/05/22/js%E4%B9%8B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/](https://ruomuc.gitee.io/blog/2019/05/22/js之你不知道的引用传递/))

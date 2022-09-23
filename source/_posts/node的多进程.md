@@ -49,7 +49,7 @@ for(var i =0 ; i < cpus.length;++i){
 然后node master.js 。然后以上的代码会根据当前机器的cpu数，复制出对应的node进程数量。如果在linu环境下，可以通过`ps -ef|grep master.js`来查看。
 
 以下就是著名的Master-Worker 模式，（主从模式）
-![](//image.seeln.com/images/child_process.png)
+![](https://image.seeln.com/images/child_process.png)
 
 fork()出来的这个进程拥有独立的v8实例。它需要至少30毫秒启动时间和至少10MB内存。fork()的代价是昂贵的，而且多进程并不能解决并发问题，只是为了充分利用CPU资源而已。node的大并发问题是通过事件驱动来解决的。
 
