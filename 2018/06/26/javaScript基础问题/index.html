@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>javaScript基础问题 | ruomu</title><meta name="keywords" content="js"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来  &#x3D;.&#x3D;!类型判断区分 js 中的undefined ，null ，“” ， 0 和 false等….根据大佬推荐 其实应该去阅读loadsh的源码。小白表示暂时不看，以后再看。   凭自己理解分析一下： 123456789&lt;script&gt;alert(!0); &#x2F;&#x2F;truealert(!false">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaScript基础问题">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2018/06/26/javaScript%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来  &#x3D;.&#x3D;!类型判断区分 js 中的undefined ，null ，“” ， 0 和 false等….根据大佬推荐 其实应该去阅读loadsh的源码。小白表示暂时不看，以后再看。   凭自己理解分析一下： 123456789&lt;script&gt;alert(!0); &#x2F;&#x2F;truealert(!false">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2018-06-26T03:34:03.000Z">
+<meta property="article:modified_time" content="2018-06-26T03:34:03.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/06/26/javaScript%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'javaScript基础问题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2018-06-26 11:34:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">javaScript基础问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-06-26T03:34:03.000Z" title="发表于 2018-06-26 11:34:03">2018-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2018-06-26T03:34:03.000Z" title="更新于 2018-06-26 11:34:03">2018-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/javascript/">javascript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="javaScript基础问题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h6 id="ps-在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来"><a href="#ps-在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来" class="headerlink" title="ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来  =.=!"></a>ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来 <font color = pink size = 6> =.=!</font></h6><h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><p>区分 js 中的undefined ，null ，“” ， 0 和 false等….根据大佬推荐 其实应该去阅读<a target="_blank" rel="noopener" href="https://github.com/lodash/lodash">loadsh</a>的源码。小白表示暂时不看，以后再看。  </p>
+<p>凭自己理解分析一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(!<span class="number">0</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="literal">false</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="literal">undefined</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="literal">null</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="string">&#x27;&#x27;</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>######首先，通过上面的代码可以知道 ， 在if..else 循环中， 0、false、undefined、null、’’ 都是会进入else块的，也就是说:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Boolean</span>(<span class="number">0</span>)</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="title class_">Boolean</span>(<span class="literal">false</span>)</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="title class_">Boolean</span>(<span class="literal">undefined</span>)</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="title class_">Boolean</span>(<span class="literal">null</span>)</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="title class_">Boolean</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>如上代码所示，它们的Boolean都是false.那它们的类型分别是什么呢?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">typeof</span>(<span class="literal">undefined</span>) == <span class="string">&#x27;undefined&#x27;</span></span><br><span class="line"><span class="title function_">typeof</span>(<span class="literal">null</span>) == <span class="string">&#x27;object&#x27;</span></span><br><span class="line"><span class="title function_">typeof</span>(<span class="string">&quot;&quot;</span>) == <span class="string">&#x27;string&#x27;</span></span><br><span class="line"><span class="title function_">typeof</span>(<span class="number">0</span>) == <span class="string">&#x27;number&#x27;</span></span><br><span class="line"><span class="title function_">typeof</span>(<span class="literal">false</span>) == <span class="string">&#x27;boolean&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h6 id="喔。它们的类型各不相同。那么问题来了-，那他们进行-‘-’-和-‘-’-呢。毕竟"><a href="#喔。它们的类型各不相同。那么问题来了-，那他们进行-‘-’-和-‘-’-呢。毕竟" class="headerlink" title="喔。它们的类型各不相同。那么问题来了 ，那他们进行 ‘= =’ 和 ‘===’ 呢。毕竟:"></a>喔。它们的类型各不相同。那么问题来了 ，那他们进行 ‘= =’ 和 ‘===’ 呢。毕竟:</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="number">0</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">false</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">null</span> == <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">null</span> ==<span class="number">0</span> </span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">false</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="number">0</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="number">0</span> == <span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h6 id="感觉有点晕，这样下去-’-‘-岂不是更加复杂-那可能要了解一下-“-”和-“-”-的区别了。"><a href="#感觉有点晕，这样下去-’-‘-岂不是更加复杂-那可能要了解一下-“-”和-“-”-的区别了。" class="headerlink" title="感觉有点晕，这样下去 ’===‘ 岂不是更加复杂.那可能要了解一下 “= =”和 “===” 的区别了。"></a>感觉有点晕，这样下去 ’===‘ 岂不是更加复杂.那可能要了解一下 “= =”和 “===” 的区别了。</h6><h5 id="相等和全等"><a href="#相等和全等" class="headerlink" title="相等和全等"></a>相等和全等</h5><h6 id="比较过程"><a href="#比较过程" class="headerlink" title="比较过程"></a>比较过程</h6><ul>
+<li>双等号：</li>
+<li>（1）如果两个值类型相同，再进行三个等号(===)的比较。</li>
+<li> （2）如果两个值类型不同，也有可能相等，需根据以下规则进行类型转换在比较：</li>
+<li>如果一个是null，一个是undefined，那么相等。 <font color = red>mmp 我说为什么 null == undefined 原来是规定 orz =.=！。</font></li>
+<li>如果一个是字符串，一个是数值，把字符串转换成数值之后再进行比较。</li>
+<li>三等号:<ul>
+<li>如果类型不同，就一定不相等。</li>
+<li>如果两个都是数值，并且是同一个值，那么相等；如果其中至少一个是NaN，那么不相等。（判断一个值是否是NaN，只能使用isNaN( ) 来判断）<font color =red> isNAN</font></li>
+<li>如果两个都是字符串，每个位置的字符都一样，那么相等，否则不相等。</li>
+<li>如果两个值都是true，或是false，那么相等</li>
+<li>如果两个值都引用同一个对象或是函数，那么相等，否则不相等。  <font color = red>涉及到值和引用的问题</font></li>
+<li>如果两个值都是null，或是undefined，那么相等<span id="more"></span> 
+<h6 id="举两个栗子："><a href="#举两个栗子：" class="headerlink" title="举两个栗子："></a>举两个栗子：</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span></span><br><span class="line"><span class="literal">true</span>   <span class="comment">//这个是规定</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="number">0</span></span><br><span class="line"><span class="literal">true</span>   <span class="comment">//数字和字符串进行双等号比较时，虽然类型吧不同，但是会把字符串转为数字，空字串会转为0，非空字符串会转为数字，如果字符串内不是纯数字就会返回NaN。</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>] == [<span class="number">1</span>]</span><br><span class="line"><span class="literal">false</span> <span class="comment">// 关于这个就比较复杂，看起来是双等号判断，但是因为他们的都是对象，所以进行了全等判断，全等判断中，JavaScript会比较其内部引用，当且仅当他们的引用指向内存中的相同对象（区域）时才相等，即他们在栈内存中的引用地址相同。其实[1] 和 [1] 根本就是两个不用的对象，他们在栈中分配了不同的地址。</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Number</span>(<span class="literal">null</span>)</span><br><span class="line"><span class="number">0</span>  <span class="comment">//null 表示&quot;没有对象&quot;，即该处不应该有值。</span></span><br><span class="line"><span class="title class_">Number</span>(<span class="literal">undefined</span>)</span><br><span class="line"><span class="title class_">NaN</span>  <span class="comment">//undefined 表示&quot;缺少值&quot;，就是此处应该有一个值，但是还没有定义。</span></span><br></pre></td></tr></table></figure>
+附：<br><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/compare.png"></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>) -&gt; <span class="string">&quot;undefined&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>) -&gt; <span class="string">&quot;null&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="string">&quot;&quot;</span>) -&gt; <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="number">0</span>) -&gt; <span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">false</span>) -&gt; <span class="string">&quot;false&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ul>
+<li><p>你不懂JS：作用域与闭包 第一章：什么是作用域？</p>
+<ul>
+<li>作用域是一组规则，它决定了在哪里和如何查找一个变量（标识符）。这种查询也许是为了向这个变量赋值，这时变量是一个LHS引用，或者是为取得它的值，这时变量是一个RHS引用。</li>
+<li>LHS引用得自赋值操作。作用域 相关的赋值可以通过 = 操作符发生，也可以通过向函数参数传递（赋予）参数值发生</li>
+<li>JavaScript引擎在执行代码之前首先会编译它，这样做，它将 var a = 2; 这样的语句分割为两个分离的步骤：<ul>
+<li>首先，var a 在当前 作用域 中声明。这是在最开始，代码执行之前实施的。</li>
+<li>稍后，a = 2 查找这个变量（LHS引用），并且如果找到就向它赋值。</li>
+</ul>
+</li>
+<li>如果RHS查询在嵌套的作用域的任何地方都找不到一个值，这会导致引擎抛出一个 ReferenceError；如果LHS查询在嵌套的作用域的任何地方都找不到一个值，而且如果程序没有运行在 Strict 模式下，那么全局作用域中会创建一个变量并将它交给引擎。如果是在 Strict 模式下，则也会抛出 ReferenceEroor。</li>
+<li>如果RHS查询的值被找到了，但是你试着去做一些它做不到的事情，比如引用 null 或者 undefined 的属性，那么引擎会抛出错误 TypeError。</br></li>
+</ul>
+</li>
+<li><p>你不懂JS：作用域与闭包 第二章：词法作用域</p>
+<ul>
+<li>词法作用域意味着作用域是由编写时函数被声明的位置的决策定义的。编译器的词法分析阶段实质上可以知道所有的标识符是在哪里和如何声明的，并如此在执行期间预测它们将如何被查询。</li>
+<li>在JavaScript中有两种机制可以“欺骗”词法作用域：eval(..) 和 with 。前者可以通过对一个拥有一个或多个声明的“代码”字符串进行求值，来（在运行时）修改现存的词法作用域。后者实质上是通过将一个对象引用看作一个“作用域”，并将这个对象的属性看作作用域中的标识符，（同样，也是在运行时）创建一个全新的词法作用域。</li>
+<li>这些机制的缺点是，它压制了引擎在作用域查询上进行编译期优化的能力，因为引擎不得不悲观地假定这样的优化是不合法的。这两种特性的结果就是代码将会运行的更慢。不要使用它们。</br></li>
+</ul>
+</li>
+<li><p>你不懂JS：作用域与闭包 第三章：函数与块儿作用域</p>
+<ul>
+<li>在JavaScript中函数是最常见的作用域单位。在另一个函数内部声明的变量和函数，实质上对任何外围“作用域”都是“隐藏的”，这是优秀软件的一个有意的设计原则。</li>
+<li>但是函数绝不是唯一的作用域单位。块儿作用域指的是这样一种想法：变量和函数可以属于任意代码块儿（一般来说，就是任意的 { .. } ），而不是仅属于外围的函数。</li>
+<li>从ES3开始，try/catch 结构在 catch 子句上拥有块儿作用域。</li>
+<li>在ES6中，引入了 let 关键字（ var 关键字的表兄弟）允许在任意代码块中声明变量。if (..) { let a = 2; }将会声明变量a，而它实质上劫持了 if 的 { .. } 块儿的作用域，并将自己附着在这里。</li>
+<li>虽然有些人对此深信不疑，但是块儿作用域不应当被认为是 var 函数作用域的一个彻头彻尾的替代品。两种机能是共存的，而且开发者们可以并且应当同时使用函数作用域和块儿作用域技术 —— 在它们各自可以产生更好，更易读/易维护代码的地方。</li>
+</ul>
+</li>
+</ul>
+<p>ps: mmp好晕</p>
+<h2 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h2><h6 id="js-中什么类型是引用传递-什么类型是值传递-如何将值类型的变量以引用的方式传递"><a href="#js-中什么类型是引用传递-什么类型是值传递-如何将值类型的变量以引用的方式传递" class="headerlink" title="js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递?"></a>js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递?</h6><ul>
+<li>基本类型：存放在栈内存中的简单数据段，数据大小确定，内存空间大小可以分配。<br>5种基本数据类型有Undefined、Null、Boolean、Number 和 String，它们是直接按值存放的，所以可以直接访问。</li>
+<li>引用类型：存放在堆内存中的对象，变量实际保存的是一个指针，这个指针指向另一个位置。每个空间大小不一样，要根据情况开进行特定的分配。<br>当我们需要访问引用类型（如对象，数组，函数等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。<br><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/20180322141202_19288.png"><br>另外设计到深度拷贝和浅拷贝，到时候重写一篇。</li>
+</ul>
+<h2 id="内存释放"><a href="#内存释放" class="headerlink" title="内存释放"></a>内存释放</h2><h6 id="JavaScript-中不同类型以及不同环境下变量的内存都是何时释放"><a href="#JavaScript-中不同类型以及不同环境下变量的内存都是何时释放" class="headerlink" title="JavaScript 中不同类型以及不同环境下变量的内存都是何时释放?"></a>JavaScript 中不同类型以及不同环境下变量的内存都是何时释放?</h6><p>引用类型是在没有引用之后, 通过 v8 的 GC 自动回收, 值类型如果是处于闭包的情况下, 要等闭包没有引用才会被 GC 回收, 非闭包的情况下等待 v8 的新生代 (new space) 切换的时候回收.</p>
+<p>与前端 Js 不同, 2年以上经验的 Node.js 一定要开始注意内存了, 不说对 v8 的 GC 有多了解, 基础的内存释放一定有概念了, 并且要开始注意内存泄漏的问题了.</p>
+<p>你需要了解哪些操作一定会导致内存泄漏, 或者可以崩掉内存. 比如如下代码能否爆掉 V8 的内存?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">  arr.<span class="title function_">push</span>(<span class="number">1</span>);</span><br><span class="line">然后上述代码与下方的情况有什么区别?</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">  arr.<span class="title function_">push</span>();</span><br><span class="line">如果 push 的是 <span class="title class_">Buffer</span> 情况又会有什么区别?</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">  arr.<span class="title function_">push</span>(<span class="keyword">new</span> <span class="title class_">Buffer</span>(<span class="number">1000</span>));</span><br><span class="line">思考完之后可以尝试找找别的情况如何爆掉 <span class="variable constant_">V8</span> 的内存. 以及来聊聊内存泄漏?</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">out</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigData = <span class="keyword">new</span> <span class="title class_">Buffer</span>(<span class="number">100</span>);</span><br><span class="line">  inner = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">void</span> bigData;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于内存释放问题，入行尚欠，学到再补充。</p>
+<h2 id="ES6-新特性"><a href="#ES6-新特性" class="headerlink" title="ES6 新特性"></a>ES6 新特性</h2><h6 id="const-定义的-Array-中间元素能否被修改-如果可以-那-const-修饰对象有什么意义"><a href="#const-定义的-Array-中间元素能否被修改-如果可以-那-const-修饰对象有什么意义" class="headerlink" title="const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象有什么意义?"></a>const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象有什么意义?</h6><ul>
+<li>const 定义的 Array 中间元素能被修改，const 定义的变量只是持有 Array 的地址，这个变量只是本身不能修改，而对于存在于堆内存中的 Array 本身是可以修改的。</li>
+<li>对于 const 声明，只是它的赋值操作被冻结了，而值不会因为 const 而不变。主要是预防在coding过程中的coder因为疏忽对变量的意外修改。</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/js/">js</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#ps-%E5%9C%A8%E7%A4%BE%E5%8C%BA%E6%89%BE%E4%BA%86%E4%B8%AA%E6%9F%90%E5%A4%A7%E5%9E%8B%E4%BA%92%E8%81%94%E7%BD%91%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E5%AF%B9%E6%AF%94%E7%9D%80%E7%9F%A5%E8%AF%86%E7%82%B9%E9%A1%BA%E4%BE%BF%E6%8A%8A%E5%8E%9F%E6%9D%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%BF%87%E6%9D%A5"><span class="toc-text">ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来  &#x3D;.&#x3D;!</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD"><span class="toc-text">类型判断</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%96%94%E3%80%82%E5%AE%83%E4%BB%AC%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%90%84%E4%B8%8D%E7%9B%B8%E5%90%8C%E3%80%82%E9%82%A3%E4%B9%88%E9%97%AE%E9%A2%98%E6%9D%A5%E4%BA%86-%EF%BC%8C%E9%82%A3%E4%BB%96%E4%BB%AC%E8%BF%9B%E8%A1%8C-%E2%80%98-%E2%80%99-%E5%92%8C-%E2%80%98-%E2%80%99-%E5%91%A2%E3%80%82%E6%AF%95%E7%AB%9F"><span class="toc-text">喔。它们的类型各不相同。那么问题来了 ，那他们进行 ‘&#x3D; &#x3D;’ 和 ‘&#x3D;&#x3D;&#x3D;’ 呢。毕竟:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%84%9F%E8%A7%89%E6%9C%89%E7%82%B9%E6%99%95%EF%BC%8C%E8%BF%99%E6%A0%B7%E4%B8%8B%E5%8E%BB-%E2%80%99-%E2%80%98-%E5%B2%82%E4%B8%8D%E6%98%AF%E6%9B%B4%E5%8A%A0%E5%A4%8D%E6%9D%82-%E9%82%A3%E5%8F%AF%E8%83%BD%E8%A6%81%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B-%E2%80%9C-%E2%80%9D%E5%92%8C-%E2%80%9C-%E2%80%9D-%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BA%86%E3%80%82"><span class="toc-text">感觉有点晕，这样下去 ’&#x3D;&#x3D;&#x3D;‘ 岂不是更加复杂.那可能要了解一下 “&#x3D; &#x3D;”和 “&#x3D;&#x3D;&#x3D;” 的区别了。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B8%E7%AD%89%E5%92%8C%E5%85%A8%E7%AD%89"><span class="toc-text">相等和全等</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%87%E7%A8%8B"><span class="toc-text">比较过程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%BE%E4%B8%A4%E4%B8%AA%E6%A0%97%E5%AD%90%EF%BC%9A"><span class="toc-text">举两个栗子：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-text">引用传递</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#js-%E4%B8%AD%E4%BB%80%E4%B9%88%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92-%E4%BB%80%E4%B9%88%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92-%E5%A6%82%E4%BD%95%E5%B0%86%E5%80%BC%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E4%BB%A5%E5%BC%95%E7%94%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E4%BC%A0%E9%80%92"><span class="toc-text">js 中什么类型是引用传递, 什么类型是值传递? 如何将值类型的变量以引用的方式传递?</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE"><span class="toc-text">内存释放</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#JavaScript-%E4%B8%AD%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E9%83%BD%E6%98%AF%E4%BD%95%E6%97%B6%E9%87%8A%E6%94%BE"><span class="toc-text">JavaScript 中不同类型以及不同环境下变量的内存都是何时释放?</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-text">ES6 新特性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#const-%E5%AE%9A%E4%B9%89%E7%9A%84-Array-%E4%B8%AD%E9%97%B4%E5%85%83%E7%B4%A0%E8%83%BD%E5%90%A6%E8%A2%AB%E4%BF%AE%E6%94%B9-%E5%A6%82%E6%9E%9C%E5%8F%AF%E4%BB%A5-%E9%82%A3-const-%E4%BF%AE%E9%A5%B0%E5%AF%B9%E8%B1%A1%E6%9C%89%E4%BB%80%E4%B9%88%E6%84%8F%E4%B9%89"><span class="toc-text">const 定义的 Array 中间元素能否被修改? 如果可以, 那 const 修饰对象有什么意义?</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

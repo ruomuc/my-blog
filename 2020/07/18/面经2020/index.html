@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>面经2020 | ruomu</title><meta name="keywords" content="面经"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面经放一起吧，做一个汇总吧 A今天面了一家做车联网的公司。技术的问题没什么难度，他们也没用mysql，redis这种常用的数据库，用的是其它的nosql。 我不太了解的问题主要有三个吧。随便记录一下。 有用过什么云服务？云服务这块我过得就是云存储(oss)，然后vps（自己搭小飞机用的），不过这种东西只要能看懂api文档。上手没什么难度吧。 serverless架构有什么了解？我之前在cnode论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面经2020">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2020/07/18/%E9%9D%A2%E7%BB%8F2020/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="面经放一起吧，做一个汇总吧 A今天面了一家做车联网的公司。技术的问题没什么难度，他们也没用mysql，redis这种常用的数据库，用的是其它的nosql。 我不太了解的问题主要有三个吧。随便记录一下。 有用过什么云服务？云服务这块我过得就是云存储(oss)，然后vps（自己搭小飞机用的），不过这种东西只要能看懂api文档。上手没什么难度吧。 serverless架构有什么了解？我之前在cnode论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2020-07-18T05:06:15.000Z">
+<meta property="article:modified_time" content="2020-07-20T14:26:39.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="面经">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/07/18/%E9%9D%A2%E7%BB%8F2020/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面经2020',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-07-20 22:26:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">面经2020</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-18T05:06:15.000Z" title="发表于 2020-07-18 13:06:15">2020-07-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-07-20T14:26:39.000Z" title="更新于 2020-07-20 22:26:39">2020-07-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/others/">others</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="面经2020"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>面经放一起吧，做一个汇总吧</p>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>今天面了一家做车联网的公司。<br>技术的问题没什么难度，他们也没用mysql，redis这种常用的数据库，用的是其它的nosql。</p>
+<p>我不太了解的问题主要有三个吧。随便记录一下。<br><br></p>
+<h4 id="有用过什么云服务？"><a href="#有用过什么云服务？" class="headerlink" title="有用过什么云服务？"></a>有用过什么云服务？</h4><p>云服务这块我过得就是云存储(oss)，然后vps（自己搭小飞机用的），不过这种东西只要能看懂api文档。上手没什么难度吧。<br><br></p>
+<h4 id="serverless架构有什么了解？"><a href="#serverless架构有什么了解？" class="headerlink" title="serverless架构有什么了解？"></a>serverless架构有什么了解？</h4><p>我之前在cnode论坛上看到过别人讨论这个来着，还专门去看了下，但是这种烧钱的架构暂时没用上就没往深去看。。</p>
+<p>下面是知乎找的一些基本概念，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79112228">参考链接</a></p>
+<span id="more"></span>
+<br>
+**核心思想**
+用户无需关注支撑应用服务运行的底层主机。
+无服务并不是说基于 Serverless 架构的软件应用不需要服务器就可以运行，其指的是用户无须关心软件应用运行涉及的底层服务器的状态、资源（比如 CPU、内存、磁盘及网络）及数量。
+<br>
+**优势**
+提高应用交付的效率，降低应用运营的工作量和成本。
+<br>
+**劣势**
+emm...应该是贵吧。。毕竟服务器资源都是钱嘛。。
+
+<ul>
+<li>控制力：用户对底层的计算资源没有控制力。</li>
+<li>可移植性：不同IT厂商的 Serverless 平台和解决方案的具体实现并不相同。</li>
+<li>安全性：用户不能直接控制应用实际所运行的主机。</li>
+<li>性能：按需加载服务资源，首次加载及重新加载的过程将产生一定的延时。</li>
+<li>Serverless按需加载执行，对Fass函数执行时长存在限制。</li>
+<li>起步时间不长的新兴技术，Serverless 相关平台、工具和框架还处在一个不断变化和演进的阶段，文档资料相对较少。</li>
+</ul>
+<br>
+**目前市场上比较流行的 Serverless 工具、框架和平台**
+
+<ul>
+<li>AWS Lambda，最早被大众所认可的 Serverless 实现。</li>
+<li>Azure Functions，来自微软公有云的 Serverless 实现。</li>
+<li>OpenWhisk，Apache 社区的开源 Serverless 框架。</li>
+<li>Kubeless，基于 Kubernetes 架构实现的开源 Serverless 框架。</li>
+<li>Fission，Platform9 推出的开源 Serverless 框架。</li>
+<li>OpenFaaS，以容器技术为核心的开源 Serverless 框架。</li>
+<li>Fn，来自 Oracle 的开源 Serverless 框架，由原 Iron Functions 团队开发。</li>
+</ul>
+<br>
+
+<h4 id="物联网协议s"><a href="#物联网协议s" class="headerlink" title="物联网协议s"></a>物联网协议s</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/39156562">物联网架构及五大常用通信协议</a></p>
+<p>ps:  正常技术问题没什么难度，主要是方向不太一致。看缘分吧。</p>
+<br>
+
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h4 id="哈希表实现"><a href="#哈希表实现" class="headerlink" title="哈希表实现"></a>哈希表实现</h4><p>我说了数组的实现，hash函数生成index，插入数据。</p>
+<p>哈希冲突：1. 开放寻址法 。2. 链表法</p>
+<br>
+
+<h4 id="两数求和"><a href="#两数求和" class="headerlink" title="两数求和"></a>两数求和</h4><p>给一个整数数组，给一个整数，找出这个数组中之和等于这个整数的组和。</p>
+<p>假设：输入[1,2,3,4] 和 6 输出 [1,3]</p>
+<p>我记得我在LeetCode刷到过。</p>
+<p>方法1：暴力解，双重for循环。 时间： O(n<sup>2</sup>)  空间：O(1)</p>
+<p>方法2：先遍历一遍，先生成一个下标和值的字典，然后再遍历一遍，在字典中寻找合适的值。 时间：O(n)  空间：O(n)</p>
+<p>面试官说可以用快速排序+二分查找来实现。。时间：O(nlon<sup>n</sup>)  空间：O(logn)<br><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/algorithm/towNumberSum.js">&gt;&gt;&gt;代码地址</a><br><br></p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>说了一下快排的原理，问了一下什么情况下快排的时间复杂度是O(n<sup>2</sup>)  。</p>
+<p>然后为了下为什么会是O(n<sup>2</sup>)  。。。这个我真没注意过，不过结束后我自己画了个图分析了一下，原来刚好<strong>逆序</strong>(从小往大排序刚好遇到从大到小的一组数)的情况的下，<strong>快排每一轮都只做了一次元素交换（循环最后一个元素和基准元素），其他的都在和自己交换。。</strong></p>
+<br>
+
+<h4 id="sql优化"><a href="#sql优化" class="headerlink" title="sql优化"></a>sql优化</h4><p>select * from Student where age &gt; 18 order by score desc limit 10</p>
+<p>根据题目描述，我口述了这么一个sql，然后问我如何优化。。</p>
+<p>只不过我索引加错了，应该加 （age,score）的联合索引。。惊了。第一次听说单独无法命中，联合可以的。。</p>
+<p><a target="_blank" rel="noopener" href="https://www.mdaima.com/jingyan/14.html">MySQL如何利用索引优化WHERE和ORDER BY的查询语句效率</a><br><br></p>
+<h4 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h4><p>我觉得这个是最难说的，平常大都是业务代码，很少写什么很有成就感的容易让我印象深刻的东西。。。</p>
+<p>—– 2020-8-15 13:54:46 ——<br>工作已经确定了，后面面得公司问的问题都差不多，就不写了。<br>此贴终结（狗头）</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A"><span class="toc-text">A</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E7%94%A8%E8%BF%87%E4%BB%80%E4%B9%88%E4%BA%91%E6%9C%8D%E5%8A%A1%EF%BC%9F"><span class="toc-text">有用过什么云服务？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#serverless%E6%9E%B6%E6%9E%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BA%86%E8%A7%A3%EF%BC%9F"><span class="toc-text">serverless架构有什么了解？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AEs"><span class="toc-text">物联网协议s</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B"><span class="toc-text">B</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E5%AE%9E%E7%8E%B0"><span class="toc-text">哈希表实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E6%95%B0%E6%B1%82%E5%92%8C"><span class="toc-text">两数求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sql%E4%BC%98%E5%8C%96"><span class="toc-text">sql优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C"><span class="toc-text">项目经验</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于mysql的索引 | ruomu</title><meta name="keywords" content="mysql,索引"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本篇文章于2021年7月18日15:25:27。。重构之 主要最近在看一个 mysql 的课，然后看到之前写过索引相关的文章，看不下去了，重构之。（捂脸）  什么是索引呢？简单来说，索引就像是书本的目录一样，目的是提高查询效率。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于mysql的索引">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2019/05/11/%E5%85%B3%E4%BA%8Emysql%E7%9A%84%E7%B4%A2%E5%BC%95/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="本篇文章于2021年7月18日15:25:27。。重构之 主要最近在看一个 mysql 的课，然后看到之前写过索引相关的文章，看不下去了，重构之。（捂脸）  什么是索引呢？简单来说，索引就像是书本的目录一样，目的是提高查询效率。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2019-05-11T06:43:37.000Z">
+<meta property="article:modified_time" content="2021-07-18T07:25:19.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="索引">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2019/05/11/%E5%85%B3%E4%BA%8Emysql%E7%9A%84%E7%B4%A2%E5%BC%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于mysql的索引',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-18 15:25:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">关于mysql的索引</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-05-11T06:43:37.000Z" title="发表于 2019-05-11 14:43:37">2019-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-18T07:25:19.000Z" title="更新于 2021-07-18 15:25:19">2021-07-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="关于mysql的索引"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<p>本篇文章于2021年7月18日15:25:27。。重构之</p>
+<p>主要最近在看一个 mysql 的课，然后看到之前写过索引相关的文章，看不下去了，重构之。（捂脸）</p>
+<hr>
+<p>什么是索引呢？简单来说，索引就像是书本的目录一样，目的是提高查询效率。</p>
+<span id="more"></span>
+
+<h2 id="索引的常见实现"><a href="#索引的常见实现" class="headerlink" title="索引的常见实现"></a>索引的常见实现</h2><p>哈希表：</p>
+<ul>
+<li><p>哈希表适用于等值查询的场景，是最快的 O(1)</p>
+</li>
+<li><p>区间查询就需要全部扫描一遍了，速度很慢 O(n)</p>
+</li>
+</ul>
+<p>有序数组：</p>
+<ul>
+<li>有序数组无论是等值查询和区间查询性能都不错</li>
+<li>但是新增数据的时候，有序数组要保证有序，需要把插入位置之后的数据全部后移，成本太高</li>
+<li>所以，有序数组只适合用于静态存储引擎</li>
+</ul>
+<p>平衡二叉树：</p>
+<ul>
+<li>二叉搜索树是一个很常见的数据结构，它的查询操作平均复杂度为 O(lgn)，相应的平衡二叉树的平衡操作时间复杂度也是O(lgn)</li>
+<li>虽然二叉搜索树的效率很高，但是层数太多了，每多一层可能都意味着一次磁盘IO操作，这样看来是很慢的</li>
+<li>N 叉树，我们增加树的 “叉”，就可以减少树的深度，就可以尽量检查访问磁盘的次数</li>
+</ul>
+<h2 id="InnoDB索引模型"><a href="#InnoDB索引模型" class="headerlink" title="InnoDB索引模型"></a>InnoDB索引模型</h2><p>本文主要说的 mysql 的索引，InnoDB是 mysql 的主要引擎（虽然MyISAM也使用B+Tree作为索引结构，但是本文默认都是基于InnoDB）。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54102723">b树 和 b+树，请看这篇文章</a></p>
+<p>最重要的一点是，b+树的非叶子结点只做索引，叶子结点保存有全部的数据，并且只有叶子节点带有指向卫星数据的指针。</p>
+<h3 id="主键索引和非主键索引"><a href="#主键索引和非主键索引" class="headerlink" title="主键索引和非主键索引"></a>主键索引和非主键索引</h3><p><strong>主键索引</strong>叶子结点的卫星数据，保存的是<strong>整行的数据</strong>。</p>
+<p><strong>非主键索引</strong>叶子结点的卫星数据，保存的是<strong>主键的值</strong>。</p>
+<img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/dcda101051f28502bd5c4402b292e38d.png" style="zoom:25%;" />
+
+<h3 id="回表"><a href="#回表" class="headerlink" title="回表"></a>回表</h3><p>我们知道了主键索引和非主键索引的区别了，假设有一张表t，id是主键索引，name是非主键索引，那么请问：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t <span class="keyword">where</span> id <span class="operator">=</span> xx;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t <span class="keyword">where</span> name <span class="operator">=</span> xx;</span><br></pre></td></tr></table></figure>
+
+<p>这两条查询有什么区别吗？哪个效率更高？</p>
+<p>答案显然是第一条：</p>
+<ul>
+<li>第一条sql：从 id 这个索引对应的B+树上，找到 xx 这条数据，然后卫星数据已经是整行记录了，直接返回就行了</li>
+<li>第二条sql：从 name 这个索引对应的B+树上，找到xx这条数据，然后得到主键的值，在用这个值重复上一步，然后返回这行数据</li>
+</ul>
+<p>从非主键索引树查询到主键数据，再回主键索引树查找最终数据，这个过程我们称之为<strong>回表</strong>。</p>
+<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p>前面我们知道了什么是回表，那我怎么样可以不回表呢？</p>
+<p>覆盖索引的概念和回表刚好是相反的。。就是说无需回表，就可以获取到所需数据。</p>
+<p>所以这是为什么我们尽量要减少 <code>select * </code> 的写法。</p>
+<h3 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h3><p>前面我们知道一个索引就对应一个B+树，创建的索引越多内存占用就越大。。</p>
+<p>所以我们可以创建联合索引。。</p>
+<p>并且联合索引的命中是 “最左匹配原则”，就是说联合索引的创建顺序是会对索引命中有影响的。</p>
+<p>关于联合索引的命中和失效情况，有非常多，这里不展开讲。随便一搜能搜到很多。（涉及范围查询，排序等等）</p>
+<h3 id="索引下推"><a href="#索引下推" class="headerlink" title="索引下推"></a>索引下推</h3><p>这个其实也没什么好说的，就是mysql5.6之后的一个优化。</p>
+<p>假设表t，有 id 的主键索引，有 （name, age） 的联合索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t <span class="keyword">where</span> name<span class="operator">=</span>ruomu <span class="keyword">and</span> age<span class="operator">=</span><span class="number">23</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在 mysql5.6 之前：</p>
+<ul>
+<li>去 (a,b) 索引对应b+树，查询到满足 name=ruomu 的结点</li>
+<li>回表去判断是否满足 age=23 这个条件</li>
+</ul>
+<img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/b32aa8b1f75611e0759e52f5915539ac.jpg" style="zoom:25%;" />
+
+<p>有了索引下推之后：</p>
+<ul>
+<li>去 (a,b) 索引对应b+树，查询到 name=ruomu 的结点</li>
+<li>因为是联合索引，所以 b 的值应该也在结点中呀，所以直接排除掉不满足 age=23 的</li>
+<li>用满足条件的数据取回表，(因为是 select * 嘛。。还是会回表)，这样会少很多次回表。</li>
+</ul>
+<img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/76e385f3df5a694cc4238c7b65acfe1b.jpg" style="zoom:25%;" />
+
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>唯一索引，使用数据库的机制来约束数据的唯一性。</p>
+<p>和普通索引的区别就是，新增数据的时候，需要判断数据的唯一性，要把磁盘的数据读取到内存中，不能使用change buffer 来缓存。</p>
+<p>这里不展开说了，后面可能会整理一些关于， redo log、undo log、binlog、change buffer的文章。</p>
+<h3 id="为什么b-树比b树更适合作为索引？"><a href="#为什么b-树比b树更适合作为索引？" class="headerlink" title="为什么b+树比b树更适合作为索引？"></a>为什么b+树比b树更适合作为索引？</h3><p>这是一个面试高频题吧？当做对本文的一个总结</p>
+<ul>
+<li>b+树的非叶子结点只有关键字，不保存卫星数据，所以一页能保存的关键字就更多，减少了IO读取的次数</li>
+<li>b+树的卫星数据都在叶子节点上，查询效率固定为O(lgn)，比较稳定</li>
+<li>b+树的所有叶子结点，使用链表有序连接，这样扫库和范围查询时效率更高</li>
+</ul>
+<p>ps: 本文只是一个框架吧，没有太多展开，对之前文章的一个重新整理。。</p>
+<p>参考链接：</p>
+<ul>
+<li>极客时间《mysql实战45讲》</li>
+<li>网络资料</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a><a class="post-meta__tags" href="/tags/%E7%B4%A2%E5%BC%95/">索引</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">索引的常见实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB%E7%B4%A2%E5%BC%95%E6%A8%A1%E5%9E%8B"><span class="toc-text">InnoDB索引模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95"><span class="toc-text">主键索引和非主键索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E8%A1%A8"><span class="toc-text">回表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="toc-text">覆盖索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-text">联合索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8"><span class="toc-text">索引下推</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="toc-text">唯一索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88b-%E6%A0%91%E6%AF%94b%E6%A0%91%E6%9B%B4%E9%80%82%E5%90%88%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%EF%BC%9F"><span class="toc-text">为什么b+树比b树更适合作为索引？</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

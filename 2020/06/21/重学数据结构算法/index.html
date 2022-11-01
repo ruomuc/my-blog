@@ -1,0 +1,726 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>重学数据结构算法 | ruomu</title><meta name="keywords" content="算法"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在拉钩1块钱抢了一个算法课程，讲的还不错，记下笔记。 一共有21节课，抽时间看，持续更新。 课程二维码在最后 第一讲时间复杂度和代码结构的关系一些经验性的结论 一个顺序结构的代码，时间复杂度是O(1) 二分查找，或者更通用的说是采用分而治之的二分策略，时间复杂度都是O(logn) 一个for循环，时间复杂度是O(n) 两个顺序执行的for循环，时间复杂度O(n)+O(n)&#x3D;O(2n)，最终也是O(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重学数据结构算法">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2020/06/21/%E9%87%8D%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="在拉钩1块钱抢了一个算法课程，讲的还不错，记下笔记。 一共有21节课，抽时间看，持续更新。 课程二维码在最后 第一讲时间复杂度和代码结构的关系一些经验性的结论 一个顺序结构的代码，时间复杂度是O(1) 二分查找，或者更通用的说是采用分而治之的二分策略，时间复杂度都是O(logn) 一个for循环，时间复杂度是O(n) 两个顺序执行的for循环，时间复杂度O(n)+O(n)&#x3D;O(2n)，最终也是O(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2020-06-21T11:36:20.000Z">
+<meta property="article:modified_time" content="2020-09-16T15:49:34.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/06/21/%E9%87%8D%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '重学数据结构算法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-09-16 23:49:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">重学数据结构算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-21T11:36:20.000Z" title="发表于 2020-06-21 19:36:20">2020-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-16T15:49:34.000Z" title="更新于 2020-09-16 23:49:34">2020-09-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="重学数据结构算法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在拉钩1块钱抢了一个算法课程，讲的还不错，记下笔记。</p>
+<p>一共有21节课，抽时间看，持续更新。</p>
+<p>课程二维码在最后</p>
+<h2 id="第一讲"><a href="#第一讲" class="headerlink" title="第一讲"></a>第一讲</h2><h3 id="时间复杂度和代码结构的关系"><a href="#时间复杂度和代码结构的关系" class="headerlink" title="时间复杂度和代码结构的关系"></a>时间复杂度和代码结构的关系</h3><h4 id="一些经验性的结论"><a href="#一些经验性的结论" class="headerlink" title="一些经验性的结论"></a>一些经验性的结论</h4><ul>
+<li>一个顺序结构的代码，时间复杂度是<strong>O(1)</strong></li>
+<li>二分查找，或者更通用的说是采用分而治之的二分策略，时间复杂度都是<strong>O(logn)</strong></li>
+<li>一个<strong>for</strong>循环，时间复杂度是<strong>O(n)</strong></li>
+<li>两个顺序执行的<strong>for</strong>循环，时间复杂度<strong>O(n)+O(n)=O(2n)<strong>，最终也是</strong>O(n)</strong></li>
+<li>两个嵌套的<strong>for</strong>循环，时间复杂度是<strong>O(n^2)</strong></li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>复杂度通常包括<strong>时间复杂度</strong>和<strong>空间复杂度</strong><br>在具体计算复杂度时需要注意：</p>
+<ul>
+<li>它与具体的常系数无关，**O(2n)<strong>和</strong>O(n)**表示的是同样的复杂度</li>
+<li>复杂度相加的时候，选择高者作为结果，也就是**O(n^2)+O(n)<strong>和</strong>O(n^2)**表示同样的复杂度</li>
+<li><strong>O(1)<strong>是一个特殊的复杂度，即任务与算例个数</strong>n</strong>无关</li>
+</ul>
+<p><strong>时间复杂度</strong>与代码结构设计高度相关<br><strong>空间复杂度</strong>与代码中数据结构的选择高度相关</p>
+<h2 id="第二讲"><a href="#第二讲" class="headerlink" title="第二讲"></a>第二讲</h2><span id="more"></span>
+
+<h3 id="程序优化"><a href="#程序优化" class="headerlink" title="程序优化"></a>程序优化</h3><p>降低复杂度，直观的思路：梳理流程，看其流程中是否有无效的计算或者无效的存储<br>常用的降低时间复杂度的方法：</p>
+<ul>
+<li>递归、二分法、排序算法、动态规划</li>
+</ul>
+<p>降低空间负责度的核心思路：</p>
+<ul>
+<li>能用低复杂度的数据结构解决的问题，就千万不要用高复杂度的数据结构</li>
+</ul>
+<h3 id="数据结构连接时空"><a href="#数据结构连接时空" class="headerlink" title="数据结构连接时空"></a>数据结构连接时空</h3><p>在程序开发中，连接<strong>时间</strong>和<strong>空间</strong>的桥梁就是<strong>数据结构</strong><br><strong>空间换时间</strong>：对于一个开发任务，如果能找到一种高效的数据组织方式，<strong>采用合理的数据结构</strong>就可以实现时间复杂度的再次降低，这通常会<strong>增加数据的存储量</strong>，也就是<strong>增加了空间的复杂度</strong>。</p>
+<h3 id="程序优化步骤"><a href="#程序优化步骤" class="headerlink" title="程序优化步骤"></a>程序优化步骤</h3><h4 id="第一步，暴力解法"><a href="#第一步，暴力解法" class="headerlink" title="第一步，暴力解法"></a>第一步，暴力解法</h4><p>在没有任何时间、空间的约束下，完成代码任务的开发</p>
+<h4 id="第二步，无效操作处理"><a href="#第二步，无效操作处理" class="headerlink" title="第二步，无效操作处理"></a>第二步，无效操作处理</h4><p>将代码中的无效计算，无效存储剔除，降低时间或空间复杂度</p>
+<h4 id="第三步，时空转换"><a href="#第三步，时空转换" class="headerlink" title="第三步，时空转换"></a>第三步，时空转换</h4><p>设计合理的数据结构，完成时间复杂度向空间复杂度的转移</p>
+<h2 id="第三讲"><a href="#第三讲" class="headerlink" title="第三讲"></a>第三讲</h2><h3 id="数据处理的基本操作"><a href="#数据处理的基本操作" class="headerlink" title="数据处理的基本操作"></a>数据处理的基本操作</h3><p>即便是很复杂的代码，它对数据的处理也只有这3个基本操作：<strong>增删查</strong></p>
+<p>常用的分析方法可以参考下面三个步骤：</p>
+<ol>
+<li>这段代码对数据进行了哪些操作？</li>
+<li>这些操作中，哪个操作最影响效率，对时间复杂度的损耗最大？</li>
+<li>哪种数据结构最能帮助你提高数据操作的使用效率？</li>
+</ol>
+<h3 id="数据操作与数据结构案例"><a href="#数据操作与数据结构案例" class="headerlink" title="数据操作与数据结构案例"></a>数据操作与数据结构案例</h3><h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><ul>
+<li>根据<strong>元素的位置或索引</strong>来查找</li>
+<li>根据<strong>元素的数值特</strong>征来查找</li>
+</ul>
+<h4 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h4><p>有两个可能：</p>
+<ul>
+<li>在这个复杂<strong>数据结构的最后</strong>，新增一条数据</li>
+<li>在这个复杂<strong>数据结构的中间某个位置</strong>，新增一条数据</li>
+</ul>
+<p><strong>区别</strong>：新增数据之后，是否会导致原有数据结构中数据位置顺序改变</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p>有两个可能</p>
+<ul>
+<li>在这个复杂<strong>数据结构的最后</strong>，删除一条数据</li>
+<li>在这个复杂<strong>数据结构的中间某个位置</strong>，删除一条数据</li>
+</ul>
+<p><strong>区别</strong>：删除数据之后，是否会导致原有数据结构中数据位置顺序改变</p>
+<h2 id="第四讲"><a href="#第四讲" class="headerlink" title="第四讲"></a>第四讲</h2><h3 id="什么是数据结构？"><a href="#什么是数据结构？" class="headerlink" title="什么是数据结构？"></a>什么是数据结构？</h3><p>数据的组织方式</p>
+<h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><ul>
+<li>单向链表</li>
+<li>双向链表</li>
+<li>循环链表</li>
+<li>双向循环链表</li>
+</ul>
+<p>链表的优缺点：</p>
+<ul>
+<li>链表在新增和删除数据都可以在**O(1)**的时间复杂度内完成</li>
+<li>对于查找，无论是按照索引查找还是按照特征值查找，都需要对全部数据进行遍历，都是**O(n)**的时间复杂度</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>链表虽然在<strong>新增</strong>和<strong>删除</strong>数据有优势，但是这种优势并不实用，因为<strong>在新增和删除数据时，都会伴随着一个查找操作。</strong></li>
+<li>链表真正的价值在于，它对数据的<strong>存储方式是按照顺序的存储</strong>。</li>
+<li>如果数据<strong>元素不确定</strong>，且<strong>经常需要进行数据的新增和删除</strong>时，那么链表比较合适</li>
+<li>如果数据<strong>元素大小确定</strong>，<strong>删除插入操作并不多</strong>，那么数组可能更合适。</li>
+</ul>
+<h3 id="线性表案例"><a href="#线性表案例" class="headerlink" title="线性表案例"></a>线性表案例</h3><h4 id="单向链表的翻转"><a href="#单向链表的翻转" class="headerlink" title="单向链表的翻转"></a>单向链表的翻转</h4><p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/lianbiao.js">代码实现</a></p>
+<h4 id="找出奇数链表中间位置节点的值"><a href="#找出奇数链表中间位置节点的值" class="headerlink" title="找出奇数链表中间位置节点的值"></a>找出奇数链表中间位置节点的值</h4><p>思路： 一个快指针一个慢指针，慢指针每次向后移动一个元素，快指针每次向后移动两个元素，当快指针的next是null时，慢指针所在就是中间节点。<br><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/lianbiao2.js">代码实现</a></p>
+<h4 id="判断链表是否有环"><a href="#判断链表是否有环" class="headerlink" title="判断链表是否有环"></a>判断链表是否有环</h4><p>思路： 一个快指针一个慢指针，当快慢指针相遇，说明链表有环。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/lianbiao3.js">代码实现</a></p>
+<h2 id="第五讲"><a href="#第五讲" class="headerlink" title="第五讲"></a>第五讲</h2><h3 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h3><p>栈的顺序存储可以借助数组来实现。</p>
+<ol>
+<li>把数组首元素存在栈底，最后一个元素放在栈顶。</li>
+<li>然后定义一个top指针来指示栈顶元素在数组中的位置。</li>
+</ol>
+<h3 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h3><p>用链表的方式对栈表示，通常，可以把栈顶放在单链表头部。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/stack.js">顺序栈和链式栈的代码实现</a></p>
+<h3 id="栈与线性表"><a href="#栈与线性表" class="headerlink" title="栈与线性表"></a>栈与线性表</h3><ul>
+<li>相同点：操作原理完全相似，时间复杂度完全一样，都依赖当前位置的指针来进行数据对象的操作。</li>
+<li>区别：新增和删除的对象，只能是栈顶的数据结点。</li>
+</ul>
+<h3 id="栈的案例"><a href="#栈的案例" class="headerlink" title="栈的案例"></a>栈的案例</h3><p><strong>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。有效字符串需满足：左括号必须与相同类型的右括号匹配，左括号必须以正确的顺序匹配。例如，{ [ ( ) ( ) ] } 是合法的，而 { ( [ ) ] } 是非法的。</strong></p>
+<p>思路： 使用栈的先进后出规则，遇到左括号进栈，遇到右括号出栈并且判断是否匹配。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/stack2.js">代码实现</a></p>
+<p><strong>仿照浏览器的前进后退功能，利用栈来记录用户的浏览信息</strong></p>
+<p>思路：用一个前进栈和一个后退栈分别保存，前进时，前进栈出栈后退站栈进栈，后退时，后退栈出栈，前进栈进栈。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/stack3.js">代码实现</a></p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>栈具有<strong>先进后出</strong>的特性，当面对的问题需要高频使用新增、删除操作且新增和删除操作的数据执行顺序具备<strong>后来居上</strong>的相反关系时，栈就是个不错的选择。。</p>
+<h2 id="第六讲"><a href="#第六讲" class="headerlink" title="第六讲"></a>第六讲</h2><h3 id="队列是什么"><a href="#队列是什么" class="headerlink" title="队列是什么"></a>队列是什么</h3><p>队列也是一种特殊的线性表，与线性表的不同之处体现在对数据的增和删的操作上。</p>
+<p>队列的特点：</p>
+<ul>
+<li>先进：队列的数据新增操作只能在末端进行，不允许在队列的中间某个节点新增数据。</li>
+<li>先出：队列的数据删除操作只能在始端进行，不允许在队列的中间某个节点后删除数据。</li>
+</ul>
+<p>顺序队列：</p>
+<ul>
+<li>使用数据实现。新增O(1)，删除O(n)。</li>
+<li>使用<a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/loopQueueByArray.js">循环队列</a>。新增O(1)，删除O(1)。</li>
+</ul>
+<p>链式队列：</p>
+<ul>
+<li>使用链表实现。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/linkQueue.js">代码如下</a></li>
+</ul>
+<h3 id="队列的案例"><a href="#队列的案例" class="headerlink" title="队列的案例"></a>队列的案例</h3><p><strong>约瑟夫环的问题</strong></p>
+<p>思路：构造一个循环队列（大于人数），定义计数变量<code>i</code>，开始出队，当<code>i= m</code>时，将这个人放入一个数组，如果<code>i!=m</code>，出队后再入队，继续上述步骤。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/josephRing.js">约瑟夫环代码实现</a></p>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p><strong>在时间复杂度上</strong></p>
+<ul>
+<li>循环队列和链式队列的新增删除操作都为O(1)</li>
+<li>在查找操作中，队列只能通过全局遍历的方式进行，需要O(n)的时间复杂度</li>
+</ul>
+<p><strong>在空间性能上</strong></p>
+<ul>
+<li>循环队列必须有一个固定的长度，因此存在存储元素数量和空间浪费的问题。</li>
+<li>链式队列更为灵活一些。</li>
+</ul>
+<h2 id="第七讲"><a href="#第七讲" class="headerlink" title="第七讲"></a>第七讲</h2><h3 id="数组增删查的时间复杂度"><a href="#数组增删查的时间复杂度" class="headerlink" title="数组增删查的时间复杂度"></a>数组增删查的时间复杂度</h3><ul>
+<li>增加：尾部插入，时间复杂度O(1)，中间某处插入数据，时间复杂度为O(n)。</li>
+<li>删除：指定元素的删除，扫描全数组，时间复杂度为O(n)。</li>
+<li>查找：根据索引查找，时间复杂度O(1)，根据元素值查找，时间复杂度O(n)。</li>
+</ul>
+<h3 id="链表存在的价值是什么呢"><a href="#链表存在的价值是什么呢" class="headerlink" title="链表存在的价值是什么呢"></a>链表存在的价值是什么呢</h3><ul>
+<li>链表的长度的可变的，数组的长度是固定的，在申请数据长度时，就已经在内存中开辟了若干个空间。</li>
+<li>链表在内存中不是顺序存储的，可以充分利用内存空间。</li>
+</ul>
+<h2 id="第八讲"><a href="#第八讲" class="headerlink" title="第八讲"></a>第八讲</h2><h3 id="字符串的顺序存储和链式存储"><a href="#字符串的顺序存储和链式存储" class="headerlink" title="字符串的顺序存储和链式存储"></a>字符串的顺序存储和链式存储</h3><p><strong>顺序存储</strong></p>
+<p>是用一组地址连续的存储单元来存储串中的字符序列，一般用定长数组实现。</p>
+<p><strong>链式存储</strong></p>
+<p>因为字符串结构中，每一个元素都是一个字符，如果简单的将每个链节点存储为一个字符，就会造成很大的空间浪费。</p>
+<p>所以可以在每个链节点存入多个字符，最后一个节点尾部用其他符号补全。</p>
+<ul>
+<li>如果字符串包含的数据量很大，就应该减少链节点，在每个节点放入更多的字符。</li>
+<li>如果需要对字符串进行大量的插入和删除数据，如果每个链节点包含的数据过多，操作就会变得很麻烦。</li>
+</ul>
+<p>总结：链式存储没有顺序存储灵活。性能也没有顺序存储好。</p>
+<h3 id="字符串的操作"><a href="#字符串的操作" class="headerlink" title="字符串的操作"></a>字符串的操作</h3><p><strong>字符串的新增操作</strong></p>
+<ul>
+<li>在中间新增，时间复杂度O(n)</li>
+<li>在尾部新增，时间复杂度O(1)</li>
+</ul>
+<p><strong>字符串的删除操作</strong></p>
+<ul>
+<li>在中间删除，时间复杂度O(n)</li>
+<li>在尾部删除，时间复杂度O(1)</li>
+</ul>
+<p><strong>字符串的查找操作</strong></p>
+<blockquote>
+<p><strong>例题1</strong>：假设要从主串 s = “goodgoogle” 中找到 t = “google” 子串。</p>
+</blockquote>
+<p>思路：</p>
+<ul>
+<li><p>首先，我们从主串 s 第 1 位开始，判断 s 的第 1 个字符是否与 t 的第 1 个字符相等。</p>
+</li>
+<li><p>如果不相等，则继续判断主串的第 2 个字符是否与 t 的第1 个字符相等。直到在 s 中找到与 t 第一个字符相等的字符时，然后开始判断它之后的字符是否仍然与 t 的后续字符相等。</p>
+</li>
+<li><p>如果持续相等直到 t 的最后一个字符，则匹配成功。</p>
+</li>
+<li><p>如果发现一个不等的字符，则重新回到前面的步骤中，查找 s 中是否有字符与 t 的第一个字符相等。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/subString.js">代码实现</a></p>
+<blockquote>
+<p><strong>例题2</strong>：假设有且仅有 1 个最大公共子串。比如，输入 a = “13452439”， b = “123456”。由于字符串 “345” 同时在 a 和 b 中出现，且是同时出现在 a 和 b 中的最长子串。因此输出 “345”。</p>
+</blockquote>
+<p>思路：和上面的查找字符串是否包含的思路差不多。多了一个同步遍历的for循环，多维护两个变量存储最长子串的内容和长度。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/largestPublicString.js">代码实现</a> </p>
+<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p>翻转字符串：给定一个字符串，逐个翻转字符串中的每个单词。例如，输入: “the sky is blue”，输出: “blue is sky the”。</p>
+<p>思路：</p>
+<ol>
+<li><p>第一眼看到翻转，我会想到用栈。</p>
+</li>
+<li><p>先创建一个临时栈和结果栈，遍历字符串入栈，遇到空格时，临时栈出栈并放入另一个栈中，最后入栈一个空字符串。</p>
+</li>
+<li><p>结果栈出栈，拼接为一个字符串并返回。</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/reverseWords.js">代码实现</a></p>
+<h2 id="第九讲"><a href="#第九讲" class="headerlink" title="第九讲"></a>第九讲</h2><h3 id="树是什么"><a href="#树是什么" class="headerlink" title="树是什么"></a>树是什么</h3><p>树是由节点和边组成的，不存在环的一种数据结构。</p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树中，每个节点最多有两个分支。即每个节点最多有两个子节点，分别称作左子节点和右子节点。</p>
+<p><strong>满二叉树</strong></p>
+<p>除了叶子节点，所有节点都有两个子节点。</p>
+<p><strong>完全二叉树</strong></p>
+<p>除了最后一层以外，其它层的节点个数都达到最大，并且最后一层的叶子节点都靠左排列。</p>
+<p>完全二叉树为什么叫完全二叉树？</p>
+<p>从存储空间的利用率来看，不完全二叉树，按照<strong>顺序存储</strong>会浪费大量空间。。</p>
+<p><strong>链式存储</strong></p>
+<p>像链表一样，每个节点有三个字段，一个存储数据，另外两个分别存放指向左右两个节点的指针。</p>
+<p><strong>顺序存储</strong></p>
+<p>按照规律吧节点放进数组里。如果根节点从0开始，<code>left=root*2+1  right=root*2+2</code>；从1开始，<code>left=root*2 right=root*2+1</code>。</p>
+<h3 id="树的基本操作"><a href="#树的基本操作" class="headerlink" title="树的基本操作"></a>树的基本操作</h3><p><strong>树的遍历</strong></p>
+<ul>
+<li>前序遍历：父节点-&gt;左子节点-&gt;右子节点</li>
+<li>中序遍历：左子节点-&gt;父节点-&gt;右子节点</li>
+<li>后序遍历：左子节点-&gt;右子节点-&gt;父节点</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/bTree.js">二叉树的前中后序遍历递归实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/bTree2.js">二叉树的前中后序遍历栈实现</a></p>
+<p>二叉树的遍历，时间复杂度为O(n)。</p>
+<p>对于没有任何特殊性质的二叉树，删除和新增操作时间复杂度为O(1)。</p>
+<p>查找操作，需要遍历每一个节点去判断，时间复杂度为O(n)。</p>
+<h3 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h3><p><strong>特性</strong></p>
+<ul>
+<li>二叉查找树中任意一个节点，其左子节点的值一定小于这个节点的值。</li>
+<li>二叉查找树中任意一个节点，其右子节点的值一定大于这个节点的值。</li>
+<li>在二叉查找树中，会尽可能规避两个节点数值相等的情况。 </li>
+<li>对二叉查找树进行中序遍历，就可以输出一个从小到大的有序数据队列。如下图所示，中序遍历的结果就是 10、13、15、16、20、21、22、26。</li>
+</ul>
+<p><strong>二叉查找树的查找操作</strong><br>在利用二叉查找树执行查找操作时，我们可以进行以下判断：</p>
+<ul>
+<li><p>首先判断根结点是否等于要查找的数据，如果是就返回。</p>
+</li>
+<li><p>如果根结点大于要查找的数据，就在左子树中递归执行查找动作，直到叶子结点。</p>
+</li>
+<li><p>如果根结点小于要查找的数据，就在右子树中递归执行查找动作，直到叶子结点。</p>
+</li>
+</ul>
+<p><strong>二叉查找树的插入操作</strong></p>
+<ul>
+<li>情况一，如果要删除的结点是某个叶子结点，则直接删除，将其父结点指针指向 null 即可。</li>
+<li>情况二，如果要删除的结点只有一个子结点，只需要将其父结点指向的子结点的指针换成其子结点的指针即可。</li>
+<li>情况三，如果要删除的结点有两个子结点，则有两种可行的操作方式。<ul>
+<li>第一种，找到这个结点的左子树中最大的结点，替换要删除的结点。</li>
+<li>第二种，找到这个结点的右子树中最小的结点，替换要删除的结点。</li>
+</ul>
+</li>
+</ul>
+<h3 id="树的案例"><a href="#树的案例" class="headerlink" title="树的案例"></a>树的案例</h3><blockquote>
+<p>输入一个字符串，判断它在已有的字符串集合中是否出现过?（假设集合中没有某个字符串与另一个字符串拥有共同前缀且完全包含的特殊情况，例如 deep 和 dee。）如，已有字符串集合包含 6 个字符串分别为，cat, car, city, dog,door, deep。输入 cat，输出 true；输入 home，输出 false。</p>
+</blockquote>
+<p>思路：</p>
+<ol>
+<li>首先把集合中的子串，按照字节查分，实现一个字典树。</li>
+<li>判断输入字符串，按顺序匹配书中的节点，最后以为如果是叶子节点，则说明存在。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/dictTree.js">代码实现</a></p>
+<h3 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>二叉树的遍历操作，时间复杂度都是O(n)。</li>
+<li>二叉树的单纯增删操作，时间复杂度都是O(1)。(但是有特性的树增删一般伴随着查找或自平衡)。</li>
+<li>普通二叉树的查找操作时间复杂度是O(n)；二叉查找树的查找操作时间复杂度为O(logn)。</li>
+</ul>
+<h3 id="练习题-1"><a href="#练习题-1" class="headerlink" title="练习题"></a>练习题</h3><p>给定一棵树，按照层次顺序遍历并打印这棵树。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/bTree3.js">层序遍历代码实现</a></p>
+<h2 id="第十讲"><a href="#第十讲" class="headerlink" title="第十讲"></a>第十讲</h2><h3 id="哈希表的核心思想"><a href="#哈希表的核心思想" class="headerlink" title="哈希表的核心思想"></a>哈希表的核心思想</h3><p><strong>哈希表</strong>的设计采用了<strong>函数映射</strong>的思想，将记录的存储位置与记录的关键字关联起来。这样的方式能够快速定位到自己想要查找的记录，而且不需要和表中存在的记录的关键字比较后再来进行查找。</p>
+<p>数组的局限性是，他可以通过索引来查找，但是不能通过了数据的数值去查找。但是如果有一个方法可以使<code>f(数值) = index</code>,那就可以通过数值找索引，索引找值。</p>
+<h3 id="如何设计哈希函数"><a href="#如何设计哈希函数" class="headerlink" title="如何设计哈希函数"></a>如何设计哈希函数</h3><h4 id="直接定制法"><a href="#直接定制法" class="headerlink" title="直接定制法"></a>直接定制法</h4><p>哈希函数为关键字到地址的线性函数。</p>
+<p><code>H（key） = a * key + b</code></p>
+<p>a，b是常数</p>
+<h4 id="数字分析法"><a href="#数字分析法" class="headerlink" title="数字分析法"></a>数字分析法</h4><p>假设关键字集合中的每个关键字<code>key</code>都是由<code>s</code>位数字组成<code>（k1,k2,...,ks）</code></p>
+<p>并从中提取均匀分布的若干位组成哈希地址</p>
+<h4 id="平方取中法"><a href="#平方取中法" class="headerlink" title="平方取中法"></a>平方取中法</h4><p>如果关键字每一位都有某些数字重复出现，并且频率很高</p>
+<p>可以先求关键字的平方值，通过平方值扩大差异，然后取中间几位作为最终存储地址</p>
+<h4 id="折叠法"><a href="#折叠法" class="headerlink" title="折叠法"></a>折叠法</h4><p>如果关键字的位数很多，可以将关键字分割为几个等长的部分</p>
+<p>取它们的叠加和的值（舍去进位）作为哈希地址</p>
+<h4 id="除留余数法"><a href="#除留余数法" class="headerlink" title="除留余数法"></a>除留余数法</h4><p>预先设置一个数<code>p</code>，然后对关键字进行取余运算。</p>
+<p>地址 = <code>key % p</code></p>
+<h3 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a>哈希冲突</h3><p>无论哈希函数设计的多好，理论上来说只要输入的数据足够多，哈希冲突就必然会发生，所以哈希冲突只能减少，无法避免。</p>
+<h4 id="开放寻址法（开放定址法）"><a href="#开放寻址法（开放定址法）" class="headerlink" title="开放寻址法（开放定址法）"></a>开放寻址法（开放定址法）</h4><p>当遇到哈希冲突时，使用某种探测技术在哈希表形成一个探测序列，然后沿着这个探测序列一次查找下去，当碰到一个空单元时，则插入其中。</p>
+<p>假设有一组关键字：[12,13,25,23]，采用哈希函数为除留余数法：<code>H(key) = key % 11</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>插入12</td>
+<td></td>
+<td>12</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>插入13</td>
+<td></td>
+<td></td>
+<td>13</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>插入25</td>
+<td></td>
+<td></td>
+<td></td>
+<td>25</td>
+<td></td>
+</tr>
+<tr>
+<td>插入23</td>
+<td></td>
+<td>冲突1</td>
+<td>冲突2</td>
+<td>冲突3</td>
+<td>23</td>
+</tr>
+</tbody></table>
+<h4 id="链地址法（链表法）"><a href="#链地址法（链表法）" class="headerlink" title="链地址法（链表法）"></a>链地址法（链表法）</h4><p>将哈希地址相同的记录存储在一张线性表中</p>
+<h3 id="哈希表的优缺点"><a href="#哈希表的优缺点" class="headerlink" title="哈希表的优缺点"></a>哈希表的优缺点</h3><h4 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h4><ul>
+<li>提供非常快速的插入-删除-查找操作。</li>
+<li>查找操作速度比树还要快</li>
+</ul>
+<h4 id="不足："><a href="#不足：" class="headerlink" title="不足："></a>不足：</h4><ul>
+<li>哈希表的数据没有顺序的概念</li>
+<li>哈希表的<code>key</code>不允许重复</li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><blockquote>
+<p>例1：将关键字序列 {7, 8, 30, 11, 18, 9, 14} 存储到哈希表中。哈希函数为： H (key) = (key * 3) % 7，处理冲突采用线性探测法。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/hashtable.js">代码实现</a></p>
+<blockquote>
+<p>例2：假设有一个在线系统，可以实时接收用户提交的字符串型关键字，并实时返回给用户累积至今这个关键字被提交的次数</p>
+</blockquote>
+<p>这个如果使用语言内置的<code>Object 或者 Map</code>的话就几行代码，没什么好说的。</p>
+<h2 id="第十一讲"><a href="#第十一讲" class="headerlink" title="第十一讲"></a>第十一讲</h2><h3 id="什么是递归"><a href="#什么是递归" class="headerlink" title="什么是递归"></a>什么是递归</h3><p><strong>递归</strong>指的是在函数的定义中使用函数自身的方法。</p>
+<p>递归有两层含义：</p>
+<ul>
+<li>递归问题必须可以分解为若干个规模较小，与原问题形式相同的子问题，并且这些子问题可以用<strong>完全相同的解题思路</strong>来解决。</li>
+<li>递归问题的演化过程是一个对原问题从大到小进行拆解的过程，并且会有一个明确的终点（临界点），最后从这个临界点开始，把小问题的答案按照原路返回，原问题便得以解决。</li>
+</ul>
+<p>递归的实现包含了两个部分：</p>
+<ul>
+<li>递归主体</li>
+<li>终止条件</li>
+</ul>
+<h3 id="递归的算法思想"><a href="#递归的算法思想" class="headerlink" title="递归的算法思想"></a>递归的算法思想</h3><p>递归的<strong>数学模型</strong>其实就是<strong>数学归纳法</strong></p>
+<h4 id="数学归纳法"><a href="#数学归纳法" class="headerlink" title="数学归纳法"></a>数学归纳法</h4><p>证明：</p>
+<ol>
+<li>证明当<code>n=1</code>时命题成立</li>
+<li>假设 <code>n=m</code>时，命题成立，name尝试推导出在<code>n=m+1</code>时命题也成立</li>
+</ol>
+<p>所以当一个问题同时满足以下两个条件时，就可以使用递归的方法求解：</p>
+<ol>
+<li>可以拆解为除了数据规模以外，求解思路完全相同的子问题</li>
+<li>存在终止条件</li>
+</ol>
+<h4 id="二叉树的中序遍历分析"><a href="#二叉树的中序遍历分析" class="headerlink" title="二叉树的中序遍历分析"></a>二叉树的中序遍历分析</h4><p>分析：</p>
+<ol>
+<li>对二叉树中的任意结点<ol>
+<li>中序遍历左子树</li>
+<li>打印这个结点</li>
+<li>中序遍历右子树</li>
+</ol>
+</li>
+<li>当某个结点没有左子树或右子树时，终止。</li>
+</ol>
+<p>当然，这个思路也适用与<strong>前序</strong>和<strong>后序</strong>遍历。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/bTree.js">代码很简单</a></p>
+<h3 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h3><p>写出递归代码的关键在于：<strong>写出递推公式和找出终止条件</strong></p>
+<ol>
+<li>找到将大问题分解为小问题的规律，并基于此写出递推公式</li>
+<li>找出终止条件，就是当找到最简单的问题时，如何写出答案</li>
+<li>将递推公式和终止条件翻译成代码</li>
+</ol>
+<h3 id="汉罗塔问题"><a href="#汉罗塔问题" class="headerlink" title="汉罗塔问题"></a>汉罗塔问题</h3><p>汉诺塔问题是源于印度一个古老传说的益智玩具。</p>
+<blockquote>
+<p>大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着 64 片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上，并且规定，在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。</p>
+</blockquote>
+<p><img src="https://s0.lgstatic.com/i/image/M00/25/AD/CgqCHl7wi--AaoWAAABKD6oIV5c850.png"></p>
+<p>将这个问题拆解为三个小问题：</p>
+<ol>
+<li><p>把从小到大的<code>n-1</code>个圆盘，从<strong>x</strong>移动到<strong>y</strong></p>
+</li>
+<li><p>把最大的圆盘，从<strong>x</strong>移动到<strong>z</strong></p>
+</li>
+<li><p>把从小到大的<code>n-1</code>个圆盘，从<strong>y</strong>移动到<strong>z</strong></p>
+</li>
+</ol>
+<p>我们发现，第一和第三个小问题都是汉罗塔问题</p>
+<p>然后我们要找到终止条件：</p>
+<ul>
+<li>当只剩一个圆盘时，它可以自由自动，所以递归终止。</li>
+</ul>
+<h4 id="我的思路和理解"><a href="#我的思路和理解" class="headerlink" title="我的思路和理解"></a>我的思路和理解</h4><ul>
+<li>假设从小到大有五个盘子，编号为1、2、3、4、5</li>
+<li>我们把1~4当做一个整体<code>t</code>，这样只需要三步：<ul>
+<li>把<code>t</code>移动到<code>y</code></li>
+<li>把<code>5</code>移动到<code>z</code></li>
+<li>把<code>t</code>移动到<code>z</code></li>
+</ul>
+</li>
+<li>而我们对<code>t</code>采用相同的操作，当<code>t</code>的盘子数量为1时，递归终止，因为最小的盘子可以随便移动。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/hanio.js">代码实现</a></p>
+<h2 id="第十二讲"><a href="#第十二讲" class="headerlink" title="第十二讲"></a>第十二讲</h2><h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><h4 id="什么是分治法"><a href="#什么是分治法" class="headerlink" title="什么是分治法"></a>什么是分治法</h4><p>分治法的思想就是分而治之</p>
+<p>将一个大问题，分解成为<code>n</code>个子问题，采用同一种解法，递归的去解决这些子问题，再将每个子问题的解合并，就得到原问题的解。</p>
+<h4 id="分治问题的特征"><a href="#分治问题的特征" class="headerlink" title="分治问题的特征"></a>分治问题的特征</h4><ol>
+<li><strong>难度在降低</strong>：即原问题的解决难度，随着数据的规模的缩小而降低</li>
+<li><strong>问题可分</strong>：原问题可以分解为若干个规模较小的同类型问题</li>
+<li><strong>解可合并</strong>：利用所有子问题的解，可以合并出原问题的解</li>
+<li><strong>相互独立</strong>：各个子问题之间相互独立，某个子问题的求解不会影响到另一个子问题</li>
+</ol>
+<h4 id="分治法的使用方法"><a href="#分治法的使用方法" class="headerlink" title="分治法的使用方法"></a>分治法的使用方法</h4><p>分治法需要递归的分解问题再去解决问题，因此<strong>分治法在每轮递归上都包含了分解问题、解决问题、合并结果这三个步骤。</strong></p>
+<h4 id="二分查找总结"><a href="#二分查找总结" class="headerlink" title="二分查找总结"></a>二分查找总结</h4><ol>
+<li>二分查找的时间复杂度是<code>O(logn)</code>，这也是分治法普遍具备的特性。</li>
+<li>二分查找的循环次数不确定，一般是达到某个条件就跳出循环。一般使用<code>while</code>循环加<code>break</code>跳出。</li>
+<li>二分查找处理原问题必须是有序的</li>
+</ol>
+<h3 id="练习题-2"><a href="#练习题-2" class="headerlink" title="练习题"></a>练习题</h3><blockquote>
+<p>在一个有序数组中，查找出第一个大于 9 的数字，假设一定存在。例如，arr = { -1, 3, 3, 7, 10, 14, 14 }; 则返回 10。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/bSearch.js">代码实现</a></p>
+<h2 id="第十三讲"><a href="#第十三讲" class="headerlink" title="第十三讲"></a>第十三讲</h2><h3 id="常见排序"><a href="#常见排序" class="headerlink" title="常见排序"></a>常见排序</h3><p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/sort.js">代码实现</a></p>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>时间复杂度：Ï</p>
+<ul>
+<li>当输入有序，时间复杂度<code>O(n)</code></li>
+<li>当输入逆序，时间复杂度<code>O(n*n)</code></li>
+<li>平均时间复杂度<code>O(n*n)</code></li>
+</ul>
+<p>空间复杂度</p>
+<ul>
+<li>不需要额外空间<code>O(1)</code></li>
+</ul>
+<p>当元素相同时，不做交换，是<strong>稳定的排序算法</strong>。</p>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>时间复杂度：</p>
+<ul>
+<li>当输入有序，时间复杂度<code>O(n)</code></li>
+<li>当输入逆序，时间复杂度<code>O(n*n)</code></li>
+<li>平均时间复杂度<code>O(n*n)</code></li>
+</ul>
+<p>空间复杂度</p>
+<ul>
+<li>不需要额外空间<code>O(1)</code></li>
+</ul>
+<p>当元素相同时，不做交换，是<strong>稳定的排序算法</strong>。</p>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>原理：</p>
+<p>分治法</p>
+<p> 时间复杂度：</p>
+<ul>
+<li>平均时间复杂度<code>O(nlogn)</code></li>
+</ul>
+<p>空间复杂度</p>
+<ul>
+<li>要额外空间<code>O(n)</code></li>
+</ul>
+<p>是<strong>稳定的排序算法</strong>。</p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>原理：</p>
+<p>分治法</p>
+<p>时间复杂度：</p>
+<ul>
+<li>当输入有序，时间复杂度<code>O(nlog(n))</code></li>
+<li>当输入逆序，时间复杂度<code>O(n*n)</code></li>
+<li>大部分情况不会出现出入逆序，平均时间复杂度<code>O(nlog(n))</code></li>
+</ul>
+<p>空间复杂度</p>
+<ul>
+<li>不需要额外空间<code>O(1)</code></li>
+</ul>
+<p>是<strong>不稳定的排序算法</strong></p>
+<h3 id="排序算法性能分析"><a href="#排序算法性能分析" class="headerlink" title="排序算法性能分析"></a>排序算法性能分析</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>是否稳定</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>冒泡排序</td>
+<td>O(n*n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>O(n*n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>O(nlog(n))</td>
+<td>O(n)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>O(nlog(n))    最坏情况O(n*n)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+</tbody></table>
+<h2 id="第十四讲"><a href="#第十四讲" class="headerlink" title="第十四讲"></a>第十四讲</h2><h3 id="什么是动态规划"><a href="#什么是动态规划" class="headerlink" title="什么是动态规划"></a>什么是动态规划</h3><p><strong>动态规划</strong>是一种运筹学方法，是在多轮决策过程中的最优方法</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ol>
+<li><strong>策略</strong>，每轮的动作是决策，多轮决策合在一起常常被称为策略。</li>
+<li><strong>策略集合</strong>，由于每轮的决策动作都是一个变量，这就导致合在一起的策略也是一个变量。我们通常会称所有可能的策略为策略集合。因此，动态规划的目标，也可以说是从策略集合中，找到最优的那个策略。</li>
+</ol>
+<p>动态规划的目标就是从策略集合中找到<strong>最优的几个策略</strong></p>
+<h3 id="动态规划的基本方法"><a href="#动态规划的基本方法" class="headerlink" title="动态规划的基本方法"></a>动态规划的基本方法</h3><p>动态规划的解题方法并没有那么标准化，但它有一些宏观层面通用的方法论：</p>
+<ol>
+<li><strong>分阶段</strong>，将原问题划分成几个子问题。一个子问题就是多轮决策的一个阶段，它们可以是不满足独立性的。</li>
+<li><strong>找状态</strong>，选择合适的状态变量 Sk。它需要具备描述多轮决策过程的演变，更像是决策可能的结果。</li>
+<li><strong>做决策</strong>，确定决策变量 uk。每一轮的决策就是每一轮可能的决策动作，例如 D2 的可能的决策动作是 D2 -&gt; E2 和 D2 -&gt; E3。</li>
+<li><strong>状态转移方程</strong>。这个步骤是动态规划最重要的核心，<code>即 sk+1= uk(sk) </code>。</li>
+<li><strong>定目标</strong>。写出代表多轮决策目标的指标函数 <code>Vk,n</code>。</li>
+<li><strong>寻找终止条件</strong>。</li>
+</ol>
+<p>一般而言，具有如下几个特征的问题，可以采用动态规划求解：</p>
+<ol>
+<li><strong>最优子结构</strong>。它的含义是，原问题的最优解所包括的子问题的解也是最优的。例如，某个策略使得 A 到 G 是最优的。假设它途径了 Fi，那么它从 A 到 Fi 也一定是最优的。</li>
+<li><strong>无后效性</strong>。某阶段的决策，无法影响先前的状态。可以理解为今天的动作改变不了历史。</li>
+<li><strong>有重叠子问题</strong>。也就是，子问题之间不独立。这个性质是动态规划区别于分治法的条件。如果原问题不满足这个特征，也是可以用动态规划求解的，无非就是杀鸡用了宰牛刀。</li>
+</ol>
+<h3 id="最短路径问题"><a href="#最短路径问题" class="headerlink" title="最短路径问题"></a>最短路径问题</h3><p><img src="https://s0.lgstatic.com/i/image/M00/2A/79/Ciqc1F78bdmAGdktAADnlpYQrHk607.png"></p>
+<p>ps：这个有点难呀。。本子上画了好久才理清推导过程</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/testpath.js">代码实现</a></p>
+<h2 id="第十六讲"><a href="#第十六讲" class="headerlink" title="第十六讲"></a>第十六讲</h2><p>解决问题的方法论：</p>
+<ol>
+<li>复杂度分析。估算问题中复杂度的上限和下限</li>
+<li>定位问题。根据问题类型，确定采用何种算法思维</li>
+<li>数据操作分析。根据增删查和数据顺序关系去选择合适的数据结构，利用空间换取时间</li>
+<li>编码实现</li>
+</ol>
+<h2 id="第十八讲"><a href="#第十八讲" class="headerlink" title="第十八讲"></a>第十八讲</h2><blockquote>
+<p>给定一个链表: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5, 和 n = 2。当删除了倒数第二个节点后，链表变为 1 -&gt; 2 -&gt; 3 -&gt; 5。时间复杂度要求为 O(n)</p>
+</blockquote>
+<p>思路： 其实比较简单，使用快慢指针，假设删除倒数第<code>n</code>个结点，那么快指针就比慢指针先移动<code>n</code>次，然后快慢指针一起移动，最后慢指针的下一个结点就是要删除的结点。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/blob/master/other/algorithm/deleteCountDownNode.js">代码实现</a></p>
+<p>END~</p>
+<h2 id="课程二维码"><a href="#课程二维码" class="headerlink" title="课程二维码"></a>课程二维码</h2><p><img src="data:image/png;base64,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"></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2"><span class="toc-text">第一讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">时间复杂度和代码结构的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C%E6%80%A7%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="toc-text">一些经验性的结论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2"><span class="toc-text">第二讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96"><span class="toc-text">程序优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%BF%9E%E6%8E%A5%E6%97%B6%E7%A9%BA"><span class="toc-text">数据结构连接时空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96%E6%AD%A5%E9%AA%A4"><span class="toc-text">程序优化步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95"><span class="toc-text">第一步，暴力解法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E6%97%A0%E6%95%88%E6%93%8D%E4%BD%9C%E5%A4%84%E7%90%86"><span class="toc-text">第二步，无效操作处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E6%97%B6%E7%A9%BA%E8%BD%AC%E6%8D%A2"><span class="toc-text">第三步，时空转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2"><span class="toc-text">第三讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">数据处理的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%A1%88%E4%BE%8B"><span class="toc-text">数据操作与数据结构案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-text">查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E"><span class="toc-text">新增</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%AE%B2"><span class="toc-text">第四讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="toc-text">什么是数据结构？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">线性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">线性表案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E7%BF%BB%E8%BD%AC"><span class="toc-text">单向链表的翻转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E5%A5%87%E6%95%B0%E9%93%BE%E8%A1%A8%E4%B8%AD%E9%97%B4%E4%BD%8D%E7%BD%AE%E8%8A%82%E7%82%B9%E7%9A%84%E5%80%BC"><span class="toc-text">找出奇数链表中间位置节点的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="toc-text">判断链表是否有环</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%AE%B2"><span class="toc-text">第五讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88"><span class="toc-text">顺序栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%A0%88"><span class="toc-text">链式栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E4%B8%8E%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">栈与线性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E6%A1%88%E4%BE%8B"><span class="toc-text">栈的案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E8%AE%B2"><span class="toc-text">第六讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">队列是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%A1%88%E4%BE%8B"><span class="toc-text">队列的案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E8%AE%B2"><span class="toc-text">第七讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%A2%9E%E5%88%A0%E6%9F%A5%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">数组增删查的时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E5%AD%98%E5%9C%A8%E7%9A%84%E4%BB%B7%E5%80%BC%E6%98%AF%E4%BB%80%E4%B9%88%E5%91%A2"><span class="toc-text">链表存在的价值是什么呢</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E8%AE%B2"><span class="toc-text">第八讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E5%92%8C%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-text">字符串的顺序存储和链式存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">字符串的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E8%AE%B2"><span class="toc-text">第九讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">树是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">树的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91"><span class="toc-text">二叉查找树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%A1%88%E4%BE%8B"><span class="toc-text">树的案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-1"><span class="toc-text">练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E8%AE%B2"><span class="toc-text">第十讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-text">哈希表的核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-text">如何设计哈希函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%88%B6%E6%B3%95"><span class="toc-text">直接定制法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-text">数字分析法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E6%96%B9%E5%8F%96%E4%B8%AD%E6%B3%95"><span class="toc-text">平方取中法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%98%E5%8F%A0%E6%B3%95"><span class="toc-text">折叠法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%A4%E7%95%99%E4%BD%99%E6%95%B0%E6%B3%95"><span class="toc-text">除留余数法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81"><span class="toc-text">哈希冲突</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%AF%BB%E5%9D%80%E6%B3%95%EF%BC%88%E5%BC%80%E6%94%BE%E5%AE%9A%E5%9D%80%E6%B3%95%EF%BC%89"><span class="toc-text">开放寻址法（开放定址法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95%EF%BC%88%E9%93%BE%E8%A1%A8%E6%B3%95%EF%BC%89"><span class="toc-text">链地址法（链表法）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">哈希表的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-text">优势：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E8%B6%B3%EF%BC%9A"><span class="toc-text">不足：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E8%AE%B2"><span class="toc-text">第十一讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%92%E5%BD%92"><span class="toc-text">什么是递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3"><span class="toc-text">递归的算法思想</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="toc-text">数学归纳法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%88%86%E6%9E%90"><span class="toc-text">二叉树的中序遍历分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%89%E7%BD%97%E5%A1%94%E9%97%AE%E9%A2%98"><span class="toc-text">汉罗塔问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF%E5%92%8C%E7%90%86%E8%A7%A3"><span class="toc-text">我的思路和理解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AE%B2"><span class="toc-text">第十二讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95"><span class="toc-text">分治法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E6%B2%BB%E6%B3%95"><span class="toc-text">什么是分治法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E9%97%AE%E9%A2%98%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-text">分治问题的特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">分治法的使用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%80%BB%E7%BB%93"><span class="toc-text">二分查找总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98-2"><span class="toc-text">练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E8%AE%B2"><span class="toc-text">第十三讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F"><span class="toc-text">常见排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-text">排序算法性能分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E8%AE%B2"><span class="toc-text">第十四讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">什么是动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-text">动态规划的基本方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="toc-text">最短路径问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E8%AE%B2"><span class="toc-text">第十六讲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AB%E8%AE%B2"><span class="toc-text">第十八讲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-text">课程二维码</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

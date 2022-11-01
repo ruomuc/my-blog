@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于Buffer | ruomu</title><meta name="keywords" content="node.js,buffer"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Buffer结构模块结构1.一个很像Array的对象。 2.Buffer是典型的js和c++结合的模块，性能部分由c++实现，非性能相关由js实现。 3.Buffer所占用的内存不是V8分配的，属于堆外内存。并且在nodejs启动时加载，并放在global上，无需require()就可以直接使用 Buffer对象Buffer对象类似于数组，元素为16进制的两位数，即十进制的0~255。 1234v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Buffer">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2018/08/15/%E5%85%B3%E4%BA%8EBuffer/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="Buffer结构模块结构1.一个很像Array的对象。 2.Buffer是典型的js和c++结合的模块，性能部分由c++实现，非性能相关由js实现。 3.Buffer所占用的内存不是V8分配的，属于堆外内存。并且在nodejs启动时加载，并放在global上，无需require()就可以直接使用 Buffer对象Buffer对象类似于数组，元素为16进制的两位数，即十进制的0~255。 1234v">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2018-08-14T16:35:48.000Z">
+<meta property="article:modified_time" content="2018-08-14T16:35:48.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="buffer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/08/15/%E5%85%B3%E4%BA%8EBuffer/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于Buffer',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2018-08-15 00:35:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">关于Buffer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-08-14T16:35:48.000Z" title="发表于 2018-08-15 00:35:48">2018-08-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2018-08-14T16:35:48.000Z" title="更新于 2018-08-15 00:35:48">2018-08-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/node-js/">node.js</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="关于Buffer"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Buffer结构"><a href="#Buffer结构" class="headerlink" title="Buffer结构"></a>Buffer结构</h2><h4 id="模块结构"><a href="#模块结构" class="headerlink" title="模块结构"></a>模块结构</h4><p>1.一个很像Array的对象。</p>
+<p>2.Buffer是典型的js和c++结合的模块，性能部分由c++实现，非性能相关由js实现。</p>
+<p>3.Buffer所占用的内存不是V8分配的，属于堆外内存。并且在nodejs启动时加载，并放在global上，无需require()就可以直接使用</p>
+<h4 id="Buffer对象"><a href="#Buffer对象" class="headerlink" title="Buffer对象"></a>Buffer对象</h4><p>Buffer对象类似于数组，元素为16进制的两位数，即十进制的0~255。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;深入浅出node.js&quot;;</span><br><span class="line">var buf = new Buffer(str,&#x27;utf-8&#x27;);</span><br><span class="line">console.log(buf);</span><br><span class="line">//=&gt; &lt;Buffer e6 b7 b1 e5 85 a5 e6 b5 85 e5 87 ba 6e 6f 64 65 2e 6a 73&gt;</span><br></pre></td></tr></table></figure>
+<p>中文字utf-8下站三个元素，字母和半角标点符号站一个元素。<br>Buffer可以通过length来获取长度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var buf = new Buffer(100);</span><br><span class="line">console.log(buf.length);</span><br><span class="line">// =&gt; 100</span><br></pre></td></tr></table></figure>
+<p>以上代码初始化了一个长度为100字节的Buffer对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(buf[10]);</span><br><span class="line">// =&gt; 0</span><br></pre></td></tr></table></figure>
+<p>以上代码可以打印出下标为10的元素值，但是buf对象是初始化并没有赋值，所以结果为0。这里和朴大书里说的有些出入，朴大会输出一个0~255的随机值，但是我试验过一直都是0。所以我选择相信自己。。。</p>
+<p>赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">buf[10] = 100; // =&gt; 100</span><br><span class="line">buf[10] = -100; // +256直到得到一个0~255的数  =&gt; 156</span><br><span class="line">buf[10] = 300; // -256直到得到一个0~255的数 =&gt; 44</span><br><span class="line">buf[10] = 3.14 // 去掉小数，再遵循以上规则 =&gt; 3</span><br><span class="line">console.log(buf[10])</span><br></pre></td></tr></table></figure>
+
+<h4 id="Buffer内存分配"><a href="#Buffer内存分配" class="headerlink" title="Buffer内存分配"></a>Buffer内存分配</h4><p>Buffer对象的内存分配不是在V8的堆内存中，是在node的C++层面实现申请的。为此采用的是，在C++层面申请内存，在JavaScript中分配内存的策略。</p>
+<p>Node采用<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/l-linux-slab-allocator/index.html">slab</a>分配机制，简而言之，slab就是一块申请好的固定大小的内存区域，并具有三种状态：</p>
+<ul>
+<li>full：完全分配状态。</li>
+<li>partial：部分分配状态。</li>
+<li>empty：没有被分配状态。</li>
+</ul>
+<p>当我们<code>new Buffer(size)</code>时：<br>Node以<strong>8KB</strong>为界限来区别Buffer是大对象还是小对象<code>Buffer.poolSize = 8 * 1024</code>。<br>这个<strong>8KB</strong>的值也就是每个slab的大小值，在JavaScript层面中，以它作为单位单元进行内存分配。</p>
+<p>ps:1kb = 1024 byte = 8 bit = 1111 1111 = 255</p>
+<p>申请一个新的slab单元：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">allocPool</span>(<span class="params"></span>)&#123;</span><br><span class="line">	pool = <span class="keyword">new</span> <span class="title class_">SlowBuffer</span>(<span class="title class_">Buffer</span>.<span class="property">poolSize</span>);</span><br><span class="line">	pool.<span class="property">use</span> = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//处于empty状态</span></span><br></pre></td></tr></table></figure>
+<p>1.如果指定Buffer大小少于8KB：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Buffer</span>(<span class="number">1024</span>);</span><br><span class="line"><span class="comment">//检查pool对象，是否被创建。如果没有则创建一个新的slab单元指向它：</span></span><br><span class="line"><span class="keyword">if</span>(!pool || pool.<span class="property">length</span> - pool.<span class="property">used</span> &lt; <span class="variable language_">this</span>.<span class="property">length</span>)&#123;</span><br><span class="line">	<span class="title function_">allocPool</span>();</span><br><span class="line">&#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<p>同时：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">parent</span> = pool; <span class="comment">//当前Buffer对象的parent属性指向pool</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">offset</span> = pool.<span class="property">used</span>; <span class="comment">//记录从这个slab的哪个地方开始使用</span></span><br><span class="line">pool.<span class="property">used</span> += <span class="variable language_">this</span>.<span class="property">length</span>; <span class="comment">//记录自身被使用了多少字节</span></span><br><span class="line"><span class="keyword">if</span>（pool.<span class="property">used</span> &amp; <span class="number">7</span>)&#123;</span><br><span class="line">pool.<span class="property">used</span> = (pool.<span class="property">used</span> + <span class="number">8</span> ) &amp; ~<span class="number">7</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种分配方式可能导致1KB的Buffer占用了8KB的内存（1个slab）;</p>
+<p>2.分配大小超过8KB的Buffer对象。<br>将会直接分配一个SlowBuffer对象作为slab单元，这个slab单元会被这个Buffer独占。这时slab的大小应该就是Buffer的大小吧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this.parent = new SlowBuffer(this.length);</span><br><span class="line">this.offset = 0;</span><br></pre></td></tr></table></figure>
+<p>这个SlowBuffer类是C++中定义的，虽然引用buffer模块可以访问，但不推荐直接操作。<br>上面提到的Buffer对象都是JavaScript层面的，能被V8标记回收，但是其内部的parent属性指向的SlowBuffer对象却来自于Node自身C++中的定义，是C++层面上的Buffer对象，所以内存不在V8的堆中。</p>
+<span id="more"></span>
+<h4 id="Buffer转换"><a href="#Buffer转换" class="headerlink" title="Buffer转换"></a>Buffer转换</h4><p>BUffer目前支持转换的字符串编码类型:</p>
+<ul>
+<li>ASCII</li>
+<li>UTF-8</li>
+<li>UTF-16LE/UCS-2</li>
+<li>Base64</li>
+<li>Binary</li>
+<li>Hex</li>
+</ul>
+<p>1.字符串转Buffer<br>encoding不传值时，默认按UTF-8编码进行转码和存储。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Buffer(str,[encoding]);</span><br></pre></td></tr></table></figure>
+<p>buf.write可以指定写入起始位置，长度和编码，所以一个Buffer中可以有多种编码类型，这样反转回字符串的时候需要谨慎处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buf.write(strig,[offset],[length],encoding);</span><br></pre></td></tr></table></figure>
+<p>还可以toString();</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buf.toString([encoding,start,end]);</span><br></pre></td></tr></table></figure>
+<p>2.有些Buffer不支持的编码类型<br>判断编码是否支持转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Buffer.isEncoding(encoding);</span><br></pre></td></tr></table></figure>
+<p>对不支持的编码类型可以借助模块完成转换。<br>iconv和iconv-lite</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> iconv = <span class="built_in">require</span>(<span class="string">&#x27;iconv-lite&#x27;</span>);</span><br><span class="line"><span class="comment">//Buffer转字符串</span></span><br><span class="line"><span class="keyword">var</span> str = iconv.<span class="title function_">decode</span>(buf,<span class="string">&#x27;win1251&#x27;</span>);</span><br><span class="line"><span class="comment">//字符串转Buffer</span></span><br><span class="line"><span class="keyword">var</span> buf = iconv.<span class="title function_">encode</span>(str,<span class="string">&#x27;win1251&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>具体可以去查阅 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/iconv-lite">https://www.npmjs.com/package/iconv-lite</a><br>            <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/iconv">https://www.npmjs.com/package/iconv</a></p>
+<h4 id="Buffer的拼接"><a href="#Buffer的拼接" class="headerlink" title="Buffer的拼接"></a>Buffer的拼接</h4><p>buffer通常是以一段一段的方式传输在内存中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rs = fs.<span class="title function_">createReadStream</span>(<span class="string">&#x27;test.md&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>,<span class="keyword">function</span>(<span class="params">chunk</span>)&#123;</span><br><span class="line">	data+=chunk;</span><br><span class="line">&#125;);</span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面的代码在国外没有宽字节编码时没有问题，但是遇到宽字节会导致乱码。<br>问题来自于这句代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data += chunk;</span><br><span class="line">等价于</span><br><span class="line">data = data.<span class="title function_">toString</span>() += chunk.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
+
+<p>复现问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rs = fs.<span class="title function_">createReadStream</span>(<span class="string">&#x27;test.md&#x27;</span>,&#123;<span class="attr">highWaterMark</span>:<span class="number">11</span>&#125;);</span><br><span class="line"><span class="comment">//test.md 是李白的静夜思。。。。</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>,<span class="keyword">function</span>(<span class="params">chunk</span>)&#123;</span><br><span class="line">	data+=chunk;</span><br><span class="line">&#125;);</span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// =&gt; 床前明��光，疑���地上霜。举头��明月，���头思故乡。</span></span><br></pre></td></tr></table></figure>
+<p>为什么乱码呢。。。。<br>让我们看下这首诗的原本的Buffer</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Buffer e5 ba 8a e5 89 8d e6 98 8e e6 9c 88 e5 85 89 ef bc 8c e7 96 91 e6 98 af e5 9c b0 e4 b8 8a e9 9c 9c e3 80 82 e4 b8 be e5 a4 b4 e6 9c 9b e6 98 8e e6 9c ... &gt;</span><br></pre></td></tr></table></figure>
+<p>我们限定了Buffer对象的长度为11，所以<code>e5 ba 8a | e5 89 8d |e6 98 8e | e6 9c</code>,床前明三个字之后就匹配不到了，剩下两个字节就以乱码的形式显示了。</p>
+<p>解决方案一:<br>setEncoding();</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rs = fs.<span class="title function_">createReadStream</span>(<span class="string">&#x27;test.md&#x27;</span>,&#123;<span class="attr">highWaterMark</span>:<span class="number">11</span>&#125;);</span><br><span class="line">rs.<span class="title function_">setEncoding</span>(<span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line"><span class="comment">//test.md 是李白的静夜思。。。。</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>,<span class="keyword">function</span>(<span class="params">chunk</span>)&#123;</span><br><span class="line">	data+=chunk;</span><br><span class="line">&#125;);</span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// =&gt; 床前明月光，疑是地上霜。举头望明月，低头思故乡。</span></span><br></pre></td></tr></table></figure>
+<p>这种方式的data收到的不再是Buffer对象，所以问题解决了，但是字节字符的问题依然存在，并且setEncoding，但是只支持 UTF-16LE/UCS-2 、 utf-8和base64三种编码。</p>
+<p>解决方法二：<br>正确的Buffer拼接：<br>正确的拼接方式时，使用一个数组来存储接收到的所有buffer对象，并记录所有片段的总长度，然后调用Buffer.concat()来生成一个合并的Buffer对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chunks = [];</span><br><span class="line"><span class="keyword">var</span> size = <span class="number">0</span>;</span><br><span class="line">res.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>,<span class="keyword">function</span>(<span class="params">chunk</span>)&#123;</span><br><span class="line">	chunks.<span class="title function_">push</span>(chunk);</span><br><span class="line">	size += chunk.<span class="property">length</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">res.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> buf = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>(chunks,size);</span><br><span class="line">	<span class="keyword">var</span> str = iconv.<span class="title function_">decode</span>(buf,<span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>本问题复现代码github地址：<a target="_blank" rel="noopener" href="https://github.com/ruomuc/practice/tree/master/other/buffer">https://github.com/ruomuc/practice/tree/master/other/buffer</a></p>
+<p>Buffer.concat实现原理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Buffer.concat() = function(list, length) &#123;</span><br><span class="line">	if (!Array.isArray(list)) &#123;</span><br><span class="line">		throw new Error(&#x27;Usage: Buffer.concat(list,[length])&#x27;);</span><br><span class="line">	&#125;</span><br><span class="line">	if (list.length === 0) &#123;</span><br><span class="line">		return new Buffer(0);</span><br><span class="line">	&#125; else if (list.length === 1) &#123;</span><br><span class="line">		return list[0];</span><br><span class="line">	&#125;</span><br><span class="line">	if (typeof length !== &#x27;number&#x27;) &#123;</span><br><span class="line">		length = 0;</span><br><span class="line">		for (var i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">			var buf = list[i];</span><br><span class="line">			length += buf.length;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	var buffer = new Buffer(length);</span><br><span class="line">	var pos = 0;</span><br><span class="line">	for (var i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">		var buf = list[i];</span><br><span class="line">		buf.copy(buffer, pos);</span><br><span class="line">		pos += buf.length;</span><br><span class="line">	&#125;</span><br><span class="line">	return buffer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/node-js/">node.js</a><a class="post-meta__tags" href="/tags/buffer/">buffer</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer%E7%BB%93%E6%9E%84"><span class="toc-text">Buffer结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E7%BB%93%E6%9E%84"><span class="toc-text">模块结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buffer%E5%AF%B9%E8%B1%A1"><span class="toc-text">Buffer对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buffer%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text">Buffer内存分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buffer%E8%BD%AC%E6%8D%A2"><span class="toc-text">Buffer转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buffer%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="toc-text">Buffer的拼接</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

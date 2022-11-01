@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>koa源码之delegates | ruomu</title><meta name="keywords" content="koa,node.js"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近看koa的源码，看到了了一个TJ大神写的包delegates，实现了委托模式&#x2F;代理模式。 当前包的版本为1.0.0，代码就100多行，周下载量一千两百多万。。果然是巨佬。   基本结构目录结构很简单，主要文件只有一个index.js和test文件夹下的单元测试。 index.js文件的内容：  Delegator：构造方法 Delegator.auto：自动委托所有可以委托的属性 Delega">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa源码之delegates">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="最近看koa的源码，看到了了一个TJ大神写的包delegates，实现了委托模式&#x2F;代理模式。 当前包的版本为1.0.0，代码就100多行，周下载量一千两百多万。。果然是巨佬。   基本结构目录结构很简单，主要文件只有一个index.js和test文件夹下的单元测试。 index.js文件的内容：  Delegator：构造方法 Delegator.auto：自动委托所有可以委托的属性 Delega">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2020-08-04T11:49:35.000Z">
+<meta property="article:modified_time" content="2020-08-04T11:49:35.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="koa">
+<meta property="article:tag" content="node.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'koa源码之delegates',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-08-04 19:49:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">koa源码之delegates</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-04T11:49:35.000Z" title="发表于 2020-08-04 19:49:35">2020-08-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-08-04T11:49:35.000Z" title="更新于 2020-08-04 19:49:35">2020-08-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/node-js/">node.js</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="koa源码之delegates"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>最近看koa的源码，看到了了一个<code>TJ</code>大神写的包<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/delegates">delegates</a>，实现了<a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/proxy-pattern.html">委托模式/代理模式</a>。</p>
+<p>当前包的版本为<code>1.0.0</code>，代码就100多行，周下载量一千两百多万。。果然是巨佬。</p>
+<br>
+
+<h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>目录结构很简单，主要文件只有一个<code>index.js</code>和<code>test</code>文件夹下的单元测试。</p>
+<p><code>index.js</code>文件的内容：</p>
+<ul>
+<li><strong>Delegator</strong>：构造方法</li>
+<li><strong>Delegator.auto</strong>：自动委托所有可以委托的属性</li>
+<li><strong>Delegator.prototype.method</strong>：委托一个方法</li>
+<li><strong>Delegator.prototype.getter</strong>：委托属性的<strong>getter</strong>方法</li>
+<li><strong>Delegator.prototype.setter</strong>：委托属性的<strong>setter</strong>方法</li>
+<li><strong>Delegator.prototype.access</strong>: 同时委托属性的<strong>getter</strong>和<strong>setter</strong>方法</li>
+<li><strong>Delegator.prototype.fluent</strong>：委托属性，实现jQuery风格，不传参数获取属性值，传参修改属性值。</li>
+</ul>
+<p>ps: 在koa源码中，使用的也是<code>delegates</code>的<code>1.0.0</code>的包，但是<code>index.js</code>中没有找到<code>auto</code>这个方法。</p>
+<br>
+<span id="more"></span>
+
+<h2 id="举例和实现"><a href="#举例和实现" class="headerlink" title="举例和实现"></a>举例和实现</h2><h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Delegator</span>(<span class="params">proto, target</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="variable language_">this</span> <span class="keyword">instanceof</span> <span class="title class_">Delegator</span>)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Delegator</span>(proto, target);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">proto</span> = proto;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">target</span> = target;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">methods</span> = [];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">getters</span> = [];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">setters</span> = [];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">fluents</span> = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个构造函数，<code>if (!(this instanceof Delegator)) return new Delegator(proto, target);</code></p>
+<p>这一行的目的是，可以使用<code>Delegator(proto,target)</code>来实例化一个对象。</p>
+<h4 id="method"><a href="#method" class="headerlink" title="method"></a><strong>method</strong></h4><p>源码没什么难度，核心代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proto[name] = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>[target][name].<span class="title function_">apply</span>(<span class="variable language_">this</span>[target], <span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>举个列子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> delegates = <span class="built_in">require</span>(<span class="string">&#x27;delegates&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">request</span> = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="function">(<span class="params">foo</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">delegates</span>(obj, <span class="string">&#x27;request&#x27;</span>).<span class="title function_">method</span>(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">foo</span>(<span class="string">&#x27;aaa&#x27;</span>)); <span class="comment">// aaa</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">request</span>.<span class="title function_">foo</span>(<span class="string">&#x27;bbb&#x27;</span>)); <span class="comment">// bbb</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="getter"><a href="#getter" class="headerlink" title="getter"></a><strong>getter</strong></h4><p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> delegates = <span class="built_in">require</span>(<span class="string">&#x27;delegates&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">request</span> = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="function">(<span class="params">foo</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">phone</span>: <span class="string">&#x27;iphone11&#x27;</span>,</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">getter1</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj.<span class="property">request</span>, <span class="string">&#x27;getter&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">phone</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">enumerable</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="title function_">delegates</span>(obj, <span class="string">&#x27;request&#x27;</span>).<span class="title function_">getter</span>(<span class="string">&#x27;getter&#x27;</span>);</span><br><span class="line"><span class="title function_">delegates</span>(obj, <span class="string">&#x27;request&#x27;</span>).<span class="title function_">getter</span>(<span class="string">&#x27;getter1&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">getter</span>); <span class="comment">// &#x27;iphone11&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">getter1</span>); <span class="comment">// &#x27;hello&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>从上面的代码例子中可以知道，<code>get getter()&#123;&#125;</code>还是<code>Object.defineProperty</code>效果是一样的。</p>
+<p>核心代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proto.<span class="title function_">__defineGetter__</span>(name, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>[target][name];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineGetter__"><strong><strong>defineGetter</strong></strong></a>方法可以将一个函数绑定在当前对象的指定属性上，当那个属性的值被读取时，你所绑定的函数就会被调用。</p>
+<p>但是在<code>MDN web docs</code>文档中说它是一个非标准的方法，未来可能会停止支持。。。</p>
+<p>所以这样改一下也没什么问题吧：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(proto, name, &#123;</span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>[target][name]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="setter"><a href="#setter" class="headerlink" title="setter"></a>setter</h4><p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> delegates = <span class="built_in">require</span>(<span class="string">&#x27;delegates&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">request</span> = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="function">(<span class="params">foo</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">phone</span>: <span class="string">&#x27;iphone11&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj.<span class="property">request</span>, <span class="string">&#x27;setter&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">set</span>: <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">phone</span> = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">enumerable</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="title function_">delegates</span>(obj, <span class="string">&#x27;request&#x27;</span>).<span class="title function_">setter</span>(<span class="string">&#x27;setter&#x27;</span>);</span><br><span class="line">obj.<span class="property">setter</span> = <span class="string">&#x27;iphone12&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">request</span>.<span class="property">phone</span>); <span class="comment">// iphone12</span></span><br></pre></td></tr></table></figure>
+
+<p>核心代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proto.<span class="title function_">__defineSetter__</span>(name, <span class="keyword">function</span> (<span class="params">val</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>[target][name] = val;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>同理也可以改为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(proto, name, &#123;</span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params">val</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>[target][name] = val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="access"><a href="#access" class="headerlink" title="access"></a>access</h4><p>核心代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">getter</span>(name).<span class="title function_">setter</span>(name);</span><br></pre></td></tr></table></figure>
+
+<p>没什么好说的，就是同时代理了<code>getter</code>和<code>setter</code></p>
+<h4 id="fluent"><a href="#fluent" class="headerlink" title="fluent"></a>fluent</h4><p>核心代码也比较简单：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proto[name] = <span class="keyword">function</span> (<span class="params">val</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&#x27;undefined&#x27;</span> != <span class="keyword">typeof</span> val) &#123;</span><br><span class="line">    <span class="variable language_">this</span>[target][name] = val;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>[target][name];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>根据代码可以看出来，fluent代理的属性，传参时为获取值，不传参时为设置值。</p>
+<h4 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h4><p>不过神奇的是，我直接下载的源码有这个方法并且有对应的测试用例，但是npm下载的包中确没有<code>auto</code>这个方法。</p>
+<ol>
+<li>新建一个<code>Delegator</code>对象，获取被委托对象的所有属性。</li>
+<li>循环遍历这些属性。<ol>
+<li>获取这个属性的详细描述(<code>Object.getOwnPropertyDescriptor</code>)。</li>
+<li>如果有<code>get</code>方法，委托<code>getter</code>。</li>
+<li>如果有<code>set</code>方法，委托<code>setter</code>。</li>
+<li>如果有<code>value</code>属性：<ol>
+<li>如果<code>value</code>是<code>Function</code>类型，委托<code>method</code>。</li>
+<li>如果不是委托<code>getter</code>。</li>
+<li>如果这个属性是可写的<code>writable = true</code>，委托<code>setter</code>。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Delegator</span>.<span class="property">auto</span> = <span class="keyword">function</span> (<span class="params">proto, targetProto, targetProp</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> delegator = <span class="title class_">Delegator</span>(proto, targetProp);</span><br><span class="line">  <span class="keyword">var</span> properties = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(targetProto);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; properties.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> property = properties[i];</span><br><span class="line">    <span class="keyword">var</span> descriptor = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(targetProto, property);</span><br><span class="line">    <span class="keyword">if</span> (descriptor.<span class="property">get</span>) &#123;</span><br><span class="line">      delegator.<span class="title function_">getter</span>(property);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (descriptor.<span class="property">set</span>) &#123;</span><br><span class="line">      delegator.<span class="title function_">setter</span>(property);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (descriptor.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;value&#x27;</span>)) &#123; <span class="comment">// could be undefined but writable</span></span><br><span class="line">      <span class="keyword">var</span> value = descriptor.<span class="property">value</span>;</span><br><span class="line">      <span class="keyword">if</span> (value <span class="keyword">instanceof</span> <span class="title class_">Function</span>) &#123;</span><br><span class="line">        delegator.<span class="title function_">method</span>(property);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        delegator.<span class="title function_">getter</span>(property);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (descriptor.<span class="property">writable</span>) &#123;</span><br><span class="line">        delegator.<span class="title function_">setter</span>(property);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/koa/">koa</a><a class="post-meta__tags" href="/tags/node-js/">node.js</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">基本结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="toc-text">举例和实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-text">构造方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#method"><span class="toc-text">method</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getter"><span class="toc-text">getter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#setter"><span class="toc-text">setter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#access"><span class="toc-text">access</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fluent"><span class="toc-text">fluent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#auto"><span class="toc-text">auto</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

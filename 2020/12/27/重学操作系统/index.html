@@ -1,0 +1,570 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>重学操作系统 | ruomu</title><meta name="keywords" content="linux"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="之前虽然也自己用vps搭搭机场、部署一下自己的小网站啥的，但是对linux和操作系统没有太多深入了解，所以双11在拉钩抢了一些课，随便记记。 这种东西还是要看多用，所以就大概过一遍知识点，有个印象。 计算机组成原理  32位和64位 如果是软件，那么我们的数据库有 32 位和 64 位版本； 如果是操作系统，那么在阿里云上选择 Centos 和 Debian 版本的时候，也会有 32&#x2F;64 版本；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重学操作系统">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2020/12/27/%E9%87%8D%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="之前虽然也自己用vps搭搭机场、部署一下自己的小网站啥的，但是对linux和操作系统没有太多深入了解，所以双11在拉钩抢了一些课，随便记记。 这种东西还是要看多用，所以就大概过一遍知识点，有个印象。 计算机组成原理  32位和64位 如果是软件，那么我们的数据库有 32 位和 64 位版本； 如果是操作系统，那么在阿里云上选择 Centos 和 Debian 版本的时候，也会有 32&#x2F;64 版本；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2020-12-27T14:40:27.000Z">
+<meta property="article:modified_time" content="2021-01-08T13:31:16.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/12/27/%E9%87%8D%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '重学操作系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-08 21:31:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">重学操作系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-27T14:40:27.000Z" title="发表于 2020-12-27 22:40:27">2020-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-08T13:31:16.000Z" title="更新于 2021-01-08 21:31:16">2021-01-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机网络与操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="重学操作系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>之前虽然也自己用vps搭搭机场、部署一下自己的小网站啥的，但是对linux和操作系统没有太多深入了解，所以双11在拉钩抢了一些课，随便记记。</p>
+<p>这种东西还是要看多用，所以就大概过一遍知识点，有个印象。</p>
+<h2 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h2><br>
+
+<h3 id="32位和64位"><a href="#32位和64位" class="headerlink" title="32位和64位"></a>32位和64位</h3><ul>
+<li>如果是软件，那么我们的数据库有 32 位和 64 位版本；</li>
+<li>如果是操作系统，那么在阿里云上选择 Centos 和 Debian 版本的时候，也会有 32/64 版本；</li>
+<li>如果是 CPU，那么有 32 位 CPU，也有 64 位 CPU。</li>
+</ul>
+<h3 id="冯诺依曼模型"><a href="#冯诺依曼模型" class="headerlink" title="冯诺依曼模型"></a>冯诺依曼模型</h3><h4 id="输入设备"><a href="#输入设备" class="headerlink" title="输入设备"></a>输入设备</h4><h4 id="输出设备"><a href="#输出设备" class="headerlink" title="输出设备"></a>输出设备</h4><h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><h4 id="CPU-中央处理器"><a href="#CPU-中央处理器" class="headerlink" title="CPU(中央处理器)"></a>CPU(中央处理器)</h4><ul>
+<li><p>如果 CPU 每次可以计算 4 个 byte，那么我们称作 32 位 CPU</p>
+</li>
+<li><p>如果 CPU 每次可以计算 8 个 byte，那么我们称作 64 位 CPU</p>
+</li>
+<li><p>这里的 32 和 64，称作 CPU 的位宽。</p>
+</li>
+</ul>
+<h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>CPU 和内存以及其他设备之间，也需要通信，因此我们用一种特殊的设备进行控制，就是总线。总线分成 3 种：</p>
+<ul>
+<li>一种是地址总线，专门用来指定 CPU 将要操作的内存地址</li>
+<li>还有一种是数据总线，用来读写内存中的数据</li>
+<li>最后一种总线叫作控制总线，用来发送和接收关键信号，比如中断信号，还有设备复位、就绪等信号，都是通过控制总线传输。同样的，CPU 需要对这些信号进行响应，这也需要控制总线</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="存储器分级策略"><a href="#存储器分级策略" class="headerlink" title="存储器分级策略"></a>存储器分级策略</h3><p><img src="https://s0.lgstatic.com/i/image/M00/51/2D/Ciqc1F9kgVGAD_IMAACXR1QKcDo779.png"></p>
+<blockquote>
+<p>假设有一个二维数组，总共有 1M 个条目，如果我们要遍历这个二维数组，应该逐行遍历还是逐列遍历？</p>
+</blockquote>
+<p>逐行遍历会更快。当 CPU 遍历二维数组的时候，会先从 CPU 缓存中取数据。CPU 设计不是每次读取一个内存地址，而是读取每次读取相邻的多个内存地址，</p>
+<p>可以二维数组想象成只有一行的一维数组，行坐标增加时，内存空间是跳跃的。列坐标增加时，内存空间是连续的。</p>
+<blockquote>
+<p>SSD、内存和 L1 Cache 相比速度差多少倍？</p>
+</blockquote>
+<p>因为内存比 SSD 快 10<del>1000 倍，L1 Cache 比内存快 100 倍左右。因此 L1 Cache 比 SSD 快了 1000</del>100000 倍。所以你有没有发现 SSD 的潜力很大，好的 SSD 已经接近内存了，只不过造价还略高。</p>
+<h2 id="Linux指令入门"><a href="#Linux指令入门" class="headerlink" title="Linux指令入门"></a>Linux指令入门</h2><h3 id="什么是shell"><a href="#什么是shell" class="headerlink" title="什么是shell"></a>什么是shell</h3><p>Shell 把我们输入的指令，传递给操作系统去执行，所以 Shell 是一个命令行的用户界面。<br><br></p>
+<h3 id="几种常见的文件类型"><a href="#几种常见的文件类型" class="headerlink" title="几种常见的文件类型"></a>几种常见的文件类型</h3><p>Linux 把所有的设备都抽象成了文件，比如说打印机、USB、显卡等。这让整体的系统设计变得高度统一。</p>
+<ul>
+<li>普通文件（比如一个文本文件）<font color="red">没有符号结尾的是普通文件</font></li>
+<li>目录文件（目录也是一个<strong>特殊的文件</strong>，它用来存储文件清单，比如<code>/</code>也是一个文件） <font color="red">/ 结尾的是目录</font></li>
+<li>可执行文件（<code>rm</code>就是一个可执行文件）。<font color="red">* 结尾的是可执行文件</font></li>
+<li>管道文件。<font color ="red"> | 结尾的管道文件</font></li>
+<li>Socket 文件。<font color="red">= 结尾的是 Socket 文件</font></li>
+<li>软链接文件。<font color="red">@ 结尾的是软链接</font></li>
+<li>硬链接文件。<font color="red">= 结尾的是 Socket 文件</font></li>
+</ul>
+<br>
+
+<h3 id="文件的增删改查"><a href="#文件的增删改查" class="headerlink" title="文件的增删改查"></a>文件的增删改查</h3><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p><code>man</code>意思是 <code>manual</code>，就是说明书的意思，这里指的是系统的手册。比如使用<code>man touch</code>就会列出<code>touch</code>命令的详细用法。</p>
+<h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>touch指令本来是用来更改文件的时间戳的，但是如果文件不存在touch也会帮助创建一个空文件。</p>
+<p><code>touch test.txt</code></p>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>增加一个目录</p>
+<p><code>mkdir test</code></p>
+<p>如果要创建的文件夹的父目录不存在，要使用<code>-p</code>参数，这个参数控制mkdir当发现目标目录的父级目录不存在的时候会递归的创建：</p>
+<p><code>mkdir -p test/child-test</code></p>
+<h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p><code>ls</code>是 <code>list</code> 的缩写，查看当前目录下所有文件，如果要查看更完善的信息，还可以使用<code>ls -l</code>。<code>-l</code>是<code>ls</code>指令的可选参数。</p>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p><code>rm</code>是 <code>remove</code> 的缩写，用于删除一个文件或文件夹。</p>
+<p>删除文件:</p>
+<p><code>rm test.txt</code></p>
+<p>删除文件夹，要加<code>-r</code>参数，代表递归删除的意思：</p>
+<p><code>rm -r test</code></p>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p><code>cat</code>指令将文件连接到标准输出流并打印到屏幕上。但是<code>cat</code>不适合用来打印输出大文件。</p>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><p><code>more</code>可以帮助我们分页读取文件。</p>
+<h4 id="less"><a href="#less" class="headerlink" title="less"></a>less</h4><p>和<code>more</code>差不多，但是可以向上翻页。</p>
+<h4 id="head-tail"><a href="#head-tail" class="headerlink" title="head/tail"></a>head/tail</h4><p><code>head</code>和<code>tail</code>是一组，它们用来读取一个文件的头部 N 行或者尾部 N 行。</p>
+<p><code>tail -f</code></p>
+<p><code>-f</code>是 <code>follow</code> 的意思，就是文件追加的内容会跟随输出到标准输出流。</p>
+<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><ul>
+<li><p><code>g</code> 就是 <code>global</code>，全局；</p>
+</li>
+<li><p><code>re</code> 就是 <code>regular expression</code>，正则表达式；</p>
+</li>
+<li><p><code>p</code>就是 <code>pattern</code>模式。</p>
+</li>
+</ul>
+<h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>可以查询一个指令文件所在的位置。</p>
+<p><code>which go</code>会打印<code>/usr/bin/go</code></p>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><p><code>find </code>指令帮助我们在文件系统中查找文件。</p>
+<p>可以使用<code>find / -iname &quot;*.txt&quot;</code>，<code>/</code>是路径，<code>-iname</code>这个参数是用来匹配查找的，<code>i</code> 字母代表忽略大小写，这里也可以用<code>-name</code>替代<br><br></p>
+<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>应用的可执行文件是放在文件系统里，启动可执行文件，就会在操作系统里（具体来说是内存中）形成一个<strong>应用的副本</strong>，这个副本就是进程。</p>
+<blockquote>
+<p>什么是进程(进程的定义是什么)？</p>
+<p>进程就是应用的执行副本。</p>
+<p>进程的作用是什么？</p>
+<p>进程是操作系统分配资源的最小单位。</p>
+</blockquote>
+<h4 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h4><p><code>p</code>代表<code>process</code>，<code>s</code>代表<code>snapshot</code>。</p>
+<p>使用此命令可以查看当前的进程。</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/ps.png"></p>
+<p>如图有两个进程：</p>
+<ul>
+<li><code>zsh</code>是打开了这个控制台，执行<code>shell</code>的是<code>zsh</code>。</li>
+<li><code>ps</code>是使用<code>ps</code>命令启动时，被<code>ps</code>自己捕捉到。</li>
+</ul>
+<blockquote>
+<p>什么是TTY？</p>
+<p>操作系统上的 TTY 是一个输入输出终端的概念，比如用户打开<code>bash</code>，操作系统就为用户分配了一个输入输出终端。</p>
+</blockquote>
+<p>使用<code>-e</code>可以查看操作系统的所有进程， 使用<code>-f</code>可以显示更多的描述字段。如图：</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/ps-ef.png"></p>
+<p>描述字段：</p>
+<ul>
+<li>UID：指进程的所有者。</li>
+<li>PID：进程的唯一标识。</li>
+<li>PPID：父进程的唯一标识。</li>
+<li>C：CPU占用。</li>
+<li>STIME：开始时间。</li>
+<li>TTY：进程所在的TTY，没有就是问号。</li>
+<li>CMD：进程启动时的命令。如果是方括号括起来的，那就是系统进程或内核进程。</li>
+</ul>
+<h4 id="top"><a href="#top" class="headerlink" title="top"></a>top</h4><p>和<code>ps</code>的区别是，<code>top</code>显示实时数据而不是快照。</p>
+<h4 id="htop"><a href="#htop" class="headerlink" title="htop"></a>htop</h4><p>比<code>top</code>更强大的一个非自带的工具，需要自己安装。<br><br></p>
+<h4 id="管道-Pipeline"><a href="#管道-Pipeline" class="headerlink" title="管道(Pipeline)"></a>管道(Pipeline)</h4><p><font color="red">管道的作用是在命令和命令之间传递数据，更准确的说是在进程和进程之间传递数据。</font></p>
+<h5 id="输入输出流"><a href="#输入输出流" class="headerlink" title="输入输出流"></a>输入输出流</h5><p>每个进程拥有自己的标准输入流，标准输出流，标准错误流。</p>
+<ul>
+<li>标准输入流：用0表示，可以作为进程执行的上下文，进程执行可以从输入流中获取数据。</li>
+<li>标准输出流：用1表示，标准输出流的写入结果会被打印到屏幕上。</li>
+<li>标准错误流：如果进程在执行过程中发生异常，那么异常信息会被记录到标准错误流中。</li>
+</ul>
+<h5 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h5><ul>
+<li><code>&gt;</code> ：覆盖重定向</li>
+<li><code>&gt;&gt;</code>：追加重定向</li>
+</ul>
+<p><code>ls -l</code>，结果会写入标准输出流，进而被打印，如图：</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/ls-l.png"></p>
+<p><code>ls -l &gt; out</code> 会把上图的内容存入到<code>out</code>文件，不会在屏幕上打印。</p>
+<p><code>ls -l &gt;&gt; out</code> 会把上图的内容追加存入到<code>out</code>文件，不会在屏幕上打印。<br><br></p>
+<h4 id="管道的作用和分类"><a href="#管道的作用和分类" class="headerlink" title="管道的作用和分类"></a>管道的作用和分类</h4><p>管道和重定向很像，但是管道是一个连接一个进行计算，重定向是将一个文件的内容定向到另一个文件，这二者经常会结合使用。</p>
+<p>有两种类型的管道：</p>
+<ul>
+<li>匿名管道：这种管道也在文件系统中，但是它只是一个存储节点，不属于任何一个目录。说白了，就是没有路径。</li>
+<li>命令管道：这种管道就是一个文件，有自己的路径。</li>
+</ul>
+<p>管道具有FIFO（先进先出）的特性。<br><br></p>
+<h4 id="管道的使用场景"><a href="#管道的使用场景" class="headerlink" title="管道的使用场景"></a>管道的使用场景</h4><h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><p><code>ls | sort -r</code>   <code>-r</code>表示倒序，按照文件名称倒序排列显示。</p>
+<h5 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h5><p><code>sort a.txt | uniq</code>，先排序，再将排序结果去重。</p>
+<h5 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h5><p><code>find ./ | grep Spring</code>。<code>find ./</code> 递归列出当前目录下的文件，<code>grep</code>从输出流中找出包含<code>Spring</code>关键字的行。</p>
+<p><code>find ./ | grep Spring | grep -v MyBatis</code>。<code>grep -v MyBatis</code>代表不包含 <code>MyBatis</code>关键字。</p>
+<h5 id="数行数"><a href="#数行数" class="headerlink" title="数行数"></a>数行数</h5><p><code>find ./ -iname &quot;*.js&quot; | wc -l</code></p>
+<p>找到<code>./</code>路径下，所有<code>js</code>文件，然后统计行数。</p>
+<h5 id="中间结果"><a href="#中间结果" class="headerlink" title="中间结果"></a>中间结果</h5><p><code>find ./ -iname &quot;*.js&quot; | tee jslist | grep test</code></p>
+<p>找到<code>./</code>路径下，所有<code>js</code>文件，然后存入<code>jslist</code>文件，然后筛选有关键字<code>grep</code>的文件，打印到控制台。</p>
+<p><code>tee</code>这个执行就像英文字母中的 T 一样，连通管道两端，下面又开了口。这个开口，在函数式编程里面叫作副作用。</p>
+<h5 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h5><p><code>xargs</code>指令从标准数据流中构造并执行一行行的指令。</p>
+<p><code>ls | grep jslist  | xargs -I gg mv gg prefix_gg</code></p>
+<p>将包含<code>jslist</code>关键字的文件加上<code>prefix</code>前缀，如图：</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/xargsmvggprefix.png"></p>
+<h5 id="管道文件"><a href="#管道文件" class="headerlink" title="管道文件"></a>管道文件</h5><p>上文中说管道有匿名管道和命名管道，匿名管道通过<code>|</code>就可以创造和使用。</p>
+<p>而命名管道是要挂到文件夹中的，因此需要创建。</p>
+<p>用<code>mkfifo</code>指令可以创建一个命名管道，如图：</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/mkfifopipe11.png"></p>
+<blockquote>
+<p>根据一个IP地址列表，逐个ping这些ip，并收集每个IP的延迟等。</p>
+<p>cat iplist | xargs -n1  ping -c2 &gt; pinglistres</p>
+</blockquote>
+<br>
+
+<h4 id="用户和权限"><a href="#用户和权限" class="headerlink" title="用户和权限"></a>用户和权限</h4><h5 id="权限抽象"><a href="#权限抽象" class="headerlink" title="权限抽象"></a>权限抽象</h5><p>用户和用户组</p>
+<ul>
+<li><p>linux将用户抽象为账户，账户可以登录系统。</p>
+</li>
+<li><p>linux支持组，每个用户可以在多个组，可以利用组给用户快速分配权限。</p>
+</li>
+<li><p>root账户也叫超级管理员账户，他可以使用系统提供的全部能力。</p>
+</li>
+</ul>
+<p>文件权限：</p>
+<ul>
+<li>读权限 <code>r</code></li>
+<li>写权限<code>w</code></li>
+<li>执行权限<code>x</code></li>
+</ul>
+<p>然后每个文件又可以从 3 个维度去配置上述的 3 种权限：</p>
+<ul>
+<li>用户维度。每个文件可以所属 1 个用户，用户维度配置的 rwx 在用户维度生效；</li>
+<li>组维度。每个文件可以所属 1 个分组，组维度配置的 rwx 在组维度生效；</li>
+<li>全部用户维度。设置对所有用户的权限。</li>
+</ul>
+<p>分析下面两个文件的权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x 5 root root    4096 12月 30 14:15 codespace</span><br><span class="line">-rw-r--r-- 1 root root      77 11月  8 13:36 dump.rdb</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一位 <code>-</code> 代表普通文件，<code>d</code>代表目录，<code>p</code>代表管道</li>
+<li><code>rwx</code> 代表用户维度，这里是表示<code>codespace</code>的所属用户可以<strong>读写</strong>和<strong>执行</strong>这个文件。</li>
+<li> <code>r-x</code> 代表用户组维度，这里表示<code>codespace</code>所属用户组里的所有用户可以<strong>读</strong>和<strong>执行</strong>这个文件。</li>
+<li><code>r-x</code>代表所有用户可以<strong>读</strong>和<strong>执行</strong>这个<code>codespace</code>文件</li>
+</ul>
+<h5 id="初始权限问题"><a href="#初始权限问题" class="headerlink" title="初始权限问题"></a>初始权限问题</h5><p>一个文件创建后，文件的所属用户会被设置成创建文件的用户</p>
+<p>linux中，每个用户创建时，会有一个同名的用户组也被创建，登录后，工作分组默认使用它的同名分组。</p>
+<p>使用<code>newgrp</code>指令可以切换到另一个工作分组。</p>
+<p>所以文件被创建后的权限通常是：<code>rw-rw-r--</code></p>
+<h5 id="公共执行文件的权限"><a href="#公共执行文件的权限" class="headerlink" title="公共执行文件的权限"></a>公共执行文件的权限</h5><p>一个文件权限如果是可执行，但是不可读？那它也无法执行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l /usr/bin/ls`</span><br><span class="line">-rwxr-xr-x 1 root root 117608 8月  20 2019 /usr/bin/ls</span><br></pre></td></tr></table></figure>
+
+<h5 id="用户分组指令"><a href="#用户分组指令" class="headerlink" title="用户分组指令"></a>用户分组指令</h5><p><strong>groups</strong></p>
+<p>查看当前用户的分组</p>
+<p><code>groups root</code>可以查看指定用户(root)的分组</p>
+<p><strong>id</strong></p>
+<p>查看当前用户信息</p>
+<ul>
+<li><p>uid 是用户 id</p>
+</li>
+<li><p>gid 是组 id</p>
+</li>
+<li><p>groups 后面是每个分组和分组的 id。对应<code>groups</code>查看到的分组</p>
+</li>
+</ul>
+<p><strong>cat /etc/passwd</strong></p>
+<p>查看所有用户</p>
+<p><img src="https://s0.lgstatic.com/i/image/M00/5A/53/CgqCHl91HIGAWXWVAACI9cgafaM295.png"></p>
+<p><strong>创建用户</strong></p>
+<p><code>sudo useradd foo </code></p>
+<p><code>sudo</code>的意思是<code>superuser do</code>，这里表示使用超级管理员的身份去执行这条命令。</p>
+<p><strong>创建分组</strong></p>
+<p><code>sudo groupadd hello</code></p>
+<p><strong>为用户增加次级分组</strong></p>
+<p>组分为主要分组和次级分组。主要分组只有一个（默认创建的用户同名分组？），次级分组可以有多个。</p>
+<p>使用<code>sudo usermode -a -G hello foo</code>把我们前面创建的<code>foo</code>用户加入到<code>hello</code>分组中。</p>
+<p><code>-a</code>代表append，<code>-G</code>代表一个次级分组的清单， 最后一个<code>foo</code>是账户名。</p>
+<p>这时使用<code>groups foo</code>查看如图所示：</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/groupsfoo.png">            </p>
+<p><strong>修改用户的主要分组</strong></p>
+<p><code>sudo usermod -g hello foo</code></p>
+<h5 id="文件权限管理指令"><a href="#文件权限管理指令" class="headerlink" title="文件权限管理指令"></a>文件权限管理指令</h5><p><strong>查看</strong></p>
+<p><code>ls -l</code></p>
+<p><strong>修改文件权限</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置foo可以执行</span></span><br><span class="line">chmod +x ./foo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">不允许foo执行</span></span><br><span class="line">chmod -x ./foo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">也可以同时设置多个权限</span></span><br><span class="line">chmod +rwx ./foo</span><br></pre></td></tr></table></figure>
+
+<p>因为<code>rwx</code>在 Linux 中用相邻的 3 个二进制位来表示:</p>
+<p>第一组是用户权限，第二组是组权限，第三组是所有用户的权限。然后用<code>-</code>代表没有权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置rwxrwxrwx (111111111 -&gt; 777)</span></span><br><span class="line">chmod 777 ./foo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置rw-rw-rw-(110110110 -&gt; 666)</span></span><br><span class="line">chmod 666 ./foo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p> 第一位</p>
+</li>
+<li><p><code>-</code> 为普通文件：Linux中最多的一种文件类型, 包括 纯文本文件、二进制文件、数据格式的文件(data)、各种压缩文件。</p>
+</li>
+<li><p><code>d</code> 为目录文件：就是目录， 能用 <code>cd</code> 命令进入的。</p>
+<ul>
+<li><code>b</code> 为块设备文件：存储数据以供系统存取的接口设备，简单而言就是硬盘。例如一号硬盘的代码是<code> /dev/hda1</code>等文件。</li>
+</ul>
+</li>
+<li><p><code>c</code> 为字符文件：串行端口的接口设备，例如键盘、鼠标等等。</p>
+<ul>
+<li><code>s</code>  为套接字文件：通常用在网络数据连接。可以启动一个程序来监听客户端的要求，客户端就可以通过套接字来进行数据通信，最常在 /var/run目录中看到这种文件类型。</li>
+</ul>
+</li>
+<li><p><code>f</code>  为管道文件：FIFO也是一种特殊的文件类型，它主要的目的是，解决多个程序同时存取一个文件所造成的错误。FIFO是first-in-first-out(先进先出)的缩写。</p>
+</li>
+<li><p><code>l</code> 为链接文件：类似Windows下面的快捷方式。第一个属性为 [l]，例如 [lrwxrwxrwx]。</p>
+</li>
+<li><p><code>rwx</code></p>
+<ul>
+<li> <code>r</code> 是否可读。</li>
+<li> <code>w</code> 是否可写。</li>
+<li> <code>x</code> 是否可执行。</li>
+</ul>
+</li>
+</ul>
+<p><strong>修改文件所属用户</strong></p>
+<p><code>chown foo iplist</code> 修改文件<code>iplist</code>的所属用户为<code>foo</code></p>
+<p><code>chown foo.hello iplist</code>同时修改文件<code>iplist</code>的所属用户为<code>foo</code>，用户组为<code>hello</code></p>
+<p>使用<code>ls -l iplist</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr--r-- 1 foo hello 25 1月   8 11:15 iplist</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>####网络命令</p>
+<h5 id="远程操作指令"><a href="#远程操作指令" class="headerlink" title="远程操作指令"></a>远程操作指令</h5><p><strong>ssh（Secure Shell）</strong></p>
+<p><code>ssh user@ip</code></p>
+<p>然后输入密码就可以登录进远程服务器。</p>
+<p><strong>ifconfig</strong></p>
+<p>查看本地IP以及本地有哪些网络接口</p>
+<h5 id="查看本地网络状态"><a href="#查看本地网络状态" class="headerlink" title="查看本地网络状态"></a>查看本地网络状态</h5><p><strong>netstat</strong></p>
+<p>不传任何参数的<code>netstat</code>帮助查询所有的本地 <code>socket</code>。</p>
+<p><code>socket</code> 是网络插槽被抽象成了文件，负责在客户端、服务器之间收发数据。</p>
+<p>查看TCP连接：</p>
+<p><code>netstat -t</code></p>
+<p>查看端口占用：</p>
+<p><code>netstat -ntlp | grep 22</code></p>
+<p><code>-n</code>是将一些特殊的端口号用数字显示，<code>-t</code>是指看 TCP 协议，<code>-l</code>是只显示连接中的连接，<code>-p</code>是显示程序名称。</p>
+<h5 id="网络测试"><a href="#网络测试" class="headerlink" title="网络测试"></a>网络测试</h5><p><strong>ping</strong></p>
+<p>查看本机到某个网站的网络延迟。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ping www.baidu.com</span><br><span class="line">PING www.a.shifen.com (180.101.49.11) 56(84) bytes of data.</span><br><span class="line">64 bytes from 180.101.49.11 (180.101.49.11): icmp_seq=1 ttl=49 time=9.72 ms</span><br><span class="line">64 bytes from 180.101.49.11 (180.101.49.11): icmp_seq=2 ttl=49 time=9.59 ms</span><br><span class="line">64 bytes from 180.101.49.11 (180.101.49.11): icmp_seq=3 ttl=49 time=9.58 ms</span><br><span class="line">--- www.a.shifen.com ping statistics ---</span><br><span class="line">5 packets transmitted, 5 received, 0% packet loss, time 4005ms</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ping</code>一个网站需要使用 ICMP 协议。因此你可以在上图中看到 icmp 序号</li>
+<li><code>ttl</code>叫作 time to live，是封包的生存时间。</li>
+<li><code>time</code>是往返一次的时间。</li>
+</ul>
+<p><strong>telnet</strong></p>
+<p>查看本机到某个 IP + 端口的网络是否通畅</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ telnet www.baidu.com 443</span><br><span class="line">Trying 180.101.49.12...</span><br><span class="line">Connected to www.baidu.com.</span><br><span class="line">Escape character is &#x27;^]&#x27;.</span><br></pre></td></tr></table></figure>
+
+<h5 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h5><p><strong>host</strong></p>
+<p>查询拉勾网的 DNS：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ host www.lagou.com</span><br><span class="line">www.lagou.com is an alias for lgmain.cdn.lagou.com.</span><br><span class="line">lgmain.cdn.lagou.com has address 117.50.36.103</span><br><span class="line">lgmain.cdn.lagou.com has address 106.75.118.232</span><br><span class="line">lgmain.cdn.lagou.com has address 117.50.39.99</span><br></pre></td></tr></table></figure>
+
+<p><strong>dig</strong></p>
+<p>显示的更加详细：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ dig www.lagou.com</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9.11.4-P2-RedHat-9.11.4-26.P2.el7 &lt;&lt;&gt;&gt; www.lagou.com</span><br><span class="line">;; global options: +cmd</span><br><span class="line">;; Got answer:</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 63898</span><br><span class="line">;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 0</span><br><span class="line"></span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;www.lagou.com.			IN	A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">www.lagou.com.		560	IN	CNAME	lgmain.cdn.lagou.com.</span><br><span class="line">lgmain.cdn.lagou.com.	60	IN	A	117.50.39.99</span><br><span class="line">lgmain.cdn.lagou.com.	60	IN	A	106.75.118.232</span><br><span class="line">lgmain.cdn.lagou.com.	60	IN	A	117.50.36.103</span><br><span class="line"></span><br><span class="line">;; Query time: 1 msec</span><br><span class="line">;; SERVER: 183.60.83.19#53(183.60.83.19)</span><br><span class="line">;; WHEN: 五 1月 08 18:20:27 CST 2021</span><br><span class="line">;; MSG SIZE  rcvd: 104</span><br></pre></td></tr></table></figure>
+
+<h4 id="软件的安装"><a href="#软件的安装" class="headerlink" title="软件的安装"></a>软件的安装</h4><h5 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h5><p>yum是Python 开发的，提供的是rpm包，因此只有redhat系的 Linux，比如 Fedora，Centos 支持yum。yum的主要能力就是帮你解决下载和依赖两个问题。</p>
+<h5 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h5><p><code>sudo apt remove vim</code> 删除vim</p>
+<p><code>dpkg -l vim</code> vim 的状态从ii变成了rc，r是期望删除，c是实际上还有配置文件遗留</p>
+<p><code>sudo apt purge vim</code> 可以彻底删除vim</p>
+<h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><h3 id="进程和线程-1"><a href="#进程和线程-1" class="headerlink" title="进程和线程"></a>进程和线程</h3><ol>
+<li>进程是软件的副本，是计算机分配资源的最小单位。</li>
+<li>线程运行在进程里，线程是CPU调度的最小单位。</li>
+</ol>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p><strong>原子操作</strong></p>
+<p>原子操作就是操作不可分。在多线程环境，一个原子操作的执行过程无法被中断。</p>
+<p><code>i++</code> 由 读取 i 的值、计算 i +1 、把新值赋给 i 。</p>
+<p><strong>竞争条件</strong></p>
+<p>两个线程并发执行i++</p>
+<p><img src="https://s0.lgstatic.com/i/image/M00/68/E8/CgqCHl-lBrSAKBmrAADNiS8bkAY490.png" alt="https://s0.lgstatic.com/i/image/M00/68/E8/CgqCHl-lBrSAKBmrAADNiS8bkAY490.png"></p>
+<p>访问共享资源的程序片段我们称为临界区。</p>
+<p><strong>cas 指令</strong></p>
+<p>很多 CPU 都提供<code> Compare And Swap</code> 指令。这个指令的作用是更新一个内存地址的值，比如把i更新为i+1，但是这个指令明确要求使用者必须确定知道内存地址中的值是多少。</p>
+<p><strong>tas 指令</strong></p>
+<p><code>Test-And-Set</code> 指令（tas）。tas 指令的目标是设置一个内存地址的值为 1，它的工作原理和 cas 相似。</p>
+<p><strong>锁</strong></p>
+<p>锁（lock），目标是实现抢占（preempt）。就是只让给定数量的线程进入临界区。</p>
+<p><strong>自旋锁</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">lock</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">while</span>(!<span class="title function_">getLock</span>())&#123;</span><br><span class="line">    <span class="comment">// do nothing</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用一个<code>while</code>循环获取锁，直到锁被其它线程释放。这种情况线程不会主动释放资源，我们称为自旋锁。</p>
+<ul>
+<li>优点：不会发生线程切换，因为一直循环执行”空指令”。</li>
+<li>缺点：比较消耗CPU资源，如果一直拿不到锁，就会一直执行。</li>
+</ul>
+<p><strong>生产者消费者模型</strong></p>
+<p>Monitor 实现了生产者、消费者模型。</p>
+<ul>
+<li><p>如果一个线程拿到锁，那么这个线程继续执行；</p>
+</li>
+<li><p>如果一个线程竞争锁失败，Montior 就调用 wait 方法触发生产者的逻辑，把线程加入等待集合；</p>
+</li>
+<li><p>如果一个线程执行完成，Monitor 就调用一次 notify 方法恢复一个等待的线程。</p>
+</li>
+</ul>
+<p><strong>分布式环境的锁</strong></p>
+<p>类似 redis 的 setnx 、setex 等指令。。</p>
+<p><strong>乐观锁</strong></p>
+<p>类似git提交冲突，假设冲突不会发生，等到发生时再处理。而不是一开始就拒绝（悲观锁）。</p>
+<h3 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h3><ul>
+<li>先到先服务</li>
+<li>短作业优先</li>
+<li>优先级队列</li>
+<li>抢占</li>
+<li>多级队列模型</li>
+</ul>
+<h3 id="饥饿和死锁"><a href="#饥饿和死锁" class="headerlink" title="饥饿和死锁"></a>饥饿和死锁</h3><p>哲学家就餐问题：</p>
+<p><img src="https://s0.lgstatic.com/i/image/M00/6F/4A/CgqCHl-1AGWABRYZAACklm4__ZQ120.png" alt="11111.png"></p>
+<p>死锁有 4 个基本条件。</p>
+<ul>
+<li><p>资源存在互斥逻辑：每次只有一个线程可以抢占到资源。这里是哲学家抢占叉子。</p>
+</li>
+<li><p>持有等待：这里哲学家会一直等待拿到叉子。</p>
+</li>
+<li><p>禁止抢占：如果拿不到资源一直会处于等待状态，而不会释放已经拥有的资源。</p>
+</li>
+<li><p>循环等待：这里哲学家们会循环等待彼此的叉子。</p>
+</li>
+</ul>
+<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><ul>
+<li>管道 ：管道的核心是不侵入、灵活，不会增加程序设计负担，又能组织复杂的计算过程。</li>
+<li>本地内存共享：共享内存的方式，速度很快，但是程序不是很好写，因为这是一种侵入式的开发。只要不是高性能场景，进程间通信通常不考虑共享内存的方式。</li>
+<li>本地消息/队列</li>
+<li>远程调用（rpc）: RPC 真正的缺陷是增加了系统间的耦合。当系统主动调用另一个系统的方法时，就意味着在增加两个系统的耦合。长期增加 RPC 调用，会让系统的边界逐渐腐化。</li>
+</ul>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="垃圾回收-gc"><a href="#垃圾回收-gc" class="headerlink" title="垃圾回收 gc"></a>垃圾回收 gc</h3><ul>
+<li>引用计数算法（Reference Counter）</li>
+<li>Root Tracing 算法</li>
+<li>标记-清除（Mark Sweep）算法</li>
+<li>三色标记-清除算法</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86"><span class="toc-text">计算机组成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#32%E4%BD%8D%E5%92%8C64%E4%BD%8D"><span class="toc-text">32位和64位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%A8%A1%E5%9E%8B"><span class="toc-text">冯诺依曼模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87"><span class="toc-text">输入设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87"><span class="toc-text">输出设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-text">内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-text">CPU(中央处理器)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BA%BF"><span class="toc-text">总线</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%88%86%E7%BA%A7%E7%AD%96%E7%95%A5"><span class="toc-text">存储器分级策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%8C%87%E4%BB%A4%E5%85%A5%E9%97%A8"><span class="toc-text">Linux指令入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFshell"><span class="toc-text">什么是shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">几种常见的文件类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">文件的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#man"><span class="toc-text">man</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#touch"><span class="toc-text">touch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mkdir"><span class="toc-text">mkdir</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ls"><span class="toc-text">ls</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rm"><span class="toc-text">rm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cat"><span class="toc-text">cat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#more"><span class="toc-text">more</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less"><span class="toc-text">less</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#head-tail"><span class="toc-text">head&#x2F;tail</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grep"><span class="toc-text">grep</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#which"><span class="toc-text">which</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#find"><span class="toc-text">find</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ps"><span class="toc-text">ps</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#top"><span class="toc-text">top</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#htop"><span class="toc-text">htop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E9%81%93-Pipeline"><span class="toc-text">管道(Pipeline)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-text">输入输出流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">重定向</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%88%86%E7%B1%BB"><span class="toc-text">管道的作用和分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">管道的使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D"><span class="toc-text">去重</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%9B%E9%80%89"><span class="toc-text">筛选</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E8%A1%8C%E6%95%B0"><span class="toc-text">数行数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E7%BB%93%E6%9E%9C"><span class="toc-text">中间结果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#xargs"><span class="toc-text">xargs</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E6%96%87%E4%BB%B6"><span class="toc-text">管道文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E6%9D%83%E9%99%90"><span class="toc-text">用户和权限</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%8A%BD%E8%B1%A1"><span class="toc-text">权限抽象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-text">初始权限问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-text">公共执行文件的权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%88%86%E7%BB%84%E6%8C%87%E4%BB%A4"><span class="toc-text">用户分组指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E6%8C%87%E4%BB%A4"><span class="toc-text">文件权限管理指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-text">远程操作指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81"><span class="toc-text">查看本地网络状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95"><span class="toc-text">网络测试</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DNS%E6%9F%A5%E8%AF%A2"><span class="toc-text">DNS查询</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">软件的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#yum"><span class="toc-text">yum</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#apt"><span class="toc-text">apt</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B"><span class="toc-text">进程和线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B-1"><span class="toc-text">进程和线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81"><span class="toc-text">锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">线程调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A5%A5%E9%A5%BF%E5%92%8C%E6%AD%BB%E9%94%81"><span class="toc-text">饥饿和死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">进程间通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-gc"><span class="toc-text">垃圾回收 gc</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

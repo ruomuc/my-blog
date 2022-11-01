@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于Handle、HandleFunc、Handler和HandlerFunc | ruomu</title><meta name="keywords" content="go,http"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在go中，可以很简单实现一个http服务器。 但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。 于是决定深入了解并记录一下它们的区别。 ps: 本文的前置知识是，需要对go中的面向对象和接口有一定的了解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Handle、HandleFunc、Handler和HandlerFunc">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="在go中，可以很简单实现一个http服务器。 但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。 于是决定深入了解并记录一下它们的区别。 ps: 本文的前置知识是，需要对go中的面向对象和接口有一定的了解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2021-06-10T04:48:20.000Z">
+<meta property="article:modified_time" content="2021-06-10T04:48:20.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="http">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于Handle、HandleFunc、Handler和HandlerFunc',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-10 12:48:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">关于Handle、HandleFunc、Handler和HandlerFunc</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-10T04:48:20.000Z" title="发表于 2021-06-10 12:48:20">2021-06-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-10T04:48:20.000Z" title="更新于 2021-06-10 12:48:20">2021-06-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/go/">go</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="关于Handle、HandleFunc、Handler和HandlerFunc"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在go中，可以很简单实现一个http服务器。</p>
+<p>但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。</p>
+<p>于是决定深入了解并记录一下它们的区别。</p>
+<p>ps: 本文的前置知识是，需要对go中的面向对象和接口有一定的了解。</p>
+<span id="more"></span>
+
+<p>我们可以这样创建一个http server</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Hello <span class="keyword">struct</span> &#123;</span><br><span class="line">	name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h Hello)</span></span> ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	fmt.Fprintf(w, <span class="string">&quot;hello %s&quot;</span>, h.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">indexHandler</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintf(w, <span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/&quot;</span>, indexHandler)</span><br><span class="line">	http.Handle(<span class="string">&quot;/hello&quot;</span>, &amp;Hello&#123;<span class="string">&quot;ruomu&quot;</span>&#125;)</span><br><span class="line">	http.ListenAndServe(<span class="string">&quot;:8000&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时如果你访问 <code>localhost:8080/</code> 会看到 <code>hello world</code></p>
+<p>如果访问<code>localhost:8080/hello</code>会看到<code>hello ruomu</code></p>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p>我们翻看源码<code>net/http/server.go</code>可以看到：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Handler <span class="keyword">interface</span> &#123;</span><br><span class="line">	ServeHTTP(ResponseWriter, *Request)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以所有实现了 ServeHTTP 方法的结构体创建出来的对象，都可以看做是一个Handler类型的对象。</p>
+<h2 id="Handle"><a href="#Handle" class="headerlink" title="Handle"></a>Handle</h2><p>源码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Handle</span><span class="params">(pattern <span class="type">string</span>, handler Handler)</span></span> &#123;</span><br><span class="line">  DefaultServeMux.Handle(pattern, handler) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，第一个参数不用说了，是绑定的路由，第二个参数是一个 Handler类型的对象。</p>
+<p>再回头看前文的代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">type</span> Hello <span class="keyword">struct</span> &#123;</span><br><span class="line">	name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h Hello)</span></span> ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	fmt.Fprintf(w, <span class="string">&quot;hello %s&quot;</span>, h.name)</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">http.Handle(<span class="string">&quot;/hello&quot;</span>, &amp;Hello&#123;<span class="string">&quot;ruomu&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>ServeHTTP</code> 方法其实对应的就是对应路由被访问时，对应的执行处理方法，至于具体什么时候被执行，如果绑定这些细节这里先不说了。</p>
+<p>是不是知道为什么，访问 <code>localhost:8080/hello</code> 会出现 <code>hello ruomu</code>了。</p>
+<h2 id="HandleFunc"><a href="#HandleFunc" class="headerlink" title="HandleFunc"></a>HandleFunc</h2><p>源码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HandleFunc</span><span class="params">(pattern <span class="type">string</span>, handler <span class="keyword">func</span>(ResponseWriter, *Request)</span></span>) &#123;</span><br><span class="line">	DefaultServeMux.HandleFunc(pattern, handler)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们发现和 Handle 的区别：</p>
+<p>第二个参数不一样，Handle 的第二个参数是一个Handler 类型的对象，而HandleFunc的第二个参数，直接就是一个 <code>func(ResponseWriter, *Request)</code>类型的函数 。</p>
+<p>里面执行的语句也有点不大相同，分别是 <code> DefaultServeMux.Handle(pattern, handler)</code> 和 <code>    DefaultServeMux.HandleFunc(pattern, handler)</code>。它们也只是调用了不同的方法，并且第二个参数不同。。。感觉像是在套娃？ 这里先不展开说了，我们只需要知道它们是正正的注册路由的对象就行了。</p>
+<p>试想一下，如果我们需要绑定1000个路由和其对应的处理方法，那我们是不是要写1000个struct？</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> r1 <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(route r1)</span></span> ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;...&#125;</span><br><span class="line"><span class="keyword">type</span> r2 <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(route r2)</span></span> ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;...&#125;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="keyword">type</span> r1000 <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(route r1000)</span></span> ServeHTTP(w http.ResponseWriter, r *http.Request) &#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	http.Handle(<span class="string">&quot;/r1&quot;</span>, &amp;r1&#123;&#125;)</span><br><span class="line">  http.Handle(<span class="string">&quot;/r2&quot;</span>, &amp;r2&#123;&#125;)</span><br><span class="line">  ...</span><br><span class="line">	http.Handle(<span class="string">&quot;/r100&quot;</span>, &amp;r1000&#123;&#125;)</span><br><span class="line">	http.ListenAndServe(<span class="string">&quot;:8000&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的代码是难以阅读并且难以维护的，我们根本就不需要这么多结构体，我们最终关心的其实时处理方法 ServeHTTP。</p>
+<p>看下前文的代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">indexHandler</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintf(w, <span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">http.HandleFunc(<span class="string">&quot;/&quot;</span>, indexHandler)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>是不是已经知道，如何改造绑定1000个路由的代码了。。</p>
+<h2 id="HandlerFunc"><a href="#HandlerFunc" class="headerlink" title="HandlerFunc"></a>HandlerFunc</h2><p>源码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> HandlerFunc <span class="function"><span class="keyword">func</span><span class="params">(ResponseWriter, *Request)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ServeHTTP calls f(w, r).</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f HandlerFunc)</span></span> ServeHTTP(w ResponseWriter, r *Request) &#123;</span><br><span class="line">	f(w, r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个写法很有意思啊。。</p>
+<p>其实目的也是解决绑定1000个路由需要定义1000个struct的问题。</p>
+<p>使用  HandlerFunc 进行强制类型转换，因为HandlerFunc也实现了 ServeHTTP方法，所以可以当做一个Handler类型的对象作为http.Handle的第二个参数。</p>
+<p>然后Handler的ServeHTTP方法中使用 <code>f(w,r)</code>，啊这。。秒啊。。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">indexHandler</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintf(w, <span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">http.Handle(<span class="string">&quot;/&quot;</span>, http.HandlerFunc(indexHandler))</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>现在是不是疑惑，HandleFunc 和 HandlerFunc有区别？为什么要两种写法呢。。</p>
+<p>其实我们继续看HandleFunc的源码就知道了：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">HandleFunc</span><span class="params">(pattern <span class="type">string</span>, handler <span class="keyword">func</span>(ResponseWriter, *Request)</span></span>) &#123;</span><br><span class="line">	DefaultServeMux.HandleFunc(pattern, handler)</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(mux *ServeMux)</span></span> HandleFunc(pattern <span class="type">string</span>, handler <span class="function"><span class="keyword">func</span><span class="params">(ResponseWriter, *Request)</span></span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> handler == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;http: nil handler&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	mux.Handle(pattern, HandlerFunc(handler))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，HandleFunc 最后还是使用了 <code>Handle(pattern, HandlerFunc(handler))</code> 来处理的。。</p>
+<h2 id="DefaultServeMux"><a href="#DefaultServeMux" class="headerlink" title="DefaultServeMux"></a>DefaultServeMux</h2><p>这里顺便说一下，本文一开始的代码中，为什么<code>   http.ListenAndServe(&quot;:8000&quot;, nil)</code>第二个参数要传一个 nil 呢。</p>
+<p>关于ServeMux到时候另写一片文章，这里直接不细说。</p>
+<p>http.ListenAndServe 的第二个参数其实是一个ServeMux对象，如果不传的话，就会使用默认的 DefaultServeMux。</p>
+<p>这篇文章代码里使用的所有绑定路由的方法，都是绑定在 DefaultServeMux上的，如果我们使用 NewServeMux创建一个自定义对象，并且当做 http.ListenAndServe 的第二个参数传入的话，它们就会失效。</p>
+<p><code>net/http/server.go:2835</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sh serverHandler)</span></span> ServeHTTP(rw ResponseWriter, req *Request) &#123;</span><br><span class="line">	handler := sh.srv.Handler</span><br><span class="line">	<span class="keyword">if</span> handler == <span class="literal">nil</span> &#123;</span><br><span class="line">		handler = DefaultServeMux</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> req.RequestURI == <span class="string">&quot;*&quot;</span> &amp;&amp; req.Method == <span class="string">&quot;OPTIONS&quot;</span> &#123;</span><br><span class="line">		handler = globalOptionsHandler&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	handler.ServeHTTP(rw, req)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>Handler 是一个接口，只有一个 ServeHTTP方法。</li>
+<li>Handle 绑定路由第二个参数需要传一个Handler类型的对象。</li>
+<li>HandlerFunc 写法比较有意思，他也实现了 ServeHTTP方法，可以强转一个函数为Handler类型的对象，并当做Handle 的第二个参数。</li>
+<li> <code>HandleFunc(pattern, handle)</code> 写法等于 <code>Handle(pattern, HandlerFunc(handle)) </code></li>
+</ul>
+<p>ps: 如果看不懂我写得东西很正常，本来就是记录不是什么教程，写得很随意。这里建议直接看参考链接里的文章。多看多练。</p>
+<p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://perennialsky.medium.com/understand-handle-handler-and-handlefunc-in-go-e2c3c9ecef03">https://perennialsky.medium.com/understand-handle-handler-and-handlefunc-in-go-e2c3c9ecef03</a></li>
+<li><a target="_blank" rel="noopener" href="https://cizixs.com/2016/08/17/golang-http-server-side/">https://cizixs.com/2016/08/17/golang-http-server-side/</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnku.com/articles/37867">https://learnku.com/articles/37867</a></li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/go/">go</a><a class="post-meta__tags" href="/tags/http/">http</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler"><span class="toc-text">Handler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Handle"><span class="toc-text">Handle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HandleFunc"><span class="toc-text">HandleFunc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HandlerFunc"><span class="toc-text">HandlerFunc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DefaultServeMux"><span class="toc-text">DefaultServeMux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

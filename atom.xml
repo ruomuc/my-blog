@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ruomu</title>
+  
+  <subtitle>no dream no code</subtitle>
+  <link href="https://ruomuc.github.io/blog/atom.xml" rel="self"/>
+  
+  <link href="https://ruomuc.github.io/blog/"/>
+  <updated>1899-11-29T15:54:17.000Z</updated>
+  <id>https://ruomuc.github.io/blog/</id>
+  
+  <author>
+    <name>ruomu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>置顶</title>
+    <link href="https://ruomuc.github.io/blog/9999/05/13/%E7%BD%AE%E9%A1%B6/"/>
+    <id>https://ruomuc.github.io/blog/9999/05/13/%E7%BD%AE%E9%A1%B6/</id>
+    <published>9999-05-13T05:10:48.000Z</published>
+    <updated>1899-11-29T15:54:17.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;简单描述一下我的博客&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;首先这是一个萌新成长过程的记录，不是一个大佬的经验分享。其次懂得越多，越觉得自己写的烂，所以更新越来越慢，是因为有太多东西没有消化，不想写一些烂的东西。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;补充&lt;/strong&gt;，除部分自己分享的，还有很多整理搬运的，有一些忘记贴参考链接，后面更的能找到都会贴上。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;时间线：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;2022年09月18日18:09:35&lt;/p&gt;
+&lt;p&gt;买的证书过期了，过期前忘记续费了，现在也懒得弄了，准备把东西全部搬到github上。包括所有的图片文件。&lt;/p&gt;
+&lt;p&gt;gitpages的自定义域名是免费的，现在可以用 &lt;a href=&quot;https://blog.ruomu.cc/&quot;&gt;https://blog.ruomu.cc&lt;/a&gt; 来访问我的博客了。旧的地址我到自己服务器配一个重定向。&lt;/p&gt;
+&lt;p&gt;2021年12月11日22:33:23&lt;/p&gt;
+&lt;p&gt;不小心把一个备案域名解析到香港服务器了，备案失效了，导致七牛云的资源全部下不下来了。。&lt;/p&gt;
+&lt;p&gt;然后找了下用 &lt;code&gt;qshell&lt;/code&gt; 这个工具，自己写了个&lt;a href=&quot;https://github.com/ruomuc/practice/blob/master/shells/qniu-download.sh&quot;&gt;shell脚本&lt;/a&gt;，把资源全部转移到自己的服务器上了，慢就慢吧。。&lt;/p&gt;
+&lt;p&gt;2021年11月10日21:03:38&lt;/p&gt;
+&lt;p&gt;删除了一些之前流水账博文，并且很久没有写新的博文了，因为最近在考驾照，然后还开启了健身计划。。&lt;br&gt;对学习的东西也有些迷茫，长时间不学习就会变懒。。。（叹气~）&lt;/p&gt;
+&lt;p&gt;2021年06月14日21:30:20&lt;/p&gt;
+&lt;p&gt;力扣被动态规划整麻了，加上时间问题，暂时搁置了，每日打卡刷了300道题提升不是太明显，感觉需要按标签刷。&lt;/p&gt;
+&lt;p&gt;最近找了两个比较好的学习go的外国网站，都是实战的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://gophercises.com/&quot;&gt;https://gophercises.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.hackerrank.com/&quot;&gt;https://www.hackerrank.com/&lt;/a&gt;  hackerrank这么牛逼的网站我之前居然不知道。。。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一直在敲代码，博客更的比较慢，已经敲了不少了，收获还是蛮大的。&lt;/p&gt;
+&lt;p&gt;2021年03月28日22:02:44&lt;/p&gt;
+&lt;p&gt;封闭开发快结束了！抽时间想了一下学习方向。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="others" scheme="https://ruomuc.github.io/blog/categories/others/"/>
+    
+    
+    <category term="其它" scheme="https://ruomuc.github.io/blog/tags/%E5%85%B6%E5%AE%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go的接口和类型</title>
+    <link href="https://ruomuc.github.io/blog/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://ruomuc.github.io/blog/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/</id>
+    <published>2022-02-27T06:01:33.000Z</published>
+    <updated>2022-02-27T06:01:33.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;二刷 the go programming language，接口这块第一遍没太懂，第二遍大概懂了。&lt;/p&gt;
+&lt;h2 id=&quot;接口&quot;&gt;&lt;a href=&quot;#接口&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解nodejs内存分配</title>
+    <link href="https://ruomuc.github.io/blog/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
+    <id>https://ruomuc.github.io/blog/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</id>
+    <published>2021-12-25T03:26:22.000Z</published>
+    <updated>2021-12-25T03:26:22.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;因为最近遇到很多关于内存的问题，所以决定再次探究回顾一下 node.js 相关的内存知识。&lt;/p&gt;
+&lt;p&gt;再次删除了一些之前的关于node.js内存的博文，因为在现在看来那些写的太垃圾了。&lt;/p&gt;
+&lt;h2 id=&quot;内存的生命周期&quot;&gt;&lt;a href=&quot;#内存的生命周期&quot; class=&quot;headerlink&quot; title=&quot;内存的生命周期&quot;&gt;&lt;/a&gt;内存的生命周期&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;内存分配：由 JavaScript 内部为我们分配内存。&lt;/li&gt;
+&lt;li&gt;内存使用：由代码来读取内存的数据，或向内存写入数据（比如赋值语句）。&lt;/li&gt;
+&lt;li&gt;内存释放：由 JavaScript 引擎来进行，内存释放后，可以被 JavaScript 重新分配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog-1301153828.cos.ap-shanghai.myqcloud.com/node.js%E5%86%85%E5%AD%98%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;栈（Stack）和堆（Heap）&quot;&gt;&lt;a href=&quot;#栈（Stack）和堆（Heap）&quot; class=&quot;headerlink&quot; title=&quot;栈（Stack）和堆（Heap）&quot;&gt;&lt;/a&gt;栈（Stack）和堆（Heap）&lt;/h2&gt;&lt;h3 id=&quot;堆栈和堆的概念&quot;&gt;&lt;a href=&quot;#堆栈和堆的概念&quot; class=&quot;headerlink&quot; title=&quot;堆栈和堆的概念&quot;&gt;&lt;/a&gt;堆栈和堆的概念&lt;/h3&gt;&lt;p&gt;在数据结构中：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;栈的结构比较好理解，一种线性结构，限制：只允许一端出入。所以栈的特点是&lt;strong&gt;LIFO(Last In First Out)后进先出&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;堆在数据结构中是一种特殊的完全二叉树，所以是一种树状结构。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在计算机内存分配中：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;堆（heap）和栈（stack）是两种内在的管理形式&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;它们的主要区别是stack按次序排放，大小明确；heap结构则不固定，是一种可动态分配和释放的内存。单从这一点看，stack的寻址速度要比heap快，heap的灵活性则比较高。一般来说，每个线程分配一个stack，每个进程分配一个heap。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;栈内存分配&quot;&gt;&lt;a href=&quot;#栈内存分配&quot; class=&quot;headerlink&quot; title=&quot;栈内存分配&quot;&gt;&lt;/a&gt;栈内存分配&lt;/h3&gt;&lt;p&gt;栈是 JavaScript 用来存储静态数据的数据结构。&lt;/p&gt;
+&lt;p&gt;静态数据就是引擎在编译时就知道大小的数据。&lt;/p&gt;
+&lt;p&gt;在程序运行前分配内存的过程称为&lt;strong&gt;静态内存分配&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs%E6%A0%88%E5%86%85%E5%AD%98.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="node.js" scheme="https://ruomuc.github.io/blog/categories/node-js/"/>
+    
+    
+    <category term="内存" scheme="https://ruomuc.github.io/blog/tags/%E5%86%85%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>囚徒健身</title>
+    <link href="https://ruomuc.github.io/blog/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/"/>
+    <id>https://ruomuc.github.io/blog/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/</id>
+    <published>2021-12-11T14:30:51.000Z</published>
+    <updated>2021-12-12T05:54:35.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近天气冷了，里三件外三件，去健身房换衣服太麻烦还容易感冒，不太想去了。&lt;/p&gt;
+&lt;p&gt;之前别人安利过《囚徒健身》这本书，看了下感觉理念还不错，还可以在家练，记录一下关键动作，方便查阅。（目前每个动作先记录了前两式，后面的根本做不到，等前面能做到了再记录后面更难的动作）&lt;/</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://ruomuc.github.io/blog/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="健身" scheme="https://ruomuc.github.io/blog/tags/%E5%81%A5%E8%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客迁移到私有服务器上</title>
+    <link href="https://ruomuc.github.io/blog/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/"/>
+    <id>https://ruomuc.github.io/blog/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/</id>
+    <published>2021-08-29T08:23:59.000Z</published>
+    <updated>2021-08-29T08:23:59.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今天把博客，从码云的 gitpages 服务，迁移到了自己的服务器上，记录分享一下。&lt;/p&gt;
+&lt;h5 id=&quot;原因&quot;&gt;&lt;a href=&quot;#原因&quot; class=&quot;headerlink&quot; title=&quot;原因&quot;&gt;&lt;/a&gt;原因&lt;/h5&gt;&lt;p&gt;至于为什么不用 github 的 gitpages，主要是打开太慢了。。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;码云的 gitpages  部署之后，需要手动去更新一下才能生效。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;码云的 gitpages 有时会抽风，遇到过两次一直在部署中，无法操作的情况。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;原来用第三方的原因是，自己的服务器搭梯子经常被封，中间有段时间没买服务器；但是呢，七牛云的免费额度只有 http 请求，所以前端时候在服务器搞了个反向代理。就是 https 站点 -&amp;gt; https图片资源 -&amp;gt; http图片资源 这么一个过程。。所以服务器就不能停了，不然博客的图片就全部要挂了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="others" scheme="https://ruomuc.github.io/blog/categories/others/"/>
+    
+    
+    <category term="others" scheme="https://ruomuc.github.io/blog/tags/others/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初识redo log和binlog</title>
+    <link href="https://ruomuc.github.io/blog/2021/08/13/redo-log%E5%92%8Cbinlog/"/>
+    <id>https://ruomuc.github.io/blog/2021/08/13/redo-log%E5%92%8Cbinlog/</id>
+    <published>2021-08-13T15:21:21.000Z</published>
+    <updated>2021-08-13T15:21:21.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;整理下 mysql 的 redo log 和 binlog 相关知识。&lt;/p&gt;
+&lt;p&gt;这个是照着画的一个 mysql 逻辑架构图，方便后面对照着理解。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据库" scheme="https://ruomuc.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="mysql" scheme="https://ruomuc.github.io/blog/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go错误处理最佳实践</title>
+    <link href="https://ruomuc.github.io/blog/2021/07/24/go%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    <id>https://ruomuc.github.io/blog/2021/07/24/go%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</id>
+    <published>2021-07-24T06:22:27.000Z</published>
+    <updated>2021-07-24T06:22:27.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;用 go 写过业务代码之后，就会发现，go的错误处理很让人头痛。。（事实上被吐槽的确实很多~）&lt;/p&gt;
+&lt;p&gt;然后刚好在极客时间薅了一节体验课。整理一下。以供参考。&lt;/p&gt;
+&lt;p&gt;注：对于初学者而言，最起码你要自己写一个curd的demo，不然看完之后不会有什么感觉。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+    <category term="错误处理" scheme="https://ruomuc.github.io/blog/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂模式</title>
+    <link href="https://ruomuc.github.io/blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://ruomuc.github.io/blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-06-30T11:35:02.000Z</published>
+    <updated>2021-06-30T11:35:02.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;因为一直在搞 node.js，对设计模式了解一直比较少，看了书不实践也记不住。最近在补充设计模式的知识。&lt;/p&gt;
+&lt;p&gt;工厂方法模式是一个比较常见的设计模式。&lt;/p&gt;
+&lt;p&gt;大部分资料将工厂方法模式分为三种：简单/静态工厂模式、工厂方法模式、抽象工厂模式。&lt;/p&gt;
+&lt;p&gt;简单工厂是对工厂方法的简化，而抽象工厂是对工厂方法的增强。&lt;/p&gt;
+&lt;p&gt;本文主要用 golang 来实现以下这三种工厂，然后分析一下优劣。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ruomuc/test_demos/tree/master/blog/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F&quot;&gt;本文代码仓库地址&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="设计模式" scheme="https://ruomuc.github.io/blog/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://ruomuc.github.io/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go的math/rand标准库</title>
+    <link href="https://ruomuc.github.io/blog/2021/06/22/go%E7%9A%84math-rand%E6%A0%87%E5%87%86%E5%BA%93/"/>
+    <id>https://ruomuc.github.io/blog/2021/06/22/go%E7%9A%84math-rand%E6%A0%87%E5%87%86%E5%BA%93/</id>
+    <published>2021-06-22T15:15:45.000Z</published>
+    <updated>2021-06-22T15:15:45.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;go语言中 math/rand 包来提供随机数相关功能。&lt;/p&gt;
+&lt;h2 id=&quot;基本用法&quot;&gt;&lt;a href=&quot;#基本用法&quot; class=&quot;headerlink&quot; title=&quot;基本用法&quot;&gt;&lt;/a&gt;基本用法&lt;/h2&gt;&lt;p&gt;为了方便测试，我们新建一个 time_test.go 文件&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于Handle、HandleFunc、Handler和HandlerFunc</title>
+    <link href="https://ruomuc.github.io/blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/"/>
+    <id>https://ruomuc.github.io/blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/</id>
+    <published>2021-06-10T04:48:20.000Z</published>
+    <updated>2021-06-10T04:48:20.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在go中，可以很简单实现一个http服务器。&lt;/p&gt;
+&lt;p&gt;但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。&lt;/p&gt;
+&lt;p&gt;于是决定深入了解并记录一下它们的区别。&lt;/p&gt;
+&lt;p&gt;ps: 本文的前置知识是，需要对go中的面向对象和接口有一定的了解。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+    <category term="http" scheme="https://ruomuc.github.io/blog/tags/http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于tcp的”粘包“和“拆包”</title>
+    <link href="https://ruomuc.github.io/blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/"/>
+    <id>https://ruomuc.github.io/blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/</id>
+    <published>2021-06-04T10:19:04.000Z</published>
+    <updated>2021-06-04T10:19:04.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;第一次听到“粘包”这个名词，还是用 websocket 做游戏的时候，当时服务端收到的消息出现了乱码，因为中文汉字在utf-8中用三个字节表示，如果被截断了话，解析出来就是乱码。&lt;/p&gt;
+&lt;p&gt;后面就一直做的传统的http服务端开发，就没有太关注这个问题了。&lt;/p&gt;
+&lt;p&gt;最近在看一个《趣谈网络协议》课，就顺便把这个问题搞明白。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算机网络与操作系统" scheme="https://ruomuc.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="tcp" scheme="https://ruomuc.github.io/blog/tags/tcp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go的defer关键字</title>
+    <link href="https://ruomuc.github.io/blog/2021/05/30/go%E7%9A%84defer%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+    <id>https://ruomuc.github.io/blog/2021/05/30/go%E7%9A%84defer%E5%85%B3%E9%94%AE%E5%AD%97/</id>
+    <published>2021-05-30T11:55:29.000Z</published>
+    <updated>2021-05-30T11:55:29.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;go 语言中的 defer 关键字常用语关闭文件描述符、数据库连接或解锁资源。（这是 node.js 没有的）&lt;/p&gt;
+&lt;p&gt;本文主要研究一下，defer 如何使用以及它的执行机制。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>趣谈网络协议-笔记</title>
+    <link href="https://ruomuc.github.io/blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/"/>
+    <id>https://ruomuc.github.io/blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-05-19T13:18:37.000Z</published>
+    <updated>2021-05-26T12:38:21.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;公司开了个极客时间企业版，一人挑五门课&lt;/p&gt;
+&lt;p&gt;看了下这个《趣谈网络协议》挺有意思的&lt;/p&gt;
+&lt;p&gt;只看了前两讲就感觉收获挺大，所以记记笔记方便以后查找知识&lt;/p&gt;
+&lt;h2 id=&quot;通信协议综述&quot;&gt;&lt;a href=&quot;#通信协议综述&quot; class=&quot;headerlink&quot; title=&quot;通信协议综述&quot;&gt;&lt;/a&gt;通信协议综述&lt;/h2&gt;&lt;h3 id=&quot;协议三要素&quot;&gt;&lt;a href=&quot;#协议三要素&quot; class=&quot;headerlink&quot; title=&quot;协议三要素&quot;&gt;&lt;/a&gt;协议三要素&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;： 符合一定的规则和格式。例如括号要成对，换行要有分号。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语义&lt;/strong&gt;： 代表某种意义。例如数字可以相间，字符串相减没有意义。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;顺序&lt;/strong&gt;： 就是先干什么后干什么。例如 1+1-1 就是 先执行 1+1 在用结果减 1。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="计算机网络与操作系统" scheme="https://ruomuc.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="网络协议" scheme="https://ruomuc.github.io/blog/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go程序设计语言-slice课后练习</title>
+    <link href="https://ruomuc.github.io/blog/2021/05/17/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8Fslice%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0/"/>
+    <id>https://ruomuc.github.io/blog/2021/05/17/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8Fslice%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0/</id>
+    <published>2021-05-17T13:30:47.000Z</published>
+    <updated>2021-05-17T13:30:47.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本来想写一片关于 slice 切片的文章，但是又复习了一下《go程序设计语言》，并且网上类似的东西数不胜数。。&lt;/p&gt;
+&lt;p&gt;于是想着把课后练习题做了吧，(ps：当时看第一遍的时候不太明白所以没做)。&lt;/p&gt;
+&lt;p&gt;本文代码可以直接在 playground 中运行。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang的gc</title>
+    <link href="https://ruomuc.github.io/blog/2021/05/15/golang%E7%9A%84gc/"/>
+    <id>https://ruomuc.github.io/blog/2021/05/15/golang%E7%9A%84gc/</id>
+    <published>2021-05-15T14:49:08.000Z</published>
+    <updated>2021-05-15T14:49:08.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;和node.js一样，go语言也是有 GC 的，但是 GC 的方式和 node.js 有很大的区别。&lt;/p&gt;
+&lt;p&gt;本片文章主要对照着 node.js ，分析一下 go 的 GC 机制。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="gc" scheme="https://ruomuc.github.io/blog/tags/gc/"/>
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go中的rune类型</title>
+    <link href="https://ruomuc.github.io/blog/2021/05/01/go%E4%B8%AD%E7%9A%84rune%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://ruomuc.github.io/blog/2021/05/01/go%E4%B8%AD%E7%9A%84rune%E7%B1%BB%E5%9E%8B/</id>
+    <published>2021-05-01T12:09:03.000Z</published>
+    <updated>2021-05-01T12:09:03.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在 java 等语言中，有char类型，而在go语言中，使用的是 rune 类型。&lt;/p&gt;
+&lt;p&gt;char 类型在 java中是16位的，因为用的是unicode编码。&lt;/p&gt;
+&lt;p&gt;而 rune 类型在 go中是32位的，因为go用的是utf-8编码。&lt;/p&gt;
+&lt;p&gt;可以在这个网站查看码点：&lt;a href=&quot;https://utf8-chartable.de/unicode-utf8-table.pl?start=19840&amp;names=-&amp;utf8=dec&quot;&gt;UTF-8 encoding table and Unicode characters&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于event-loop</title>
+    <link href="https://ruomuc.github.io/blog/2021/04/19/%E5%85%B3%E4%BA%8Eevent-loop/"/>
+    <id>https://ruomuc.github.io/blog/2021/04/19/%E5%85%B3%E4%BA%8Eevent-loop/</id>
+    <published>2021-04-19T15:50:53.000Z</published>
+    <updated>2021-04-19T15:50:53.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;首先，js 不同宿主环境对 event loop 的实现是有区别的，这里说的都是 node.js 中的 event loop&lt;/p&gt;
+&lt;p&gt;关于 node.js 的 event loop ，之前写过两篇文章，最近回头看的时候，看不下去给删了&lt;/p&gt;
+&lt;p&gt;其实我的理解主要来源于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/&quot;&gt;node官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://cnodejs.org/topic/5a9108d78d6e16e56bb80882&quot;&gt;cnode论坛一位大佬的文章&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;由于cnode论坛挂过一次，并且部署在境外，如果上面的连接访问不了，可以&lt;a href=&quot;https://github.com/ruomuc/test_demos/blob/master/blog/%E5%85%B3%E4%BA%8Eevent-loop/%E4%B8%8D%E8%A6%81%E6%B7%B7%E6%B7%86nodejs%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84event%20loop.md&quot;&gt;访问我复制的这个&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之前不过是照虎画猫，写的太拉胯了，这里就不在分析和探究原理了。。&lt;/p&gt;
+&lt;p&gt;这里主要是用代码来验证一下 event loop 的执行顺序，以便回顾知识的时候更加直观。&lt;/p&gt;
+&lt;p&gt;下面的代码都在&lt;a href=&quot;https://github.com/ruomuc/test_demos/tree/master/blog/%E5%85%B3%E4%BA%8Eevent-loop&quot;&gt;github仓库&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="node.js" scheme="https://ruomuc.github.io/blog/categories/node-js/"/>
+    
+    
+    <category term="node.js" scheme="https://ruomuc.github.io/blog/tags/node-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang的“占位符”整理</title>
+    <link href="https://ruomuc.github.io/blog/2021/04/18/golang%E7%9A%84%E5%8D%A0%E4%BD%8D%E7%AC%A6%E6%95%B4%E7%90%86/"/>
+    <id>https://ruomuc.github.io/blog/2021/04/18/golang%E7%9A%84%E5%8D%A0%E4%BD%8D%E7%AC%A6%E6%95%B4%E7%90%86/</id>
+    <published>2021-04-18T06:50:13.000Z</published>
+    <updated>2021-04-18T06:50:13.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在 golang 中，格式化输出的占位符有很多种。这里整理一下方便用的时候查阅&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/categories/go/"/>
+    
+    
+    <category term="go" scheme="https://ruomuc.github.io/blog/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode刷题笔记(一)</title>
+    <link href="https://ruomuc.github.io/blog/2021/04/18/leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
+    <id>https://ruomuc.github.io/blog/2021/04/18/leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0(%E4%B8%80)/</id>
+    <published>2021-04-18T03:26:27.000Z</published>
+    <updated>2021-04-18T03:26:32.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;准备写一个系列，不是题解（&lt;del&gt;力扣里的题解有很多，我写的太烂了&lt;/del&gt;），只是把平时刷题遇到的一些相似题拿出来记一下，这样更容易记忆和理解。&lt;/p&gt;
+&lt;p&gt;这次主要有四道题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/&quot;&gt;删除有序数组中的重复项&lt;/a&gt; - 简单&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/&quot;&gt;删除有序数组中的重复项 II&lt;/a&gt; - 中等&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/&quot;&gt;删除字符串中的所有相邻重复项&lt;/a&gt; - 简单&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string-ii/&quot;&gt;删除字符串中的所有相邻重复项 II&lt;/a&gt; - 中等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a herf=&quot;https://github.com/ruomuc/test_demos/tree/master/blog/leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0(%E4%B8%80)&quot;&gt;本文代码github仓库地址&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据结构与算法" scheme="https://ruomuc.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法刷题笔记" scheme="https://ruomuc.github.io/blog/tags/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>排序算法整理</title>
+    <link href="https://ruomuc.github.io/blog/2021/04/17/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/"/>
+    <id>https://ruomuc.github.io/blog/2021/04/17/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</id>
+    <published>2021-04-17T07:16:54.000Z</published>
+    <updated>2021-06-13T06:10:46.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;如题，整理一下常用的排序算法，方便用的时候好找（&lt;del&gt;虽然基本也用不到&lt;/del&gt;）。&lt;/p&gt;
+&lt;p&gt;这里推荐一个网站，&lt;a href=&quot;https://visualgo.net/en&quot;&gt;https://visualgo.net/en&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本文完整可执行代码地址：&lt;a href=&quot;https://github.com/ruomuc/test_demos/tree/master/blog/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据结构与算法" scheme="https://ruomuc.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="https://ruomuc.github.io/blog/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="排序算法" scheme="https://ruomuc.github.io/blog/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+</feed>

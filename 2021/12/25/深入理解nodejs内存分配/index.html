@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>深入理解nodejs内存分配 | ruomu</title><meta name="keywords" content="内存"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="因为最近遇到很多关于内存的问题，所以决定再次探究回顾一下 node.js 相关的内存知识。 再次删除了一些之前的关于node.js内存的博文，因为在现在看来那些写的太垃圾了。 内存的生命周期 内存分配：由 JavaScript 内部为我们分配内存。 内存使用：由代码来读取内存的数据，或向内存写入数据（比如赋值语句）。 内存释放：由 JavaScript 引擎来进行，内存释放后，可以被 JavaSc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解nodejs内存分配">
+<meta property="og:url" content="https://ruomuc.github.io/blog/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/index.html">
+<meta property="og:site_name" content="ruomu">
+<meta property="og:description" content="因为最近遇到很多关于内存的问题，所以决定再次探究回顾一下 node.js 相关的内存知识。 再次删除了一些之前的关于node.js内存的博文，因为在现在看来那些写的太垃圾了。 内存的生命周期 内存分配：由 JavaScript 内部为我们分配内存。 内存使用：由代码来读取内存的数据，或向内存写入数据（比如赋值语句）。 内存释放：由 JavaScript 引擎来进行，内存释放后，可以被 JavaSc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg">
+<meta property="article:published_time" content="2021-12-25T03:26:22.000Z">
+<meta property="article:modified_time" content="2021-12-25T03:26:22.000Z">
+<meta property="article:author" content="ruomu">
+<meta property="article:tag" content="内存">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '深入理解nodejs内存分配',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-25 11:26:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="ruomu" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ruomu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">深入理解nodejs内存分配</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-25T03:26:22.000Z" title="发表于 2021-12-25 11:26:22">2021-12-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/node-js/">node.js</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="深入理解nodejs内存分配"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>因为最近遇到很多关于内存的问题，所以决定再次探究回顾一下 node.js 相关的内存知识。</p>
+<p>再次删除了一些之前的关于node.js内存的博文，因为在现在看来那些写的太垃圾了。</p>
+<h2 id="内存的生命周期"><a href="#内存的生命周期" class="headerlink" title="内存的生命周期"></a>内存的生命周期</h2><ul>
+<li>内存分配：由 JavaScript 内部为我们分配内存。</li>
+<li>内存使用：由代码来读取内存的数据，或向内存写入数据（比如赋值语句）。</li>
+<li>内存释放：由 JavaScript 引擎来进行，内存释放后，可以被 JavaScript 重新分配。</li>
+</ul>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/node.js%E5%86%85%E5%AD%98%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png"></p>
+<h2 id="栈（Stack）和堆（Heap）"><a href="#栈（Stack）和堆（Heap）" class="headerlink" title="栈（Stack）和堆（Heap）"></a>栈（Stack）和堆（Heap）</h2><h3 id="堆栈和堆的概念"><a href="#堆栈和堆的概念" class="headerlink" title="堆栈和堆的概念"></a>堆栈和堆的概念</h3><p>在数据结构中：</p>
+<blockquote>
+<p>栈的结构比较好理解，一种线性结构，限制：只允许一端出入。所以栈的特点是<strong>LIFO(Last In First Out)后进先出</strong>。</p>
+<p>堆在数据结构中是一种特殊的完全二叉树，所以是一种树状结构。</p>
+</blockquote>
+<p>在计算机内存分配中：</p>
+<blockquote>
+<p><strong>堆（heap）和栈（stack）是两种内在的管理形式</strong>。</p>
+<p>它们的主要区别是stack按次序排放，大小明确；heap结构则不固定，是一种可动态分配和释放的内存。单从这一点看，stack的寻址速度要比heap快，heap的灵活性则比较高。一般来说，每个线程分配一个stack，每个进程分配一个heap。</p>
+</blockquote>
+<h3 id="栈内存分配"><a href="#栈内存分配" class="headerlink" title="栈内存分配"></a>栈内存分配</h3><p>栈是 JavaScript 用来存储静态数据的数据结构。</p>
+<p>静态数据就是引擎在编译时就知道大小的数据。</p>
+<p>在程序运行前分配内存的过程称为<strong>静态内存分配</strong>。</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs%E6%A0%88%E5%86%85%E5%AD%98.png"></p>
+<span id="more"></span>
+<p>原始值在进行相互赋值时，内存是如何分配的呢？</p>
+<p>可以发现，变量指向的还是一个内存地址，由于栈内存中存储的原始值是不可变的，所以对 nextAge 进行 +1 操作时，会重新分配一个地址存储新的值，并且把 nextAge 指向新的地址。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = <span class="number">25</span></span><br><span class="line"><span class="keyword">let</span> nextAge = age</span><br><span class="line">nextAge = nextAge + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs%E6%A0%88%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D2.png"></p>
+<h3 id="堆内存分配"><a href="#堆内存分配" class="headerlink" title="堆内存分配"></a>堆内存分配</h3><p>ps : 堆内存 和 数据结构里的堆，是没有任何关系的。。只是 Heap 这个单词背沿用了下来。参见：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/276016774/answer/385381844">堆内存和数据结构堆之间的关系是什么？ - 詹姆斯.通的回答 - 知乎</a></p>
+<hr>
+<p>堆是 JavaScript 用来存储 对象和函数等数据类型的空间。</p>
+<p>JavaScript 在编译期间无法知道它们所需内存大小，所以只有在运行时进行内存分配。</p>
+<p>在程序运行时分配内存的过程称为<strong>动态内存分配</strong>。</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs%E5%A0%86%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D.png"></p>
+<p>并且如果修改了 newCat 的 name 字段。 cat 的 name 字段也会改变：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cat = &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;mimi&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getName</span>(<span class="params">target</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> target.<span class="property">name</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newCat = cat</span><br><span class="line">newCat.<span class="property">name</span> = <span class="string">&#x27;miaomiao&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getName</span>(cat)) <span class="comment">// miaomiao</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="堆栈溢出"><a href="#堆栈溢出" class="headerlink" title="堆栈溢出"></a>堆栈溢出</h3><p>JavaScript 中使用没有终止条件的递归调用，会产生堆栈溢出的报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">recurse</span> () &#123;</span><br><span class="line">  <span class="title function_">recurse</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">recurse</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// RangeError: Maximum call stack size exceeded</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:17:13)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br><span class="line"><span class="comment">//     at recurse (/Users/zhangming/ownspace/local-test/test9/index.js:18:3)</span></span><br></pre></td></tr></table></figure>
+
+<p>但是这里的堆栈，指的是 调用堆栈（call stack），不一定和上文的堆栈使用同一内存空间。</p>
+<h3 id="OOM（out-of-memory）"><a href="#OOM（out-of-memory）" class="headerlink" title="OOM（out of memory）"></a>OOM（out of memory）</h3><p>这个报错可以说时很常见了。</p>
+<p>因为本地默认的堆内存比较大，要使用<code>node --max-old-space-size=10 index.js</code>命令可以更快得到 oom 错误信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; memoryUsage &#125; = <span class="built_in">require</span>(<span class="string">&#x27;process&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">oom</span> () &#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000000000</span>; i++) &#123;</span><br><span class="line">    obj[i] = &#123; [i * i]: i * i&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">oom</span>()</span><br></pre></td></tr></table></figure>
+
+<p>日志太多了，截取一部分：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;--- Last few GCs ---&gt;</span><br><span class="line"></span><br><span class="line">[11306:0x1048f3000]     1098 ms: Mark-sweep 4.9 (8.3) -&gt; 3.9 (8.3) MB, 3.4 / 0.0 ms  (average mu = 0.932, current mu = 0.932) allocation failure scavenge might not succeed</span><br><span class="line">[11306:0x1048f3000]     1147 ms: Mark-sweep 5.0 (8.3) -&gt; 4.0 (8.6) MB, 2.3 / 0.0 ms  (average mu = 0.943, current mu = 0.954) allocation failure scavenge might not succeed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;--- JS stacktrace ---&gt;</span><br><span class="line"></span><br><span class="line">FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation failed - JavaScript heap out of memory</span><br><span class="line"> 1: 0x10130d6e5 node::Abort() (.cold.1) [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]</span><br><span class="line"> 2: 0x1000b1c49 node::Abort() [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]</span><br><span class="line"> 3: 0x1000b1daf node::OnFatalError(char const*, char const*) </span><br></pre></td></tr></table></figure>
+
+<h2 id="大对象内存占用"><a href="#大对象内存占用" class="headerlink" title="大对象内存占用"></a>大对象内存占用</h2><h3 id="如何查看对象的内存占用"><a href="#如何查看对象的内存占用" class="headerlink" title="如何查看对象的内存占用"></a>如何查看对象的内存占用</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/object-sizeof">object-sizeof</a></li>
+<li>chrome 的内存快照</li>
+</ul>
+<p>object-sizeof 是根据 <a target="_blank" rel="noopener" href="https://262.ecma-international.org/5.1/#sec-4.3.16">ECMAScript标准</a>，对对象大小的一个估算，一般会比 chrome 的内存快照大一些，因为引擎在最终存储时可能会做一些优化。</p>
+<ul>
+<li>String 2字节</li>
+<li>Boolean 4字节</li>
+<li>Number 8字节</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sizeof = <span class="built_in">require</span>(<span class="string">&#x27;object-sizeof&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cat = &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;mimi&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">isMale</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sizeof</span>(cat)) <span class="comment">// 58</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="JSON和对象"><a href="#JSON和对象" class="headerlink" title="JSON和对象"></a>JSON和对象</h3><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ul>
+<li>JSON（JavaScript Object Notation）虽然全程含有 JavaScript，但不是只有 JavaScript 可以使用，JSON 是 JavaScript 的一个子集。</li>
+<li>JSON 是一种轻量级的资料交换格式。 类似的还有 protobuf 等。</li>
+<li>Object 是 JavaScript 的一种 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures">数据类型</a> 。它用于存储各种键值集合和更复杂的实体。</li>
+<li>在 JavaScript 中 json 数据可以很简单的转化为 object ，当然其它语言使用对应的解析器也可以做到。</li>
+</ul>
+<h4 id="互相转换"><a href="#互相转换" class="headerlink" title="互相转换"></a>互相转换</h4><p>JavaScript 内置了 <code>JSON.parse()</code> 和 <code>JSON.stringify()</code> 来进行 JSON 和 Object 的相互转换。</p>
+<p>json方法的实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">global</span>.<span class="property">JSON</span>.<span class="property">parse</span>.<span class="title function_">toString</span>()</span><br><span class="line"><span class="comment">//  function parse() &#123; [native code] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">global</span>.<span class="property">JSON</span>.<span class="property">stringify</span>.<span class="title function_">toString</span>()</span><br><span class="line"><span class="comment">// function stringify() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>关于 native code：</p>
+<p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/WX20211226-125734.png"></p>
+<p>json源码的位置：deps/v8/src/json-parser.cc</p>
+<h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><p>上面可以看到，一个json对象，转换成JavaScript对象后，占用内存会几倍的增大。</p>
+<p>所以开发中会遇到 JSON.parse 一个大对象后，内存容易OOM。</p>
+<p>这里有两个简单的节省内存的方法：</p>
+<p>第一种，减少key的数量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;,</span><br><span class="line">  &#123;<span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换为:</span></span><br><span class="line">[</span><br><span class="line">  [a, b],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>第二种，大json使用分隔符分隔：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转化为一个文件</span></span><br><span class="line">&#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;\n&#123;<span class="attr">a</span>:<span class="number">3</span>, <span class="attr">b</span>:<span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为解析小的json速度会更快：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="string">&#x27;[&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;,&#123;&quot;a&quot;:3,&quot;b&quot;:4&#125;]&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">time</span>(<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">timeEnd</span>(<span class="string">&#x27;big&#x27;</span>) <span class="comment">// 0.315ms</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a1 = <span class="string">&#x27;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> a2 = <span class="string">&#x27;&#123;&quot;a&quot;:3,&quot;b&quot;:4&#125;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">time</span>(<span class="string">&#x27;small&#x27;</span>)</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(a1)</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(a2)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">timeEnd</span>(<span class="string">&#x27;small&#x27;</span>) <span class="comment">// 0.01ms</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>垃圾回收前面已经讲过很多了，参见：</p>
+<p><a target="_blank" rel="noopener" href="https://www.seeln.com/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/#V8%E7%9A%84%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6">V8的垃圾回收机制和内存限制</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.seeln.com/2021/05/15/golang%E7%9A%84gc/">golang的gc</a></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%86%85%E5%AD%98/">内存</a></div><div class="post_share"></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ruomu</div><div class="author-info__description">贪安稳就没有自由，要自由就要历些危险，只有这两条路。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ruomuc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ruomuc" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zm252615299@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">内存的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%EF%BC%88Stack%EF%BC%89%E5%92%8C%E5%A0%86%EF%BC%88Heap%EF%BC%89"><span class="toc-text">栈（Stack）和堆（Heap）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E6%A0%88%E5%92%8C%E5%A0%86%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">堆栈和堆的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text">栈内存分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text">堆内存分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="toc-text">堆栈溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OOM%EF%BC%88out-of-memory%EF%BC%89"><span class="toc-text">OOM（out of memory）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-text">大对象内存占用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-text">如何查看对象的内存占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-text">JSON和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-text">区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2"><span class="toc-text">互相转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="toc-text">内存优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">垃圾回收</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/" title="go的接口和类型">go的接口和类型</a><time datetime="2022-02-27T06:01:33.000Z" title="更新于 2022-02-27 14:01:33">2022-02-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/" title="V8的垃圾回收机制和内存限制">V8的垃圾回收机制和内存限制</a><time datetime="2022-01-01T06:34:31.000Z" title="更新于 2022-01-01 14:34:31">2022-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" title="深入理解nodejs内存分配">深入理解nodejs内存分配</a><time datetime="2021-12-25T03:26:22.000Z" title="更新于 2021-12-25 11:26:22">2021-12-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/" title="囚徒健身">囚徒健身</a><time datetime="2021-12-12T05:54:35.000Z" title="更新于 2021-12-12 13:54:35">2021-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/" title="博客迁移到私有服务器上">博客迁移到私有服务器上</a><time datetime="2021-08-29T08:23:59.000Z" title="更新于 2021-08-29 16:23:59">2021-08-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By ruomu</div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hVxwhszrh6HIYuh0m6Bmtvoo-gzGzoHsz',
+      appKey: 'h09HacDfMwbAWQMgWw6D07Tb',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine@1.4.18/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
