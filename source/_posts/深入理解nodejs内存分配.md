@@ -20,7 +20,7 @@ updated: 2021-12-25 11:26:22
 - 内存使用：由代码来读取内存的数据，或向内存写入数据（比如赋值语句）。
 - 内存释放：由 JavaScript 引擎来进行，内存释放后，可以被 JavaScript 重新分配。
 
-![](https://image.seeln.com/images/node.js内存的生命周期.png)
+![](https://blog-1301153828.cos.ap-shanghai.myqcloud.com/node.js内存的生命周期.png)
 
 ## 栈（Stack）和堆（Heap）
 ### 堆栈和堆的概念
@@ -45,7 +45,7 @@ updated: 2021-12-25 11:26:22
 
 在程序运行前分配内存的过程称为**静态内存分配**。
 
-![](https://image.seeln.com/images/nodejs栈内存.png)
+![](https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs栈内存.png)
 <!--more-->
 原始值在进行相互赋值时，内存是如何分配的呢？
 
@@ -57,7 +57,7 @@ let nextAge = age
 nextAge = nextAge + 1
 ```
 
-![](https://image.seeln.com/images/nodejs栈内存分配2.png)
+![](https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs栈内存分配2.png)
 
 ### 堆内存分配
 
@@ -71,7 +71,7 @@ JavaScript 在编译期间无法知道它们所需内存大小，所以只有在
 
 在程序运行时分配内存的过程称为**动态内存分配**。
 
-![](https://image.seeln.com/images/nodejs堆内存分配.png)
+![](https://blog-1301153828.cos.ap-shanghai.myqcloud.com/nodejs堆内存分配.png)
 
 并且如果修改了 newCat 的 name 字段。 cat 的 name 字段也会改变：
 
@@ -209,7 +209,7 @@ global.JSON.stringify.toString()
 
 关于 native code：
 
-![](https://image.seeln.com/images/WX20211226-125734.png)
+![](https://blog-1301153828.cos.ap-shanghai.myqcloud.com/WX20211226-125734.png)
 
 json源码的位置：deps/v8/src/json-parser.cc
 
