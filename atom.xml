@@ -495,25 +495,25 @@
   </entry>
   
   <entry>
-    <title>排序算法整理</title>
-    <link href="https://ruomuc.github.io/blog/2021/04/17/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/"/>
-    <id>https://ruomuc.github.io/blog/2021/04/17/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</id>
-    <published>2021-04-17T07:16:54.000Z</published>
-    <updated>2021-06-13T06:10:46.000Z</updated>
+    <title>WeekMap和WeekSet</title>
+    <link href="https://ruomuc.github.io/blog/2021/04/10/WeekMap%E5%92%8CWeekSet/"/>
+    <id>https://ruomuc.github.io/blog/2021/04/10/WeekMap%E5%92%8CWeekSet/</id>
+    <published>2021-04-10T14:46:07.000Z</published>
+    <updated>2021-04-10T14:46:07.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;如题，整理一下常用的排序算法，方便用的时候好找（&lt;del&gt;虽然基本也用不到&lt;/del&gt;）。&lt;/p&gt;
-&lt;p&gt;这里推荐一个网站，&lt;a href=&quot;https://visualgo.net/en&quot;&gt;https://visualgo.net/en&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;本文完整可执行代码地址：&lt;a href=&quot;https://github.com/ruomuc/test_demos/tree/master/blog/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;在es6中，不仅引入了 Map 和 Set， 还有 WeekMap和WeekSet，不过我没怎么用过。&lt;/p&gt;
+&lt;p&gt;首先WeekMap 和 WeekSet 的键只能是对象；其次垃圾回收不会考虑它们对对象的引用，本文主要分析它们对于 gc 的区别。&lt;/p&gt;
+&lt;p&gt;测试代码地址:&lt;a href=&quot;https://github.com/ruomuc/test_demos/tree/master/blog/WeekMap%E5%92%8CWeekSet&quot;&gt;https://github.com/ruomuc/test_demos/tree/master/blog/WeekMap%E5%92%8CWeekSet&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
-    <category term="数据结构与算法" scheme="https://ruomuc.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <category term="javascript" scheme="https://ruomuc.github.io/blog/categories/javascript/"/>
     
     
-    <category term="算法" scheme="https://ruomuc.github.io/blog/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="js" scheme="https://ruomuc.github.io/blog/tags/js/"/>
     
-    <category term="排序算法" scheme="https://ruomuc.github.io/blog/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <category term="gc" scheme="https://ruomuc.github.io/blog/tags/gc/"/>
     
   </entry>
   
