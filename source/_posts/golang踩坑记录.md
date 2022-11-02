@@ -175,6 +175,3 @@ func Recover(c *gin.Context) {
 5. 然后`code := data["code"].(int) msg := data["msg"].(string)` 这种写法和前面读取yaml文件时说的一样，`interface{}`的类型要用断言转一下。参见[https://stackoverflow.com/questions/18041334/convert-interface-to-int](https://stackoverflow.com/questions/18041334/convert-interface-to-int)
 6. ps: 反正你用空接口的时候，取值就尝试用断言去转一下类型，不然肯定取不到的。
 
-
-
-未完待续~
