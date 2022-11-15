@@ -7,9 +7,8 @@
 <p>首先这是一个萌新成长过程的记录，不是一个大佬的经验分享。其次懂得越多，越觉得自己写的烂，所以更新越来越慢，是因为有太多东西没有消化，不想写一些烂的东西。</p>
 <p><strong>补充</strong>，除部分自己分享的，还有很多整理搬运的，有一些忘记贴参考链接，后面更的能找到都会贴上。</p>
 <p><strong>时间线：</strong></p>
-<p>2022年09月18日18:09:35</p>
-<p>买的证书过期了，过期前忘记续费了，现在也懒得弄了，准备把东西全部搬到github上。包括所有的图片文件。</p>
-<p>gitpages的自定义域名是免费的，现在可以用 <a href="https://blog.ruomu.cc/">https://blog.ruomu.cc</a> 来访问我的博客了。旧的地址我到自己服务器配一个重定向。</p>
+<p>2022年11月13日21:57:44</p>
+<p>香港的服务器被封了，博客现在迁移到了github上的pages服务，没翻墙会有些慢。<br>目前只有 <a href="https://blog.ruomu.cc/">https://blog.ruomu.cc</a> 这个域名可以访问，因为没有服务器，没有备案，没想好其他域名如何做重定向。<br>然后每回过头看一遍我的博客，就会删除一些旧的文章，会的越多不会的越多，现在还不知道写些什么，目前在学习c++，后续可能会写一些c++相关的东西?</p>
 <p>2021年12月11日22:33:23</p>
 <p>不小心把一个备案域名解析到香港服务器了，备案失效了，导致七牛云的资源全部下不下来了。。</p>
 <p>然后找了下用 <code>qshell</code> 这个工具，自己写了个<a href="https://github.com/ruomuc/practice/blob/master/shells/qniu-download.sh">shell脚本</a>，把资源全部转移到自己的服务器上了，慢就慢吧。。</p>
@@ -2298,59 +2297,6 @@
       </categories>
       <tags>
         <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode刷题笔记(一)</title>
-    <url>/2021/04/18/leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0(%E4%B8%80)/</url>
-    <content><![CDATA[<p>准备写一个系列，不是题解（<del>力扣里的题解有很多，我写的太烂了</del>），只是把平时刷题遇到的一些相似题拿出来记一下，这样更容易记忆和理解。</p>
-<p>这次主要有四道题：</p>
-<ul>
-<li><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">删除有序数组中的重复项</a> - 简单</li>
-<li><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/">删除有序数组中的重复项 II</a> - 中等</li>
-<li><a href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/">删除字符串中的所有相邻重复项</a> - 简单</li>
-<li><a href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string-ii/">删除字符串中的所有相邻重复项 II</a> - 中等</li>
-</ul>
-<p><a herf="https://github.com/ruomuc/test_demos/tree/master/blog/leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0(%E4%B8%80)">本文代码github仓库地址</a></p>
-<span id="more"></span>
-
-<hr>
-<p><strong>删除有序数组中的重复项</strong></p>
-<p>由题意可知：</p>
-<ul>
-<li>输入为一个<strong>有序</strong>数组，并且已经按<strong>升序排列</strong></li>
-<li>新数组每个元素<strong>只出现一次</strong></li>
-<li>原地修改数组并且使用 <strong>O(1) 额外空间</strong>完成</li>
-<li>返回值为新数组的长度</li>
-<li>无需考虑数组中超过新数组长度的元素</li>
-</ul>
-<p>双指针解法：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeDuplicates</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	n := <span class="built_in">len</span>(nums)</span><br><span class="line">	<span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	pre := <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> cur := <span class="number">1</span>; cur &lt; n; cur++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[cur] != nums[pre<span class="number">-1</span>] &#123;</span><br><span class="line">			nums[pre] = nums[cur]</span><br><span class="line">			pre++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pre</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>删除有序数组中的重复项II</strong></p>
-<p>和上一题的区别就是，新数组允许每个元素<strong>最多出现两次</strong></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeDuplicates</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	n := <span class="built_in">len</span>(nums)</span><br><span class="line">	<span class="keyword">if</span> n &lt;= <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> n</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	pre := <span class="number">2</span></span><br><span class="line">	<span class="keyword">for</span> cur := <span class="number">2</span>; cur &lt; n; cur++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[pre<span class="number">-2</span>] != nums[cur] &#123;</span><br><span class="line">			nums[pre] = nums[cur]</span><br><span class="line">			pre++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pre</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们发现，删除有序数组中的重复项两题解法其实是相同的。。</p>
-<hr>
-<p><strong>删除字符串中的所有相邻重复项</strong></p>
-<p>分析题意，我们需要删除一个字符串中，相邻并且相同的项，直到没有重复的相邻项为止。</p>
-<p>我们可以使用栈来解题：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeDuplicates</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	stack := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> s &#123;</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(stack) &gt; <span class="number">0</span> &amp;&amp; stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] == s[i] &#123;</span><br><span class="line">			stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			stack = <span class="built_in">append</span>(stack, s[i])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="type">string</span>(stack)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>删除字符串中的所有相邻重复项 II</strong></p>
-<p>和上题的区别是，新字符串允许有指定 k 个相邻且相等的字母。</p>
-<p>是不是可前面的数组两题一个套路？</p>
-<p>使用两个栈，一个记录字符，一个记录栈顶字符出现的次数。（<del>不过实际写起来遇到很多坑</del>）</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeDuplicates</span><span class="params">(s <span class="type">string</span>, k <span class="type">int</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	<span class="comment">// 用两个栈，一个记录字符，一个记录字符出现的次数</span></span><br><span class="line">	stack := <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">0</span>)</span><br><span class="line">	count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> s &#123;</span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">0</span> || <span class="built_in">len</span>(stack) == <span class="number">0</span> || s[i] != stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] &#123;</span><br><span class="line">			count = <span class="built_in">append</span>(count, <span class="number">1</span>)</span><br><span class="line">			stack = <span class="built_in">append</span>(stack, s[i])</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			countTop := count[<span class="built_in">len</span>(count)<span class="number">-1</span>]</span><br><span class="line">			<span class="keyword">if</span> countTop+<span class="number">1</span> == k &#123;</span><br><span class="line">				stack = stack[:<span class="built_in">len</span>(stack)-countTop]</span><br><span class="line">				count = count[:<span class="built_in">len</span>(count)<span class="number">-1</span>]</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				count[<span class="built_in">len</span>(count)<span class="number">-1</span>] = countTop + <span class="number">1</span></span><br><span class="line">				stack = <span class="built_in">append</span>(stack, s[i])</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="type">string</span>(stack)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>算法刷题笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -8100,8 +8046,8 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
         <category>javascript</category>
       </categories>
       <tags>
-        <tag>面试题</tag>
         <tag>基础</tag>
+        <tag>面试题</tag>
       </tags>
   </entry>
   <entry>
@@ -8780,51 +8726,6 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
       </categories>
       <tags>
         <tag>node.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>node.js面试题整理(二)</title>
-    <url>/2018/07/03/node-js%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="模块机制"><a href="#模块机制" class="headerlink" title="模块机制"></a>模块机制</h2><h6 id="其实官方文档已经说得很清楚了-每个-node-进程只有一个-VM-的上下文-不会跟浏览器相差多少-模块机制在文档中也描述的非常清楚了"><a href="#其实官方文档已经说得很清楚了-每个-node-进程只有一个-VM-的上下文-不会跟浏览器相差多少-模块机制在文档中也描述的非常清楚了" class="headerlink" title="其实官方文档已经说得很清楚了, 每个 node 进程只有一个 VM 的上下文, 不会跟浏览器相差多少, 模块机制在文档中也描述的非常清楚了:"></a>其实官方文档已经说得很清楚了, 每个 node 进程只有一个 VM 的上下文, 不会跟浏览器相差多少, 模块机制在文档中也描述的非常清楚了:</h6><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">require</span>(<span class="params">...</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> <span class="variable language_">module</span> = &#123; <span class="attr">exports</span>: &#123;&#125; &#125;;</span><br><span class="line">  (<span class="function">(<span class="params"><span class="variable language_">module</span>, <span class="built_in">exports</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Your module code here. In this example, define a function.</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">some_func</span>(<span class="params"></span>) &#123;&#125;;</span><br><span class="line">    <span class="built_in">exports</span> = some_func;</span><br><span class="line">    <span class="comment">// At this point, exports is no longer a shortcut to module.exports, and</span></span><br><span class="line">    <span class="comment">// this module will still export an empty default object.</span></span><br><span class="line">    <span class="variable language_">module</span>.<span class="property">exports</span> = some_func;</span><br><span class="line">    <span class="comment">// At this point, the module will now export some_func, instead of the</span></span><br><span class="line">    <span class="comment">// default object.</span></span><br><span class="line">  &#125;)(<span class="variable language_">module</span>, <span class="variable language_">module</span>.<span class="property">exports</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">module</span>.<span class="property">exports</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="如果-a-js-require-了-b-js-那么在-b-中定义全局变量-t-111-能否在-a-中直接打印出来"><a href="#如果-a-js-require-了-b-js-那么在-b-中定义全局变量-t-111-能否在-a-中直接打印出来" class="headerlink" title="如果 a.js require 了 b.js, 那么在 b 中定义全局变量 t = 111 能否在 a 中直接打印出来?"></a><font color = red>如果 a.js require 了 b.js, 那么在 b 中定义全局变量 t = 111 能否在 a 中直接打印出来?</font></h5><h6 id="每个-js-能独立一个环境只是因为-node-帮你在外层包了一圈自执行-所以你使用-t-111-定义全局变量在其他地方当然能拿到-情况如下"><a href="#每个-js-能独立一个环境只是因为-node-帮你在外层包了一圈自执行-所以你使用-t-111-定义全局变量在其他地方当然能拿到-情况如下" class="headerlink" title="每个 .js 能独立一个环境只是因为 node 帮你在外层包了一圈自执行, 所以你使用 t = 111 定义全局变量在其他地方当然能拿到. 情况如下:"></a>每个 .js 能独立一个环境只是因为 node 帮你在外层包了一圈自执行, 所以你使用 t = 111 定义全局变量在其他地方当然能拿到. 情况如下:</h6><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// b.js</span></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"><span class="built_in">exports</span>, <span class="built_in">require</span>, <span class="variable language_">module</span>, __filename, __dirname</span>) &#123;</span><br><span class="line">  t = <span class="number">111</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// a.js</span></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"><span class="built_in">exports</span>, <span class="built_in">require</span>, <span class="variable language_">module</span>, __filename, __dirname</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(t); <span class="comment">// 111</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-</br>
-##### <font color = red>a.js 和 b.js 两个文件互相 require 是否会死循环? 双方是否能导出变量? 如何从设计上避免这种问题?</font>
-###### CommonJS模块的重要特性是加载时执行，即脚本代码在require的时候，就会全部执行。CommonJS的做法是，一旦出现某个模块被"循环加载"，就只输出已经执行的部分，还未执行的部分不会输出。
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">done</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">&#x27;./b.js&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;在 a.js 之中，b.done = %j&#x27;</span>, b.<span class="property">done</span>);</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">done</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;a.js 执行完毕&#x27;</span>);</span><br></pre></td></tr></table></figure>
-###### 上面代码之中，a.js脚本先输出一个done变量，然后加载另一个脚本文件b.js。注意，此时a.js代码就停在这里，等待b.js执行完毕，再往下执行。再看b.js的代码。
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">done</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">&#x27;./a.js&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;在 b.js 之中，a.done = %j&#x27;</span>, a.<span class="property">done</span>);</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">done</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b.js 执行完毕&#x27;</span>);</span><br></pre></td></tr></table></figure>
-###### 上面代码之中，b.js执行到第二行，就会去加载a.js，这时，就发生了"循环加载"。系统会去a.js模块对应对象的exports属性取值，可是因为a.js还没有执行完，从exports属性只能取回已经执行的部分，而不是最后的值。a.js已经执行的部分，只有一行。
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">done</span> = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-###### 因此，对于b.js来说，它从a.js只输入一个变量done，值为false。然后，b.js接着往下执行，等到全部执行完毕，再把执行权交还给a.js。于是，a.js接着往下执行，直到执行完毕。我们写一个脚本main.js，验证这个过程。
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">&#x27;./a.js&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">&#x27;./b.js&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;在 main.js 之中, a.done=%j, b.done=%j&#x27;</span>, a.<span class="property">done</span>, b.<span class="property">done</span>);</span><br></pre></td></tr></table></figure>
-执行main.js,运行结果如下:
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ node main.<span class="property">js</span></span><br><span class="line"></span><br><span class="line">在 b.<span class="property">js</span> 之中，a.<span class="property">done</span> = <span class="literal">false</span></span><br><span class="line">b.<span class="property">js</span> 执行完毕</span><br><span class="line">在 a.<span class="property">js</span> 之中，b.<span class="property">done</span> = <span class="literal">true</span></span><br><span class="line">a.<span class="property">js</span> 执行完毕</span><br><span class="line">在 main.<span class="property">js</span> 之中, a.<span class="property">done</span>=<span class="literal">true</span>, b.<span class="property">done</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-###### 上面的代码证明了两件事。一是，在b.js之中，a.js没有执行完毕，只执行了第一行。二是，main.js执行到第二行时，不会再次执行b.js，而是输出缓存的b.js的执行结果，即它的第四行。
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">done</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-> <font color = blue>ES6模块的运行机制与CommonJS不一样，它遇到模块加载命令import时，不会去执行模块，而是只生成一个引用。等到真的需要用到时，再到模块里面去取值。因此，ES6模块是动态引用，不存在缓存值的问题，而且模块里面的变量，绑定其所在的模块</font>
-
-</br>
-##### <font color = red>比较 AMD, CMD, CommonJS 三者的区别</font>
-###### 1.CMD和AMD之间的差异
-- commonjs的目标是制定一个js模块化的标准，它的目标制定一个可以同时在客服端和服务端运行的模块。这些模块拥有自己独立的作用域，也可以向顶层曝露出自己的api也就是module.exports。在ES6中common被制定为标准。但是在ES6还未被浏览器完美支持的情况下，commonjs规范之能在服务端发挥它的作用。比如在nodejs和webpack等中。而我们服务端的异步加载模块主要有2种加载方案，CMD和AMD，这两种规范的典型是seajs和rjs(requirejs)。这两种方案虽然都是加载模块的解决方案，但是还是有一些的差别。
-- cmd是commonjs另外的一种模块加载方案，这个规范本身偏向于commonjs的规范。他以一个文件就是一个模块和ES6中标准的commonjs规范类似。
-- AMD是为了弥补commonjs规范在浏览器中目前无法支持ES6的一种解决方案。异步模块定义规范（AMD）制定了定义模块的规则，这样模块和模块的依赖可以被异步加载。这和浏览器的异步加载模块的环境刚好适应（浏览器同步加载模块会导致性能、可用性、调试和跨域访问等问题）。requirejs是AMD规范的实践者，RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用，但它也可以用在其他脚本环境, 就像 Rhino and Node. 使用RequireJS加载模块化脚本将提高代码的加载速度和质量。
-
-</br>
-###### 2.require的实现原理
-见[require的实现原理](http://ruomuc.gitee.io/blog/2018/07/03/require%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)。
-<span id="more"></span>
-##### <font color = red>热更新</font>
-###### 从面试官的角度看, 热更新 是很多程序常见的问题. 对客户端而言, 热更新意味着不用换包, 当然也包含着 md5 校验/差异更新等复杂问题; 对服务端而言, 热更新意味着服务不用重启, 这样可用性较高同时也优雅和有逼格. 问的过程中可以一定程度的暴露应聘程序员的水平.
-
-<h6 id="从-PHP-转-node-的同学可能会有些想法-比如-PHP-的代码直接刷上去就好了-并没有所谓的重启-而-node-重启看起来动作还挺大-当然这里面的区别-主要是与同时有-PHP-与-node-开发经验的同学可以讨论-也是很好的切入点"><a href="#从-PHP-转-node-的同学可能会有些想法-比如-PHP-的代码直接刷上去就好了-并没有所谓的重启-而-node-重启看起来动作还挺大-当然这里面的区别-主要是与同时有-PHP-与-node-开发经验的同学可以讨论-也是很好的切入点" class="headerlink" title="从 PHP 转 node 的同学可能会有些想法, 比如 PHP 的代码直接刷上去就好了, 并没有所谓的重启. 而 node 重启看起来动作还挺大. 当然这里面的区别, 主要是与同时有 PHP 与 node 开发经验的同学可以讨论, 也是很好的切入点."></a>从 PHP 转 node 的同学可能会有些想法, 比如 PHP 的代码直接刷上去就好了, 并没有所谓的重启. 而 node 重启看起来动作还挺大. 当然这里面的区别, 主要是与同时有 PHP 与 node 开发经验的同学可以讨论, 也是很好的切入点.</h6><h6 id="在-Node-js-中做热更新代码-牵扯到的知识点可能主要是-require-会有一个-cache-有这个-cache-在-即使你更新了-js-文件-在代码中再次-require-还是会拿到之前的编译好缓存在-v8-内存-code-space-中的的旧代码-但是如果只是单纯的清除掉-require-中的-cache-再次-require-确实能拿到新的代码-但是这时候很容易碰到各地维持旧的引用依旧跑的旧的代码的问题-如果还要继续推行这种热更新代码的话-可能要推翻当前的架构-从头开始从新设计一下目前的框架"><a href="#在-Node-js-中做热更新代码-牵扯到的知识点可能主要是-require-会有一个-cache-有这个-cache-在-即使你更新了-js-文件-在代码中再次-require-还是会拿到之前的编译好缓存在-v8-内存-code-space-中的的旧代码-但是如果只是单纯的清除掉-require-中的-cache-再次-require-确实能拿到新的代码-但是这时候很容易碰到各地维持旧的引用依旧跑的旧的代码的问题-如果还要继续推行这种热更新代码的话-可能要推翻当前的架构-从头开始从新设计一下目前的框架" class="headerlink" title="在 Node.js 中做热更新代码, 牵扯到的知识点可能主要是 require 会有一个 cache, 有这个 cache 在, 即使你更新了 .js 文件, 在代码中再次 require 还是会拿到之前的编译好缓存在 v8 内存 (code space) 中的的旧代码. 但是如果只是单纯的清除掉 require 中的 cache, 再次 require 确实能拿到新的代码, 但是这时候很容易碰到各地维持旧的引用依旧跑的旧的代码的问题. 如果还要继续推行这种热更新代码的话, 可能要推翻当前的架构, 从头开始从新设计一下目前的框架."></a>在 Node.js 中做热更新代码, 牵扯到的知识点可能主要是 require 会有一个 cache, 有这个 cache 在, 即使你更新了 .js 文件, 在代码中再次 require 还是会拿到之前的编译好缓存在 v8 内存 (code space) 中的的旧代码. 但是如果只是单纯的清除掉 require 中的 cache, 再次 require 确实能拿到新的代码, 但是这时候很容易碰到各地维持旧的引用依旧跑的旧的代码的问题. 如果还要继续推行这种热更新代码的话, 可能要推翻当前的架构, 从头开始从新设计一下目前的框架.</h6><h6 id="不过热更新-json-之类的配置文件的话-还是可以简单的实现的-更新-require-的-cache-可以实现-不会有持有旧引用的问题-可以参见我-2-年前写着玩的例子-但是如果旧的引用一直被持有很容易出现内存泄漏-而要热更新配置的话-为什么不存数据库-或者用-zookeeper-之类的服务-通过更新文件还要再发布一次-但是存数据库直接写个接口配个界面多爽你说是不是"><a href="#不过热更新-json-之类的配置文件的话-还是可以简单的实现的-更新-require-的-cache-可以实现-不会有持有旧引用的问题-可以参见我-2-年前写着玩的例子-但是如果旧的引用一直被持有很容易出现内存泄漏-而要热更新配置的话-为什么不存数据库-或者用-zookeeper-之类的服务-通过更新文件还要再发布一次-但是存数据库直接写个接口配个界面多爽你说是不是" class="headerlink" title="不过热更新 json 之类的配置文件的话, 还是可以简单的实现的, 更新 require 的 cache 可以实现, 不会有持有旧引用的问题, 可以参见我 2 年前写着玩的例子, 但是如果旧的引用一直被持有很容易出现内存泄漏, 而要热更新配置的话, 为什么不存数据库? 或者用 zookeeper 之类的服务? 通过更新文件还要再发布一次, 但是存数据库直接写个接口配个界面多爽你说是不是?"></a>不过热更新 json 之类的配置文件的话, 还是可以简单的实现的, 更新 require 的 cache 可以实现, 不会有持有旧引用的问题, 可以参见我 2 年前写着玩的例子, 但是如果旧的引用一直被持有很容易出现内存泄漏, 而要热更新配置的话, 为什么不存数据库? 或者用 zookeeper 之类的服务? 通过更新文件还要再发布一次, 但是存数据库直接写个接口配个界面多爽你说是不是?</h6><h6 id="所以这个问题其实本身其实是值得商榷的-可能是典型的-X-Y-Problem-不过聊起来确实是可以暴露水平"><a href="#所以这个问题其实本身其实是值得商榷的-可能是典型的-X-Y-Problem-不过聊起来确实是可以暴露水平" class="headerlink" title="所以这个问题其实本身其实是值得商榷的, 可能是典型的 X-Y Problem, 不过聊起来确实是可以暴露水平."></a>所以这个问题其实本身其实是值得商榷的, 可能是典型的 X-Y Problem, 不过聊起来确实是可以暴露水平.</h6><h5 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a><font color = red>上下文</font></h5><h6 id="如果你已经了解-①②-那么你也应该了解-对于-Node-js-而言-正常情况下只有一个上下文-甚至于内置的很多方面例如-require-的实现只是在启动的时候运行了内置的函数"><a href="#如果你已经了解-①②-那么你也应该了解-对于-Node-js-而言-正常情况下只有一个上下文-甚至于内置的很多方面例如-require-的实现只是在启动的时候运行了内置的函数" class="headerlink" title="如果你已经了解 ①② 那么你也应该了解, 对于 Node.js 而言, 正常情况下只有一个上下文, 甚至于内置的很多方面例如 require 的实现只是在启动的时候运行了内置的函数."></a>如果你已经了解 ①② 那么你也应该了解, 对于 Node.js 而言, 正常情况下只有一个上下文, 甚至于内置的很多方面例如 require 的实现只是在启动的时候运行了内置的函数.</h6><h6 id="每个单独的-js-文件并不意味着单独的上下文-在某个-js-文件中污染了全局的作用域一样能影响到其他的地方"><a href="#每个单独的-js-文件并不意味着单独的上下文-在某个-js-文件中污染了全局的作用域一样能影响到其他的地方" class="headerlink" title="每个单独的 .js 文件并不意味着单独的上下文, 在某个 .js 文件中污染了全局的作用域一样能影响到其他的地方."></a>每个单独的 .js 文件并不意味着单独的上下文, 在某个 .js 文件中污染了全局的作用域一样能影响到其他的地方.</h6><h6 id="而目前的-Node-js-将-VM-的接口暴露了出来-可以让你自己创建一个新的-js-上下文-这一点上跟前端-js-还是区别挺大的-在执行外部代码的时候-通过创建新的上下文沙盒-sandbox-可以避免上下文被污染"><a href="#而目前的-Node-js-将-VM-的接口暴露了出来-可以让你自己创建一个新的-js-上下文-这一点上跟前端-js-还是区别挺大的-在执行外部代码的时候-通过创建新的上下文沙盒-sandbox-可以避免上下文被污染" class="headerlink" title="而目前的 Node.js 将 VM 的接口暴露了出来, 可以让你自己创建一个新的 js 上下文, 这一点上跟前端 js 还是区别挺大的. 在执行外部代码的时候, 通过创建新的上下文沙盒 (sandbox) 可以避免上下文被污染:"></a>而目前的 Node.js 将 VM 的接口暴露了出来, 可以让你自己创建一个新的 js 上下文, 这一点上跟前端 js 还是区别挺大的. 在执行外部代码的时候, 通过创建新的上下文沙盒 (sandbox) 可以避免上下文被污染:</h6><p><font color = red> ps: 所以说上下文简单的理解就是语文上的意思，当前作用域，比如变量的作用域，函数的作用域，进程运行的环境等。</font></p>
-<h5 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a><font color = red>包管理</font></h5><p>为什么我装了全局, 但是提示我 not found<br>npm yarn<br>锁版本:为了使部署服务器时的版本和开发时的版本一致。<br>lerna：一个用户管理多个包模块的工具。<br>left-pad事件<br>greenkeeper 等</p>
-]]></content>
-      <categories>
-        <category>node.js</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
       </tags>
   </entry>
   <entry>
