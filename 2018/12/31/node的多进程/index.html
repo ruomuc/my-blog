@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>node的多进程 | ruomu</title><meta name="keywords" content="node.js"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="现行的软件架构主要有两种：多线程单进程(如：memcached、redis、mongodb等)和单线程多进程(nginx、node)。多线程单进程的主要特点：  快：线程比进程轻量，它的切换开销要少很多。进程相当于函数间切换，每个函数拥有自己的变量；线程相当于一个函数内的子函数切换，它们拥有相同的全局变量。 灵活： 程序逻辑和控制方式简单，但是锁和全局变量同步比较麻烦。 稳定性不高： 由于只有一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node的多进程">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2018/12/31/node%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2018/12/31/node%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="现行的软件架构主要有两种：多线程单进程(如：memcached、redis、mongodb等)和单线程多进程(nginx、node)。多线程单进程的主要特点：  快：线程比进程轻量，它的切换开销要少很多。进程相当于函数间切换，每个函数拥有自己的变量；线程相当于一个函数内的子函数切换，它们拥有相同的全局变量。 灵活： 程序逻辑和控制方式简单，但是锁和全局变量同步比较麻烦。 稳定性不高： 由于只有一个">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/12/31/node%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2018/12/31/node%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

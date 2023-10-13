@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ES6之字符串的扩展 | ruomu</title><meta name="keywords" content="javascript,es6"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文整理一下ES6中字符串的扩展和新增的方法。 可以先去看一下这篇文章彻底弄懂Unicode编码，最好用笔和纸撸两遍，下文转换过程将省略。   字符的 Unicode 表示法在JavaScript中，可以使用\uxxxx表示unicode编码，xxxx表示unicode编码的码点，但是当码点超过\u0000 ~ \uFFFF这个区间，会被截断。比如中文𠮷的码点是0x20BB7，但是在JavaSc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6之字符串的扩展">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/06/09/ES6%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/06/09/ES6%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="本文整理一下ES6中字符串的扩展和新增的方法。 可以先去看一下这篇文章彻底弄懂Unicode编码，最好用笔和纸撸两遍，下文转换过程将省略。   字符的 Unicode 表示法在JavaScript中，可以使用\uxxxx表示unicode编码，xxxx表示unicode编码的码点，但是当码点超过\u0000 ~ \uFFFF这个区间，会被截断。比如中文𠮷的码点是0x20BB7，但是在JavaSc">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="es6">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/06/09/ES6%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/06/09/ES6%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

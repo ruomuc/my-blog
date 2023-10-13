@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WeekMap和WeekSet | ruomu</title><meta name="keywords" content="js,gc"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在es6中，不仅引入了 Map 和 Set， 还有 WeekMap和WeekSet，不过我没怎么用过。 首先WeekMap 和 WeekSet 的键只能是对象；其次垃圾回收不会考虑它们对对象的引用，本文主要分析它们对于 gc 的区别。 测试代码地址:https:&#x2F;&#x2F;github.com&#x2F;ruomuc&#x2F;test_demos&#x2F;tree&#x2F;master&#x2F;blog&#x2F;WeekMap%E5%92%8CWeekS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WeekMap和WeekSet">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/04/10/WeekMap%E5%92%8CWeekSet/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/04/10/WeekMap%E5%92%8CWeekSet/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="在es6中，不仅引入了 Map 和 Set， 还有 WeekMap和WeekSet，不过我没怎么用过。 首先WeekMap 和 WeekSet 的键只能是对象；其次垃圾回收不会考虑它们对对象的引用，本文主要分析它们对于 gc 的区别。 测试代码地址:https:&#x2F;&#x2F;github.com&#x2F;ruomuc&#x2F;test_demos&#x2F;tree&#x2F;master&#x2F;blog&#x2F;WeekMap%E5%92%8CWeekS">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="js">
 <meta property="article:tag" content="gc">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/04/10/WeekMap%E5%92%8CWeekSet/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/04/10/WeekMap%E5%92%8CWeekSet/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

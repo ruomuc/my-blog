@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>nginx+node.js实现简单的URL分发 | ruomu</title><meta name="keywords" content="node.js,linux,nginx"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前段时间做了一个主页部署到了vps上面，当时遇到一个问题没有解决：关于URL分发的问题。刚好我重装了一个vps，之前那个太贵了，装了一个低配一点的，然后我的主站就要重新部署。 之前是node监听的是一个非80端口，但是，阿里云默认解析到80端口，为了好看不再域名后面加:和端口号，我就只能把主站的监听端口改成了80，但是80只有一个，后面部署其他项目怎么办呢。。 于是我这次准备一次解决完：  第一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx+node.js实现简单的URL分发">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2018/09/03/nginx+node-js%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84URL%E5%88%86%E5%8F%91/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2018/09/03/nginx+node-js%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84URL%E5%88%86%E5%8F%91/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="前段时间做了一个主页部署到了vps上面，当时遇到一个问题没有解决：关于URL分发的问题。刚好我重装了一个vps，之前那个太贵了，装了一个低配一点的，然后我的主站就要重新部署。 之前是node监听的是一个非80端口，但是，阿里云默认解析到80端口，为了好看不再域名后面加:和端口号，我就只能把主站的监听端口改成了80，但是80只有一个，后面部署其他项目怎么办呢。。 于是我这次准备一次解决完：  第一个">
 <meta property="og:locale" content="zh_CN">
@@ -13,7 +13,7 @@
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/09/03/nginx+node-js%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84URL%E5%88%86%E5%8F%91/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2018/09/03/nginx+node-js%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84URL%E5%88%86%E5%8F%91/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于Handle、HandleFunc、Handler和HandlerFunc | ruomu</title><meta name="keywords" content="go,http"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在go中，可以很简单实现一个http服务器。 但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。 于是决定深入了解并记录一下它们的区别。 ps: 本文的前置知识是，需要对go中的面向对象和接口有一定的了解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Handle、HandleFunc、Handler和HandlerFunc">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="在go中，可以很简单实现一个http服务器。 但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。 于是决定深入了解并记录一下它们的区别。 ps: 本文的前置知识是，需要对go中的面向对象和接口有一定的了解。">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="go">
 <meta property="article:tag" content="http">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

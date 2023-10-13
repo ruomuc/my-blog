@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>koa源码之delegates | ruomu</title><meta name="keywords" content="koa,node.js"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近看koa的源码，看到了了一个TJ大神写的包delegates，实现了委托模式&#x2F;代理模式。 当前包的版本为1.0.0，代码就100多行，周下载量一千两百多万。。果然是巨佬。   基本结构目录结构很简单，主要文件只有一个index.js和test文件夹下的单元测试。 index.js文件的内容：  Delegator：构造方法 Delegator.auto：自动委托所有可以委托的属性 Delega">
 <meta property="og:type" content="article">
 <meta property="og:title" content="koa源码之delegates">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="最近看koa的源码，看到了了一个TJ大神写的包delegates，实现了委托模式&#x2F;代理模式。 当前包的版本为1.0.0，代码就100多行，周下载量一千两百多万。。果然是巨佬。   基本结构目录结构很简单，主要文件只有一个index.js和test文件夹下的单元测试。 index.js文件的内容：  Delegator：构造方法 Delegator.auto：自动委托所有可以委托的属性 Delega">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="koa">
 <meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>hexo搜索转圈问题 | ruomu</title><meta name="keywords" content="其它"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="今天hexo的搜索功能一直转菊花，对于我这种强迫症来说，博客没有搜索也太难受了吧。 google了一下发现很多人也遇到了这个问题。 说一下我的解决步骤吧。 原因我打开控制台，点击搜索，获取search.xml文件时，并没有报错。 所以我的博客的原因是因为xml文件有特殊字符。 于是我先打开vscode设置，把editor.renderControlCharacters 设置为true，用正则的方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo搜索转圈问题">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/05/22/hexo%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%9C%88%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/05/22/hexo%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%9C%88%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="今天hexo的搜索功能一直转菊花，对于我这种强迫症来说，博客没有搜索也太难受了吧。 google了一下发现很多人也遇到了这个问题。 说一下我的解决步骤吧。 原因我打开控制台，点击搜索，获取search.xml文件时，并没有报错。 所以我的博客的原因是因为xml文件有特殊字符。 于是我先打开vscode设置，把editor.renderControlCharacters 设置为true，用正则的方式">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="其它">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/05/22/hexo%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%9C%88%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/05/22/hexo%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%9C%88%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

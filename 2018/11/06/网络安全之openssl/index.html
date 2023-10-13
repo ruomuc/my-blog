@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网络安全之openssl | ruomu</title><meta name="keywords" content="安全"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="客户端和服务端的数据传输如果不加密就会被别人截取而泄露数据。对于开发者而言，加密和解密最好是放在传输层，而应用层的数据处理仍然是透明的。node在网络安全提供了，tls、https、crypto三个模块。tls类似net、https是http安全版。crypto提供了SHA1、MD5等加密算法。 TLS&#x2F;SSL 结构node底层采用的是openssl实现TSL&#x2F;SSL的，所以可以使用openssl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络安全之openssl">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2018/11/06/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8Bopenssl/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2018/11/06/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8Bopenssl/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="客户端和服务端的数据传输如果不加密就会被别人截取而泄露数据。对于开发者而言，加密和解密最好是放在传输层，而应用层的数据处理仍然是透明的。node在网络安全提供了，tls、https、crypto三个模块。tls类似net、https是http安全版。crypto提供了SHA1、MD5等加密算法。 TLS&#x2F;SSL 结构node底层采用的是openssl实现TSL&#x2F;SSL的，所以可以使用openssl">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="安全">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/11/06/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8Bopenssl/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2018/11/06/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8Bopenssl/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

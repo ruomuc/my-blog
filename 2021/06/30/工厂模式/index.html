@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>工厂模式 | ruomu</title><meta name="keywords" content="设计模式"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="因为一直在搞 node.js，对设计模式了解一直比较少，看了书不实践也记不住。最近在补充设计模式的知识。 工厂方法模式是一个比较常见的设计模式。 大部分资料将工厂方法模式分为三种：简单&#x2F;静态工厂模式、工厂方法模式、抽象工厂模式。 简单工厂是对工厂方法的简化，而抽象工厂是对工厂方法的增强。 本文主要用 golang 来实现以下这三种工厂，然后分析一下优劣。 本文代码仓库地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工厂模式">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="因为一直在搞 node.js，对设计模式了解一直比较少，看了书不实践也记不住。最近在补充设计模式的知识。 工厂方法模式是一个比较常见的设计模式。 大部分资料将工厂方法模式分为三种：简单&#x2F;静态工厂模式、工厂方法模式、抽象工厂模式。 简单工厂是对工厂方法的简化，而抽象工厂是对工厂方法的增强。 本文主要用 golang 来实现以下这三种工厂，然后分析一下优劣。 本文代码仓库地址">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

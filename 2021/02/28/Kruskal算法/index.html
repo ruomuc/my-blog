@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kruskal算法 | ruomu</title><meta name="keywords" content="算法,图,最小生成树,并查集"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一月份力扣出了一个月的图论题，可惜那时在封闭开发（爆粗口），有些没时间做。 Kruskal算法是一种用来查找最小生成树的算法，适合用于查找稀疏图的最小生成树。 最小生成树什么是最小生成树最小生成树是一副连通加权无向图中，一颗权值最小的生成树。  生成树：在图论中，无向图 G 的生成树（英语：Spanning Tree）是具有 G 的全部顶点，但边数最少的连通子图。 连通：无向图中，任意两个顶点都有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kruskal算法">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/02/28/Kruskal%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/02/28/Kruskal%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="一月份力扣出了一个月的图论题，可惜那时在封闭开发（爆粗口），有些没时间做。 Kruskal算法是一种用来查找最小生成树的算法，适合用于查找稀疏图的最小生成树。 最小生成树什么是最小生成树最小生成树是一副连通加权无向图中，一颗权值最小的生成树。  生成树：在图论中，无向图 G 的生成树（英语：Spanning Tree）是具有 G 的全部顶点，但边数最少的连通子图。 连通：无向图中，任意两个顶点都有">
 <meta property="og:locale" content="zh_CN">
@@ -14,7 +14,7 @@
 <meta property="article:tag" content="最小生成树">
 <meta property="article:tag" content="并查集">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/02/28/Kruskal%E7%AE%97%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/02/28/Kruskal%E7%AE%97%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

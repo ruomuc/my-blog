@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript行为委托 | ruomu</title><meta name="keywords" content="js,原型链"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在 java 、c# 等语言中，类是一种必须使用的”设计模式“，但是在 JavaScript 等语言中，它是可选的，并且在JavaScript中实现类总是会有各种缺陷。 还有要注意的一点是，JavaScript中没有类，只有对象，没有继承，只有委托（prototype）。 包括 es6 的 class 语法在内的各种语法糖，也不会改变这个事实。 首先要了解两个技巧   使用 call 方法调用父构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript行为委托">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/03/21/JavaScript%E8%A1%8C%E4%B8%BA%E5%A7%94%E6%89%98/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/03/21/JavaScript%E8%A1%8C%E4%B8%BA%E5%A7%94%E6%89%98/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="在 java 、c# 等语言中，类是一种必须使用的”设计模式“，但是在 JavaScript 等语言中，它是可选的，并且在JavaScript中实现类总是会有各种缺陷。 还有要注意的一点是，JavaScript中没有类，只有对象，没有继承，只有委托（prototype）。 包括 es6 的 class 语法在内的各种语法糖，也不会改变这个事实。 首先要了解两个技巧   使用 call 方法调用父构">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="js">
 <meta property="article:tag" content="原型链">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/03/21/JavaScript%E8%A1%8C%E4%B8%BA%E5%A7%94%E6%89%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/03/21/JavaScript%E8%A1%8C%E4%B8%BA%E5%A7%94%E6%89%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

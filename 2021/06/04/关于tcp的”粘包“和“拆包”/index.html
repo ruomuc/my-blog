@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于tcp的”粘包“和“拆包” | ruomu</title><meta name="keywords" content="tcp"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第一次听到“粘包”这个名词，还是用 websocket 做游戏的时候，当时服务端收到的消息出现了乱码，因为中文汉字在utf-8中用三个字节表示，如果被截断了话，解析出来就是乱码。 后面就一直做的传统的http服务端开发，就没有太关注这个问题了。 最近在看一个《趣谈网络协议》课，就顺便把这个问题搞明白。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于tcp的”粘包“和“拆包”">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="第一次听到“粘包”这个名词，还是用 websocket 做游戏的时候，当时服务端收到的消息出现了乱码，因为中文汉字在utf-8中用三个字节表示，如果被截断了话，解析出来就是乱码。 后面就一直做的传统的http服务端开发，就没有太关注这个问题了。 最近在看一个《趣谈网络协议》课，就顺便把这个问题搞明白。">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="tcp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

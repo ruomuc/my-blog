@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>小小的总结一下 | ruomu</title><meta name="keywords" content="其它"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="总结一下没有回答出来或者不熟练的问题吧。 redis怎么备份我所知道的备份就是conf文件内可以配合，它会自动定时保存一个rdb文件。然鹅还有：  SAVE 和 BGSAVE 两个命令都会调用 rdbSave 函数，但它们调用的方式各有不同： SAVE 直接调用 rdbSave ，阻塞 Redis 主进程，直到保存完成为止。在主进程阻塞期间，服务器不能处理客户端的任何请求。 BGSAVE 则 fo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小小的总结一下">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2019/03/13/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2019/03/13/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="总结一下没有回答出来或者不熟练的问题吧。 redis怎么备份我所知道的备份就是conf文件内可以配合，它会自动定时保存一个rdb文件。然鹅还有：  SAVE 和 BGSAVE 两个命令都会调用 rdbSave 函数，但它们调用的方式各有不同： SAVE 直接调用 rdbSave ，阻塞 Redis 主进程，直到保存完成为止。在主进程阻塞期间，服务器不能处理客户端的任何请求。 BGSAVE 则 fo">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="其它">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2019/03/13/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2019/03/13/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

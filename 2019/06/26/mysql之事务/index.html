@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mysql之事务 | ruomu</title><meta name="keywords" content="mysql,事务"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文于 2021年07月14日19:39:57 重新整理。。。之前写的自己都有点看不下去。 什么是事务简单来说，事务就是要保证一组数据的操作，要么全部成功，要么全部失败。 在 mysql 中，事务是由引擎实现的，比如 InnoDB 支持事务，而 MyISAM 就不支持事务。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql之事务">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2019/06/26/mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2019/06/26/mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="本文于 2021年07月14日19:39:57 重新整理。。。之前写的自己都有点看不下去。 什么是事务简单来说，事务就是要保证一组数据的操作，要么全部成功，要么全部失败。 在 mysql 中，事务是由引擎实现的，比如 InnoDB 支持事务，而 MyISAM 就不支持事务。">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="mysql">
 <meta property="article:tag" content="事务">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2019/06/26/mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2019/06/26/mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

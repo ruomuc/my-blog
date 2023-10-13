@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>缓存方案 | ruomu</title><meta name="keywords" content="前端,性能"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="emm…我觉得我学东西就和js的原型链一样，怎么学着学着奇怪的知识就增加了…本来要学的东西一直被挂起…. 强制缓存实现方式强制缓存是通过http请求头里的Cache-Control和Expire字段来控制。 Expires是HTTP1.0标准下的字段，所以暂时忽略吧。 以node.js为例: 一般我们这样设置res.setHeader(&#39;Cache-Control&#39;, &#39;p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缓存方案">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/05/22/%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/05/22/%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="emm…我觉得我学东西就和js的原型链一样，怎么学着学着奇怪的知识就增加了…本来要学的东西一直被挂起…. 强制缓存实现方式强制缓存是通过http请求头里的Cache-Control和Expire字段来控制。 Expires是HTTP1.0标准下的字段，所以暂时忽略吧。 以node.js为例: 一般我们这样设置res.setHeader(&#39;Cache-Control&#39;, &#39;p">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="性能">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/05/22/%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/05/22/%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

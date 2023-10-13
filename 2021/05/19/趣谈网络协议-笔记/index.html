@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>趣谈网络协议-笔记 | ruomu</title><meta name="keywords" content="网络协议"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="公司开了个极客时间企业版，一人挑五门课 看了下这个《趣谈网络协议》挺有意思的 只看了前两讲就感觉收获挺大，所以记记笔记方便以后查找知识 通信协议综述协议三要素 语法： 符合一定的规则和格式。例如括号要成对，换行要有分号。 语义： 代表某种意义。例如数字可以相间，字符串相减没有意义。 顺序： 就是先干什么后干什么。例如 1+1-1 就是 先执行 1+1 在用结果减 1。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="趣谈网络协议-笔记">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="公司开了个极客时间企业版，一人挑五门课 看了下这个《趣谈网络协议》挺有意思的 只看了前两讲就感觉收获挺大，所以记记笔记方便以后查找知识 通信协议综述协议三要素 语法： 符合一定的规则和格式。例如括号要成对，换行要有分号。 语义： 代表某种意义。例如数字可以相间，字符串相减没有意义。 顺序： 就是先干什么后干什么。例如 1+1-1 就是 先执行 1+1 在用结果减 1。">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="网络协议">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

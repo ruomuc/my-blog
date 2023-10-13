@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于js的几种路径写法 | ruomu</title><meta name="keywords" content="node.js"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Node.js中的文件路径大概有 __dirname, __filename, process.cwd(), .&#x2F; 或者 ..&#x2F;，前三个都是绝对路径。关于这几个路径的意思: 1234__dirname：    获得当前执行文件所在目录的完整目录名__filename：   获得当前执行文件的带有完整绝对路径的文件名process.cwd()：获得当前执行node命令时候的文件夹目录名 .&#x2F;：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于js的几种路径写法">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2018/08/30/%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2018/08/30/%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="Node.js中的文件路径大概有 __dirname, __filename, process.cwd(), .&#x2F; 或者 ..&#x2F;，前三个都是绝对路径。关于这几个路径的意思: 1234__dirname：    获得当前执行文件所在目录的完整目录名__filename：   获得当前执行文件的带有完整绝对路径的文件名process.cwd()：获得当前执行node命令时候的文件夹目录名 .&#x2F;：">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/08/30/%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2018/08/30/%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

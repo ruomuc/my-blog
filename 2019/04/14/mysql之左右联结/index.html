@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mysql之左右联结 | ruomu</title><meta name="keywords" content="mysql"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="之前对联结表的看理解好像不是很明确，于是又看了一些资料。 再次之前假装先建立两张表:  tableA:三个字段(id,title,price)，五条记录 tableB:三个字断(id, title,price),三条记录 两张表之间有两条记录的price相同  内联结INNER JOIN select * from tableA INNER JOIN tableB ON a.title &#x3D; b.t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql之左右联结">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2019/04/14/mysql%E4%B9%8B%E5%B7%A6%E5%8F%B3%E8%81%94%E7%BB%93/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2019/04/14/mysql%E4%B9%8B%E5%B7%A6%E5%8F%B3%E8%81%94%E7%BB%93/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="之前对联结表的看理解好像不是很明确，于是又看了一些资料。 再次之前假装先建立两张表:  tableA:三个字段(id,title,price)，五条记录 tableB:三个字断(id, title,price),三条记录 两张表之间有两条记录的price相同  内联结INNER JOIN select * from tableA INNER JOIN tableB ON a.title &#x3D; b.t">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2019/04/14/mysql%E4%B9%8B%E5%B7%A6%E5%8F%B3%E8%81%94%E7%BB%93/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2019/04/14/mysql%E4%B9%8B%E5%B7%A6%E5%8F%B3%E8%81%94%E7%BB%93/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

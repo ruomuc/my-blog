@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>跨域和同源策略 | ruomu</title><meta name="keywords" content="跨域"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="虽然经常遇到和处理跨域的问题，但都是停留于用node的中间件，使用CORS的方式来允许跨域。 这篇文章主要理解跨域和同源策略，就不详细的描述解决方案了，因为跨窗口通信和iframe这些东西作为后端没怎么接触过。 跨域跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。 受浏览器的同源策略限制，无法跨域请求资源，这也是我们。 同源策略所谓同源： 协议相同。 域名相同 端口相同  1234http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨域和同源策略">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/05/23/%E8%B7%A8%E5%9F%9F%E5%92%8C%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/05/23/%E8%B7%A8%E5%9F%9F%E5%92%8C%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="虽然经常遇到和处理跨域的问题，但都是停留于用node的中间件，使用CORS的方式来允许跨域。 这篇文章主要理解跨域和同源策略，就不详细的描述解决方案了，因为跨窗口通信和iframe这些东西作为后端没怎么接触过。 跨域跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。 受浏览器的同源策略限制，无法跨域请求资源，这也是我们。 同源策略所谓同源： 协议相同。 域名相同 端口相同  1234http">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="跨域">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/05/23/%E8%B7%A8%E5%9F%9F%E5%92%8C%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/05/23/%E8%B7%A8%E5%9F%9F%E5%92%8C%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

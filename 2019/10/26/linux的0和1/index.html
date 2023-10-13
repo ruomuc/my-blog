@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>linux的0和1 | ruomu</title><meta name="keywords" content="linux"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="很久没写博客了，因为之前写的东西够消化很久了。而且现在也不想搬运文档之类的东西，写就写点自己的东西吧。。。 虽然前面的博客搬运工居多，但也是一个知识的整理的过程吧。技术越来越好之后，尽量写一些自己体会过的东西。 而且现在又到笔记用的多，博客没什么灵感。 linux的真与假虽然linux会一些简单的命令，但是shell脚本确实不怎么会写，所以无聊想了解一些shell的语法，然后发现在linux中，0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux的0和1">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2019/10/26/linux%E7%9A%840%E5%92%8C1/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2019/10/26/linux%E7%9A%840%E5%92%8C1/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="很久没写博客了，因为之前写的东西够消化很久了。而且现在也不想搬运文档之类的东西，写就写点自己的东西吧。。。 虽然前面的博客搬运工居多，但也是一个知识的整理的过程吧。技术越来越好之后，尽量写一些自己体会过的东西。 而且现在又到笔记用的多，博客没什么灵感。 linux的真与假虽然linux会一些简单的命令，但是shell脚本确实不怎么会写，所以无聊想了解一些shell的语法，然后发现在linux中，0">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2019/10/26/linux%E7%9A%840%E5%92%8C1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2019/10/26/linux%E7%9A%840%E5%92%8C1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

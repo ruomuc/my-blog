@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>0-1背包问题 | ruomu</title><meta name="keywords" content="算法,动态规划"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="今天LeetCode的每日一题是分割等和子集，这道题可以看成是一个0-1背包问题。 只是分享一下自己理解的过程，可能表述并不是很清楚，公式的推导就不说了，网上有很多很专业的文章。   0-1背包问题关于背包问题的定义，网上有很多。 举个列子：  一个小偷拿了一个承重为10kg的背包去商店偷东西，有3种物品供他选择；第一种重1kg，价值6元；第二种重2kg价值10元；第三种重3kg，价值12元。不能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="0-1背包问题">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/10/11/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/10/11/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="今天LeetCode的每日一题是分割等和子集，这道题可以看成是一个0-1背包问题。 只是分享一下自己理解的过程，可能表述并不是很清楚，公式的推导就不说了，网上有很多很专业的文章。   0-1背包问题关于背包问题的定义，网上有很多。 举个列子：  一个小偷拿了一个承重为10kg的背包去商店偷东西，有3种物品供他选择；第一种重1kg，价值6元；第二种重2kg价值10元；第三种重3kg，价值12元。不能">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/10/11/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/10/11/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

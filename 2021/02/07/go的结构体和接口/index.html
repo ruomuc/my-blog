@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>go的结构体和接口 | ruomu</title><meta name="keywords" content="go"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="刚开始学go的时候，第一遍文档看完，没有搞懂结构体和接口的意思，现在大概明白了，记录一下。 函数和方法在了解结构体和接口之前 在我写JavaScript的时候，大部分不区分这两个叫法，但是在Java中，定义在类中的函数，习惯称之为”方法”。 我在网上找到这么个说法：  函数是独立的功能，与对象无关，需要显示的传递数据 方法与对象和类相关，依赖对象而调用，可以直接处理对象上的数据，也就是隐式传递数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go的结构体和接口">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2021/02/07/go%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%8E%A5%E5%8F%A3/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2021/02/07/go%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%8E%A5%E5%8F%A3/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="刚开始学go的时候，第一遍文档看完，没有搞懂结构体和接口的意思，现在大概明白了，记录一下。 函数和方法在了解结构体和接口之前 在我写JavaScript的时候，大部分不区分这两个叫法，但是在Java中，定义在类中的函数，习惯称之为”方法”。 我在网上找到这么个说法：  函数是独立的功能，与对象无关，需要显示的传递数据 方法与对象和类相关，依赖对象而调用，可以直接处理对象上的数据，也就是隐式传递数据">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2021/02/07/go%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%8E%A5%E5%8F%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2021/02/07/go%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%8E%A5%E5%8F%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

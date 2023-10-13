@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript中的this | ruomu</title><meta name="keywords" content="js,this"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="默认绑定规则this的指向在函数定义的时候是无法确定的，只有在函数执行的时候才能确定。 因为浏览器和node.js的全局对象有一些区别。 在浏览器中: 12345function A()&amp;#123;	console.log(this.a); &#x2F;&#x2F; 1&amp;#125;var a &#x3D; 1;A()  但是在node.js中: 1234567function A()&amp;#123;	console.log(thi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中的this">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/05/24/JavaScript%E4%B8%AD%E7%9A%84this/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/05/24/JavaScript%E4%B8%AD%E7%9A%84this/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="默认绑定规则this的指向在函数定义的时候是无法确定的，只有在函数执行的时候才能确定。 因为浏览器和node.js的全局对象有一些区别。 在浏览器中: 12345function A()&amp;#123;	console.log(this.a); &#x2F;&#x2F; 1&amp;#125;var a &#x3D; 1;A()  但是在node.js中: 1234567function A()&amp;#123;	console.log(thi">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="js">
 <meta property="article:tag" content="this">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/05/24/JavaScript%E4%B8%AD%E7%9A%84this/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/05/24/JavaScript%E4%B8%AD%E7%9A%84this/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

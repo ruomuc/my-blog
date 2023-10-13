@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>单元测试和Mocha | ruomu</title><meta name="keywords" content="node.js,单元测试"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="单元测试的必要性比如创建 add.js： 12345&#x2F;&#x2F;add.jsfunction add(a,b)&amp;#123;	return a+b;&amp;#125; 上面这个代码有啥好测得？ 1234&gt; add &#x3D; function(a, b)&amp;#123;return a + b&amp;#125;[Function: add]&gt; add(4)NaN NaN?为什么呢。因为不够严谨，只传一个参数就报错了。所">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单元测试和Mocha">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2018/09/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8CMocha/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2018/09/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8CMocha/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="单元测试的必要性比如创建 add.js： 12345&#x2F;&#x2F;add.jsfunction add(a,b)&amp;#123;	return a+b;&amp;#125; 上面这个代码有啥好测得？ 1234&gt; add &#x3D; function(a, b)&amp;#123;return a + b&amp;#125;[Function: add]&gt; add(4)NaN NaN?为什么呢。因为不够严谨，只传一个参数就报错了。所">
 <meta property="og:locale" content="zh_CN">
@@ -12,7 +12,7 @@
 <meta property="article:tag" content="node.js">
 <meta property="article:tag" content="单元测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2018/09/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8CMocha/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2018/09/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8CMocha/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>css的相对单位和绝对单位 | ruomu</title><meta name="keywords" content="前端"><meta name="author" content="ruomu"><meta name="copyright" content="ruomu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在查资料的时候，发现网上有的人说 px是相对单位，有的人说px是绝对单位。。px是相对单位还是绝对单位？  《css权威指南》第三章-单位和值的小节“长度单位”中简易说明了px是相对长度单位。 《The Lengths of CSS》中指出px是绝对长度单位。  我看了一下，我个人偏向于px是个绝对单位，因为px的大小一般情况下是固定的，只是对于高分辨率的设备，大小会发生变动。。 绝对单位此类单位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css的相对单位和绝对单位">
-<meta property="og:url" content="https://ruomuc.github.io/blog/2020/05/19/css%E7%9A%84%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D/index.html">
+<meta property="og:url" content="https://ruomuc.github.io/my-blog/2020/05/19/css%E7%9A%84%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D/index.html">
 <meta property="og:site_name" content="ruomu">
 <meta property="og:description" content="在查资料的时候，发现网上有的人说 px是相对单位，有的人说px是绝对单位。。px是相对单位还是绝对单位？  《css权威指南》第三章-单位和值的小节“长度单位”中简易说明了px是相对长度单位。 《The Lengths of CSS》中指出px是绝对长度单位。  我看了一下，我个人偏向于px是个绝对单位，因为px的大小一般情况下是固定的，只是对于高分辨率的设备，大小会发生变动。。 绝对单位此类单位">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="ruomu">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/blog/2020/05/19/css%E7%9A%84%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/forestroad.jpg"><link rel="shortcut icon" href="/img/favicon2.jpg"><link rel="canonical" href="https://ruomuc.github.io/my-blog/2020/05/19/css%E7%9A%84%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
