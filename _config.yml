@@ -13,8 +13,8 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://ruomuc.github.io/blog
-root: /
+url: https://ruomuc.github.io/my-blog
+root: /my-blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
