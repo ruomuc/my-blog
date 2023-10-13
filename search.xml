@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>置顶</title>
-    <url>/9999/05/13/%E7%BD%AE%E9%A1%B6/</url>
+    <url>/my-blog/9999/05/13/%E7%BD%AE%E9%A1%B6/</url>
     <content><![CDATA[<p><strong>简单描述一下我的博客</strong>：</p>
 <p>首先这是一个萌新成长过程的记录，不是一个大佬的经验分享。其次懂得越多，越觉得自己写的烂，所以更新越来越慢，是因为有太多东西没有消化，不想写一些烂的东西。</p>
 <p><strong>补充</strong>，除部分自己分享的，还有很多整理搬运的，有一些忘记贴参考链接，后面更的能找到都会贴上。</p>
@@ -67,7 +67,7 @@
   </entry>
   <entry>
     <title>go的接口和类型</title>
-    <url>/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/</url>
+    <url>/my-blog/2022/02/27/go%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<p>二刷 the go programming language，接口这块第一遍没太懂，第二遍大概懂了。</p>
 <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>go语言的接口的独特之处在于，它是隐式实现的。</p>
 <p>对于一个具体的类型，你不需要声明它实现了哪些接口，只需要提供接口所必须的方法即可。</p>
@@ -164,7 +164,7 @@
   </entry>
   <entry>
     <title>深入理解nodejs内存分配</title>
-    <url>/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</url>
+    <url>/my-blog/2021/12/25/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3nodejs%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</url>
     <content><![CDATA[<p>因为最近遇到很多关于内存的问题，所以决定再次探究回顾一下 node.js 相关的内存知识。</p>
 <p>再次删除了一些之前的关于node.js内存的博文，因为在现在看来那些写的太垃圾了。</p>
 <h2 id="内存的生命周期"><a href="#内存的生命周期" class="headerlink" title="内存的生命周期"></a>内存的生命周期</h2><ul>
@@ -268,7 +268,7 @@
   </entry>
   <entry>
     <title>囚徒健身</title>
-    <url>/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/</url>
+    <url>/my-blog/2021/12/11/%E5%9B%9A%E5%BE%92%E5%81%A5%E8%BA%AB/</url>
     <content><![CDATA[<p>最近天气冷了，里三件外三件，去健身房换衣服太麻烦还容易感冒，不太想去了。</p>
 <p>之前别人安利过《囚徒健身》这本书，看了下感觉理念还不错，还可以在家练，记录一下关键动作，方便查阅。（目前每个动作先记录了前两式，后面的根本做不到，等前面能做到了再记录后面更难的动作）</p>
 <h2 id="俯卧撑"><a href="#俯卧撑" class="headerlink" title="俯卧撑"></a>俯卧撑</h2><h3 id="第一式-墙壁俯卧撑"><a href="#第一式-墙壁俯卧撑" class="headerlink" title="第一式 墙壁俯卧撑"></a>第一式 墙壁俯卧撑</h3><p>面对墙壁站立，双脚并拢，双臂伸直，与肩 同宽，双手平放在墙上，手掌与胸等高。这是该 动作的起始姿势（图 1）。</p>
@@ -619,7 +619,7 @@
   </entry>
   <entry>
     <title>博客迁移到私有服务器上</title>
-    <url>/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/</url>
+    <url>/my-blog/2021/08/29/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%81%E6%9C%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A/</url>
     <content><![CDATA[<p>今天把博客，从码云的 gitpages 服务，迁移到了自己的服务器上，记录分享一下。</p>
 <h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><p>至于为什么不用 github 的 gitpages，主要是打开太慢了。。</p>
 <ol>
@@ -660,7 +660,7 @@
   </entry>
   <entry>
     <title>初识redo log和binlog</title>
-    <url>/2021/08/13/redo-log%E5%92%8Cbinlog/</url>
+    <url>/my-blog/2021/08/13/redo-log%E5%92%8Cbinlog/</url>
     <content><![CDATA[<p>整理下 mysql 的 redo log 和 binlog 相关知识。</p>
 <p>这个是照着画的一个 mysql 逻辑架构图，方便后面对照着理解。</p>
 <span id="more"></span>
@@ -779,7 +779,7 @@
   </entry>
   <entry>
     <title>go错误处理最佳实践</title>
-    <url>/2021/07/24/go%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</url>
+    <url>/my-blog/2021/07/24/go%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</url>
     <content><![CDATA[<p>用 go 写过业务代码之后，就会发现，go的错误处理很让人头痛。。（事实上被吐槽的确实很多~）</p>
 <p>然后刚好在极客时间薅了一节体验课。整理一下。以供参考。</p>
 <p>注：对于初学者而言，最起码你要自己写一个curd的demo，不然看完之后不会有什么感觉。</p>
@@ -892,7 +892,7 @@
   </entry>
   <entry>
     <title>工厂模式</title>
-    <url>/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <url>/my-blog/2021/06/30/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<p>因为一直在搞 node.js，对设计模式了解一直比较少，看了书不实践也记不住。最近在补充设计模式的知识。</p>
 <p>工厂方法模式是一个比较常见的设计模式。</p>
 <p>大部分资料将工厂方法模式分为三种：简单/静态工厂模式、工厂方法模式、抽象工厂模式。</p>
@@ -981,7 +981,7 @@
   </entry>
   <entry>
     <title>go的math/rand标准库</title>
-    <url>/2021/06/22/go%E7%9A%84math-rand%E6%A0%87%E5%87%86%E5%BA%93/</url>
+    <url>/my-blog/2021/06/22/go%E7%9A%84math-rand%E6%A0%87%E5%87%86%E5%BA%93/</url>
     <content><![CDATA[<p>go语言中 math/rand 包来提供随机数相关功能。</p>
 <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>为了方便测试，我们新建一个 time_test.go 文件</p>
 <span id="more"></span>
@@ -1055,7 +1055,7 @@
   </entry>
   <entry>
     <title>关于Handle、HandleFunc、Handler和HandlerFunc</title>
-    <url>/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/</url>
+    <url>/my-blog/2021/06/10/%E5%85%B3%E4%BA%8EHandle%E3%80%81HandleFun%E3%80%81Handler%E5%92%8CHandlerFunc/</url>
     <content><![CDATA[<p>在go中，可以很简单实现一个http服务器。</p>
 <p>但是在使用过程中，遇到了一些容易使人迷惑的类型、接口或方法名。</p>
 <p>于是决定深入了解并记录一下它们的区别。</p>
@@ -1139,7 +1139,7 @@
   </entry>
   <entry>
     <title>关于tcp的”粘包“和“拆包”</title>
-    <url>/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/</url>
+    <url>/my-blog/2021/06/04/%E5%85%B3%E4%BA%8Etcp%E7%9A%84%E2%80%9D%E7%B2%98%E5%8C%85%E2%80%9C%E5%92%8C%E2%80%9C%E6%8B%86%E5%8C%85%E2%80%9D/</url>
     <content><![CDATA[<p>第一次听到“粘包”这个名词，还是用 websocket 做游戏的时候，当时服务端收到的消息出现了乱码，因为中文汉字在utf-8中用三个字节表示，如果被截断了话，解析出来就是乱码。</p>
 <p>后面就一直做的传统的http服务端开发，就没有太关注这个问题了。</p>
 <p>最近在看一个《趣谈网络协议》课，就顺便把这个问题搞明白。</p>
@@ -1186,7 +1186,7 @@
   </entry>
   <entry>
     <title>go的defer关键字</title>
-    <url>/2021/05/30/go%E7%9A%84defer%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <url>/my-blog/2021/05/30/go%E7%9A%84defer%E5%85%B3%E9%94%AE%E5%AD%97/</url>
     <content><![CDATA[<p>go 语言中的 defer 关键字常用语关闭文件描述符、数据库连接或解锁资源。（这是 node.js 没有的）</p>
 <p>本文主要研究一下，defer 如何使用以及它的执行机制。</p>
 <span id="more"></span>
@@ -1230,7 +1230,7 @@
   </entry>
   <entry>
     <title>趣谈网络协议-笔记</title>
-    <url>/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/</url>
+    <url>/my-blog/2021/05/19/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>公司开了个极客时间企业版，一人挑五门课</p>
 <p>看了下这个《趣谈网络协议》挺有意思的</p>
 <p>只看了前两讲就感觉收获挺大，所以记记笔记方便以后查找知识</p>
@@ -1704,7 +1704,7 @@
   </entry>
   <entry>
     <title>go程序设计语言-slice课后练习</title>
-    <url>/2021/05/17/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8Fslice%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0/</url>
+    <url>/my-blog/2021/05/17/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8Fslice%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0/</url>
     <content><![CDATA[<p>本来想写一片关于 slice 切片的文章，但是又复习了一下《go程序设计语言》，并且网上类似的东西数不胜数。。</p>
 <p>于是想着把课后练习题做了吧，(ps：当时看第一遍的时候不太明白所以没做)。</p>
 <p>本文代码可以直接在 playground 中运行。</p>
@@ -1772,7 +1772,7 @@
   </entry>
   <entry>
     <title>golang的gc</title>
-    <url>/2021/05/15/golang%E7%9A%84gc/</url>
+    <url>/my-blog/2021/05/15/golang%E7%9A%84gc/</url>
     <content><![CDATA[<p>和node.js一样，go语言也是有 GC 的，但是 GC 的方式和 node.js 有很大的区别。</p>
 <p>本片文章主要对照着 node.js ，分析一下 go 的 GC 机制。</p>
 <span id="more"></span>
@@ -1901,7 +1901,7 @@
   </entry>
   <entry>
     <title>go中的rune类型</title>
-    <url>/2021/05/01/go%E4%B8%AD%E7%9A%84rune%E7%B1%BB%E5%9E%8B/</url>
+    <url>/my-blog/2021/05/01/go%E4%B8%AD%E7%9A%84rune%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<p>在 java 等语言中，有char类型，而在go语言中，使用的是 rune 类型。</p>
 <p>char 类型在 java中是16位的，因为用的是unicode编码。</p>
 <p>而 rune 类型在 go中是32位的，因为go用的是utf-8编码。</p>
@@ -1964,7 +1964,7 @@
   </entry>
   <entry>
     <title>关于event-loop</title>
-    <url>/2021/04/19/%E5%85%B3%E4%BA%8Eevent-loop/</url>
+    <url>/my-blog/2021/04/19/%E5%85%B3%E4%BA%8Eevent-loop/</url>
     <content><![CDATA[<p>首先，js 不同宿主环境对 event loop 的实现是有区别的，这里说的都是 node.js 中的 event loop</p>
 <p>关于 node.js 的 event loop ，之前写过两篇文章，最近回头看的时候，看不下去给删了</p>
 <p>其实我的理解主要来源于：</p>
@@ -2063,7 +2063,7 @@
   </entry>
   <entry>
     <title>golang的“占位符”整理</title>
-    <url>/2021/04/18/golang%E7%9A%84%E5%8D%A0%E4%BD%8D%E7%AC%A6%E6%95%B4%E7%90%86/</url>
+    <url>/my-blog/2021/04/18/golang%E7%9A%84%E5%8D%A0%E4%BD%8D%E7%AC%A6%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<p>在 golang 中，格式化输出的占位符有很多种。这里整理一下方便用的时候查阅</p>
 <span id="more"></span>
 
@@ -2301,7 +2301,7 @@
   </entry>
   <entry>
     <title>WeekMap和WeekSet</title>
-    <url>/2021/04/10/WeekMap%E5%92%8CWeekSet/</url>
+    <url>/my-blog/2021/04/10/WeekMap%E5%92%8CWeekSet/</url>
     <content><![CDATA[<p>在es6中，不仅引入了 Map 和 Set， 还有 WeekMap和WeekSet，不过我没怎么用过。</p>
 <p>首先WeekMap 和 WeekSet 的键只能是对象；其次垃圾回收不会考虑它们对对象的引用，本文主要分析它们对于 gc 的区别。</p>
 <p>测试代码地址:<a href="https://github.com/ruomuc/test_demos/tree/master/blog/WeekMap%E5%92%8CWeekSet">https://github.com/ruomuc/test_demos/tree/master/blog/WeekMap%E5%92%8CWeekSet</a></p>
@@ -2355,7 +2355,7 @@
   </entry>
   <entry>
     <title>JavaScript强制类型转换</title>
-    <url>/2021/04/09/JavaScript%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <url>/my-blog/2021/04/09/JavaScript%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p>类型转换和强制类型转换？</p>
 <ul>
 <li>类型转换发生在静态类型语言的编译阶段。</li>
@@ -2437,7 +2437,7 @@
   </entry>
   <entry>
     <title>JavaScript属性设置和屏蔽</title>
-    <url>/2021/03/28/JavaScript%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%B1%8F%E8%94%BD/</url>
+    <url>/my-blog/2021/03/28/JavaScript%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%B1%8F%E8%94%BD/</url>
     <content><![CDATA[<p>本篇文章需要对 JavaScript 的<strong>原型链</strong>和<strong>属性描述符</strong>有一定的了解。</p>
 <p>本篇文章主要分析一下，在 JavaScript 给对象设置属性或是修改对象的属性值背后的过程。</p>
 <p>首先看这样一段代码，熟悉一下原型链：</p>
@@ -2498,7 +2498,7 @@
   </entry>
   <entry>
     <title>JavaScript行为委托</title>
-    <url>/2021/03/21/JavaScript%E8%A1%8C%E4%B8%BA%E5%A7%94%E6%89%98/</url>
+    <url>/my-blog/2021/03/21/JavaScript%E8%A1%8C%E4%B8%BA%E5%A7%94%E6%89%98/</url>
     <content><![CDATA[<p>在 java 、c# 等语言中，类是一种必须使用的”设计模式“，但是在 JavaScript 等语言中，它是可选的，并且在JavaScript中实现类总是会有各种缺陷。</p>
 <p>还有要注意的一点是，JavaScript中没有类，只有对象，没有继承，只有委托（prototype）。</p>
 <p>包括 es6 的 class 语法在内的各种语法糖，也不会改变这个事实。</p>
@@ -2537,7 +2537,7 @@
   </entry>
   <entry>
     <title>js判断数据类型</title>
-    <url>/2021/03/03/js%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <url>/my-blog/2021/03/03/js%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<p>之前对js的类型判断用到的比较少，只知道typeof 和 instanceof。。</p>
 <p>MDN上面其实介绍的挺详细的。。这里随便记一下</p>
 <h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof">typeof</a></h2><p>typeof 是一个<strong>一元</strong>操作符，返回被操作数类型的字符串。</p>
@@ -2585,7 +2585,7 @@
   </entry>
   <entry>
     <title>Kruskal算法</title>
-    <url>/2021/02/28/Kruskal%E7%AE%97%E6%B3%95/</url>
+    <url>/my-blog/2021/02/28/Kruskal%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>一月份力扣出了一个月的图论题，可惜那时在封闭开发（爆粗口），有些没时间做。</p>
 <p>Kruskal算法是一种用来查找<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">最小生成树</a>的算法，适合用于查找<strong>稀疏图</strong>的最小生成树。</p>
 <h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><h4 id="什么是最小生成树"><a href="#什么是最小生成树" class="headerlink" title="什么是最小生成树"></a>什么是最小生成树</h4><p>最小生成树是<strong>一副连通加权无向图</strong>中，<strong>一颗权值最小的生成树</strong>。</p>
@@ -2631,7 +2631,7 @@
   </entry>
   <entry>
     <title>js对象的属性描述符</title>
-    <url>/2021/02/21/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6/</url>
+    <url>/my-blog/2021/02/21/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6/</url>
     <content><![CDATA[<h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>JavaScript提供了一系列方法来修改和获取对象中属性的行为。</p>
 <p>思考下面的代码：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myobj = &#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(myobj,<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//    configurable: true</span></span><br><span class="line"><span class="comment">//    enumerable: true</span></span><br><span class="line"><span class="comment">//    value: 2</span></span><br><span class="line"><span class="comment">//    writable: true</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
@@ -2790,7 +2790,7 @@
   </entry>
   <entry>
     <title>go的结构体和接口</title>
-    <url>/2021/02/07/go%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
+    <url>/my-blog/2021/02/07/go%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<p>刚开始学go的时候，第一遍文档看完，没有搞懂结构体和接口的意思，现在大概明白了，记录一下。</p>
 <h2 id="函数和方法"><a href="#函数和方法" class="headerlink" title="函数和方法"></a>函数和方法</h2><p>在了解结构体和接口之前</p>
 <p>在我写<code>JavaScript</code>的时候，大部分不区分这两个叫法，但是在<code>Java</code>中，定义在类中的函数，习惯称之为”方法”。</p>
@@ -2865,7 +2865,7 @@
   </entry>
   <entry>
     <title>重学操作系统</title>
-    <url>/2020/12/27/%E9%87%8D%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <url>/my-blog/2020/12/27/%E9%87%8D%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<p>之前虽然也自己用vps搭搭机场、部署一下自己的小网站啥的，但是对linux和操作系统没有太多深入了解，所以双11在拉钩抢了一些课，随便记记。</p>
 <p>这种东西还是要看多用，所以就大概过一遍知识点，有个印象。</p>
 <h2 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h2><br>
@@ -3254,7 +3254,7 @@
   </entry>
   <entry>
     <title>golang踩坑记录</title>
-    <url>/2020/12/13/golang%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</url>
+    <url>/my-blog/2020/12/13/golang%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>很久没发博客了，这个本来是记在有道云笔记上面的，分享一下吧。</p>
 <p>力扣在坚持每天打卡，然后看一些书/教程/文档和网课。偶尔打两把游戏。。感觉时间不够用呐。。</p>
 <p>learning is keeping</p>
@@ -3320,7 +3320,7 @@
   </entry>
   <entry>
     <title>golang中的排序</title>
-    <url>/2020/11/06/golang%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F/</url>
+    <url>/my-blog/2020/11/06/golang%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<p>今天力扣每日一题是<a href="https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits/">根据数字二进制下 1 的数目排序</a>，题目本身是简单，但是我用<code>golang</code>实现的时候遇到了排序的问题。</p>
 <h2 id="javascript的实现"><a href="#javascript的实现" class="headerlink" title="javascript的实现"></a>javascript的实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sortByBits = <span class="keyword">function</span> (<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> countBit = <span class="keyword">function</span> (<span class="params">num</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> (num != <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (num % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">        count++</span><br><span class="line">      &#125;</span><br><span class="line">      num = <span class="title class_">Math</span>.<span class="title function_">floor</span>(num / <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">countBit</span>(a) - <span class="title function_">countBit</span>(b) || a - b</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -3349,7 +3349,7 @@
   </entry>
   <entry>
     <title>由浅入深吃透 Docker</title>
-    <url>/2020/10/12/%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%90%83%E9%80%8F-Docker/</url>
+    <url>/my-blog/2020/10/12/%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%90%83%E9%80%8F-Docker/</url>
     <content><![CDATA[<p>上次在拉钩买的《重学数据结构与算法》感觉讲的还不错，又碰到Docker的课打折，就顺便买了。。</p>
 <p>然后主要就是记记笔记整理一下别人的经验用法啥的，这些命令啥的搜都能搜得到。</p>
 <p>课程的二维码在最后</p>
@@ -3774,7 +3774,7 @@
   </entry>
   <entry>
     <title>0-1背包问题</title>
-    <url>/2020/10/11/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <url>/my-blog/2020/10/11/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>今天<strong>LeetCode</strong>的每日一题是<a href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">分割等和子集</a>，这道题可以看成是一个<code>0-1背包问题</code>。</p>
 <p>只是分享一下自己理解的过程，可能表述并不是很清楚，公式的推导就不说了，网上有很多很专业的文章。</p>
 <br>
@@ -3953,7 +3953,7 @@
   </entry>
   <entry>
     <title>koa-compose原理</title>
-    <url>/2020/10/01/koa-compose%E5%8E%9F%E7%90%86/</url>
+    <url>/my-blog/2020/10/01/koa-compose%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p><code>koa</code>是一个很优秀的轻量级web框架，一般我自己写个小东西都会用它。</p>
 <p>它的中间件执行顺序就和一个洋葱一样，所以被称为洋葱模型，但是一直不知道它的原理是什么，有时间就看了一下。</p>
 <br>
@@ -4011,7 +4011,7 @@
   </entry>
   <entry>
     <title>吐槽一下javascript</title>
-    <url>/2020/08/23/%E5%90%90%E6%A7%BD%E4%B8%80%E4%B8%8Bjavascript/</url>
+    <url>/my-blog/2020/08/23/%E5%90%90%E6%A7%BD%E4%B8%80%E4%B8%8Bjavascript/</url>
     <content><![CDATA[<p>最近在熟悉新公司的一些基础服务和核心库的代码，说真的想吐槽一下<code>JavaScript</code>了，风格太灵活多变了，一样的操作可以用<code>n</code>多种方式或者语法实现，读代码太痛苦了。。</p>
 <p>这不是上次面腾讯被问到<code>defineProperty</code>这种定义属性的方式和普通的<code>.</code> 操作有什么不同，刚好想起来我就搜了一下，给我惊到了。。</p>
 <br>
@@ -4146,7 +4146,7 @@
   </entry>
   <entry>
     <title>koa源码之delegates</title>
-    <url>/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/</url>
+    <url>/my-blog/2020/08/04/koa%E6%BA%90%E7%A0%81%E4%B9%8Bdelegates/</url>
     <content><![CDATA[<p>最近看koa的源码，看到了了一个<code>TJ</code>大神写的包<a href="https://www.npmjs.com/package/delegates">delegates</a>，实现了<a href="https://www.runoob.com/design-pattern/proxy-pattern.html">委托模式/代理模式</a>。</p>
 <p>当前包的版本为<code>1.0.0</code>，代码就100多行，周下载量一千两百多万。。果然是巨佬。</p>
 <br>
@@ -4234,7 +4234,7 @@
   </entry>
   <entry>
     <title>记录一次腾讯的面试</title>
-    <url>/2020/07/18/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E8%85%BE%E8%AE%AF%E7%9A%84%E9%9D%A2%E8%AF%95/</url>
+    <url>/my-blog/2020/07/18/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E8%85%BE%E8%AE%AF%E7%9A%84%E9%9D%A2%E8%AF%95/</url>
     <content><![CDATA[<p>说起来挺魔幻的，事情起因这样滴。。</p>
 <p>五六月份的时候，西安腾讯云子公司在boss上找我要了一份简历，给我安排了面试。</p>
 <p>一面主要问了下项目，es6的语法，设计模式等等。。其实不是很难，只是那时候没有准备，现在去应该能过一面。。</p>
@@ -4343,7 +4343,7 @@
   </entry>
   <entry>
     <title>面经2020</title>
-    <url>/2020/07/18/%E9%9D%A2%E7%BB%8F2020/</url>
+    <url>/my-blog/2020/07/18/%E9%9D%A2%E7%BB%8F2020/</url>
     <content><![CDATA[<p>面经放一起吧，做一个汇总吧</p>
 <h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>今天面了一家做车联网的公司。<br>技术的问题没什么难度，他们也没用mysql，redis这种常用的数据库，用的是其它的nosql。</p>
 <p>我不太了解的问题主要有三个吧。随便记录一下。<br><br></p>
@@ -4418,7 +4418,7 @@ emm...应该是贵吧。。毕竟服务器资源都是钱嘛。。
   </entry>
   <entry>
     <title>流式查询mysql</title>
-    <url>/2020/07/13/%E6%B5%81%E5%BC%8F%E6%9F%A5%E8%AF%A2mysql/</url>
+    <url>/my-blog/2020/07/13/%E6%B5%81%E5%BC%8F%E6%9F%A5%E8%AF%A2mysql/</url>
     <content><![CDATA[<p>简单记录一下，使用node的流读取mysql数据，解决分页扫表慢的问题。</p>
 <h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><p>有一个计算任务，需要逐条扫描一张大表里的符合条件的数据，并且做一些简单的计算插入一张小表中去，类似<code>select * from tableA where condition &gt; 1</code>。假设符合条件的数据有1000w条，使用分页，每页1000条，逐页查询并计算完插入小表。</p>
 <h4 id="瓶颈"><a href="#瓶颈" class="headerlink" title="瓶颈"></a>瓶颈</h4><p>mysql分页的特性。。就是越往后越慢，晚上计算任务又多，很容易跑不完或者挂掉。<br>哪怕优化了分页，效果还是不如意。</p>
@@ -4442,7 +4442,7 @@ emm...应该是贵吧。。毕竟服务器资源都是钱嘛。。
   </entry>
   <entry>
     <title>ES6之函数的扩展</title>
-    <url>/2020/07/11/ES6%E4%B9%8B%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/</url>
+    <url>/my-blog/2020/07/11/ES6%E4%B9%8B%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<h2 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>es6之前函数的参数不能使用默认值，只能采取这种写法：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">a</span>(<span class="params">x</span>)&#123;</span><br><span class="line">  x=x||<span class="number">1</span>; <span class="comment">// x的默认值为1</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">a</span>(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
@@ -4552,7 +4552,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>elasticsearch初踩坑</title>
-    <url>/2020/07/04/elasticsearch%E5%88%9D%E8%B8%A9%E5%9D%91/</url>
+    <url>/my-blog/2020/07/04/elasticsearch%E5%88%9D%E8%B8%A9%E5%9D%91/</url>
     <content><![CDATA[<p>大概说一下前段时间用<code>elasticsearch</code>遇到的几个坑</p>
 <p><code>es</code>版本为<code>7.7.1</code></p>
 <h4 id="原始需求"><a href="#原始需求" class="headerlink" title="原始需求"></a>原始需求</h4><p>千万级会员，三个条件模糊搜索（左匹配），使用<code>mysql</code>大概要30多秒，因为体验太差所以考虑用<code>es</code>做优化。</p>
@@ -4604,7 +4604,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>ES6之正则的扩展</title>
-    <url>/2020/06/30/ES6%E4%B9%8B%E6%AD%A3%E5%88%99%E7%9A%84%E6%89%A9%E5%B1%95/</url>
+    <url>/my-blog/2020/06/30/ES6%E4%B9%8B%E6%AD%A3%E5%88%99%E7%9A%84%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<h2 id="RegExp构造函数"><a href="#RegExp构造函数" class="headerlink" title="RegExp构造函数"></a>RegExp构造函数</h2><p>在ES5中我们可以这样声明一个正则表达式：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&#x27;xyz&#x27;</span>, <span class="string">&#x27;i&#x27;</span>);</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/xyz/i</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="regexp">/xyz/i</span>);</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/xyz/i</span>;</span><br></pre></td></tr></table></figure>
 
@@ -4702,7 +4702,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>重学数据结构算法</title>
-    <url>/2020/06/21/%E9%87%8D%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/</url>
+    <url>/my-blog/2020/06/21/%E9%87%8D%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>在拉钩1块钱抢了一个算法课程，讲的还不错，记下笔记。</p>
 <p>一共有21节课，抽时间看，持续更新。</p>
 <p>课程二维码在最后</p>
@@ -5247,7 +5247,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>ES6之字符串的扩展</title>
-    <url>/2020/06/09/ES6%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/</url>
+    <url>/my-blog/2020/06/09/ES6%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<p>本文整理一下<code>ES6</code>中字符串的扩展和新增的方法。</p>
 <p>可以先去看一下这篇文章<a href="https://liyucang-git.github.io/2019/06/17/%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82Unicode%E7%BC%96%E7%A0%81/">彻底弄懂Unicode编码</a>，最好用笔和纸撸两遍，下文转换过程将省略。</p>
 <br>
@@ -5344,7 +5344,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>ES6之解构赋值</title>
-    <url>/2020/06/04/ES6%E4%B9%8B%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
+    <url>/my-blog/2020/06/04/ES6%E4%B9%8B%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
     <content><![CDATA[<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
 <h2 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h2><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>左右两边<strong>模式相同</strong>，即可赋值:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b] = [<span class="number">0</span>,<span class="number">1</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b) <span class="comment">// 0 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a,b,[c]] = [<span class="number">0</span>,<span class="number">1</span>,[<span class="number">3</span>]]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,b,c) <span class="comment">// 0 1 3</span></span><br></pre></td></tr></table></figure>
@@ -5414,7 +5414,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>ES6之let和const</title>
-    <url>/2020/05/28/ES6%E4%B9%8Blet%E5%92%8Cconst/</url>
+    <url>/my-blog/2020/05/28/ES6%E4%B9%8Blet%E5%92%8Cconst/</url>
     <content><![CDATA[<p>我前面写过一篇整理es6的文章<a href="%5Bhttps://ruomuc.gitee.io/blog/2019/02/23/%E5%85%B3%E4%BA%8EES6/%5D(https://ruomuc.gitee.io/blog/2019/02/23/%E5%85%B3%E4%BA%8EES6/)">关于ES6</a>。但是好像太监了。。。因为太长了。</p>
 <p>然后不幸的是前两天面试被问到了<code>es6</code>的数组扩展方法，刚好我没看到。。这是一个悲伤的故事，所以我决定看阮一峰老师的<a href="https://es6.ruanyifeng.com/">ECMAScript 6 入门</a>。这次一章一章的整理。尽量做到完全弄懂。<br><br></p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>没错，又是<code>let</code>，我已经写了不知道多少次了。。。没事多看几次加深理解嘛。。</p>
@@ -5508,7 +5508,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>JavaScript中的this</title>
-    <url>/2020/05/24/JavaScript%E4%B8%AD%E7%9A%84this/</url>
+    <url>/my-blog/2020/05/24/JavaScript%E4%B8%AD%E7%9A%84this/</url>
     <content><![CDATA[<h2 id="默认绑定规则"><a href="#默认绑定规则" class="headerlink" title="默认绑定规则"></a>默认绑定规则</h2><p>this的指向在函数定义的时候是无法确定的，只有在函数执行的时候才能确定。</p>
 <p>因为浏览器和<code>node.js</code>的全局对象有一些区别。</p>
 <p>在浏览器中:</p>
@@ -5614,7 +5614,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>跨域和同源策略</title>
-    <url>/2020/05/23/%E8%B7%A8%E5%9F%9F%E5%92%8C%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/</url>
+    <url>/my-blog/2020/05/23/%E8%B7%A8%E5%9F%9F%E5%92%8C%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/</url>
     <content><![CDATA[<p>虽然经常遇到和处理跨域的问题，但都是停留于用<code>node</code>的中间件，使用<code>CORS</code>的方式来允许跨域。</p>
 <p>这篇文章主要理解跨域和同源策略，就不详细的描述解决方案了，因为跨窗口通信和iframe这些东西作为后端没怎么接触过。</p>
 <h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源。</p>
@@ -5682,7 +5682,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>缓存方案</title>
-    <url>/2020/05/22/%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88/</url>
+    <url>/my-blog/2020/05/22/%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<p>emm…我觉得我学东西就和<code>js</code>的原型链一样，怎么学着学着奇怪的知识就增加了…本来要学的东西一直被挂起….</p>
 <h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><p>强制缓存是通过<code>http</code>请求头里的<code>Cache-Control</code>和<code>Expire</code>字段来控制。</p>
 <p><code>Expires</code>是<code>HTTP1.0</code>标准下的字段，所以暂时忽略吧。</p>
@@ -5725,7 +5725,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>hexo搜索转圈问题</title>
-    <url>/2020/05/22/hexo%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%9C%88%E9%97%AE%E9%A2%98/</url>
+    <url>/my-blog/2020/05/22/hexo%E6%90%9C%E7%B4%A2%E8%BD%AC%E5%9C%88%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>今天hexo的搜索功能一直转菊花，对于我这种强迫症来说，博客没有搜索也太难受了吧。</p>
 <p>google了一下发现很多人也遇到了这个问题。</p>
 <p>说一下我的解决步骤吧。</p>
@@ -5749,7 +5749,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>javascript原型链</title>
-    <url>/2020/05/21/javascript%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <url>/my-blog/2020/05/21/javascript%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
     <content><![CDATA[<p>阮一峰老师的说原型链开始是为了解决继承的，因为JavaScript没有子类父类的概念，只有原型对象。</p>
 <p>看着别人的讲解，自己跟着画了张图加深理解，对比着图比较容易理解。</p>
 <img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/prototype.png" style="zoom:25%;" />
@@ -5790,7 +5790,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>css的相对单位和绝对单位</title>
-    <url>/2020/05/19/css%E7%9A%84%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D/</url>
+    <url>/my-blog/2020/05/19/css%E7%9A%84%E7%9B%B8%E5%AF%B9%E5%8D%95%E4%BD%8D%E5%92%8C%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D/</url>
     <content><![CDATA[<p>在查资料的时候，发现网上有的人说 <code>px</code>是相对单位，有的人说<code>px</code>是绝对单位。。<a href="https://www.zhihu.com/question/67571440">px是相对单位还是绝对单位？</a></p>
 <ul>
 <li>《css权威指南》第三章-单位和值的小节“长度单位”中简易说明了px是相对长度单位。</li>
@@ -5864,7 +5864,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>数据库必知必会</title>
-    <url>/2020/05/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</url>
+    <url>/my-blog/2020/05/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</url>
     <content><![CDATA[<h2 id="常用关系型数据库"><a href="#常用关系型数据库" class="headerlink" title="常用关系型数据库"></a>常用关系型数据库</h2><ul>
 <li><strong>Oracle：</strong>功能强大，主要缺点就是贵</li>
 <li><strong>MySQL：</strong>互联网行业中最流行的数据库，这不仅仅是因为MySQL的免费。可以说关系数据库场景中你需要的功能，MySQL都能很好的满足，后面详解部分会详细介绍MySQL的一些知识点</li>
@@ -6333,7 +6333,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>nodejs必知必会</title>
-    <url>/2020/05/13/nodejs%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</url>
+    <url>/my-blog/2020/05/13/nodejs%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    怎么说呢，很多东西其实之前都整理过，但那是一个学习的过程，很多东西不够准确、严谨。突然就想把看过学过的零散知识重新整理一遍。</p>
 <h2 id="JavaScript基础问题"><a href="#JavaScript基础问题" class="headerlink" title="JavaScript基础问题"></a>JavaScript基础问题</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h4 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h4><h5 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h5><h6 id="一般数据类型"><a href="#一般数据类型" class="headerlink" title="一般数据类型"></a>一般数据类型</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">typeof</span> <span class="literal">undefined</span>; <span class="comment">// undefined</span></span><br><span class="line"> <span class="keyword">typeof</span> []; <span class="comment">// object</span></span><br><span class="line"> <span class="keyword">typeof</span> <span class="string">&#x27;123&#x27;</span>; <span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">123</span>; <span class="comment">// &quot;number&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span>; <span class="comment">// &quot;boolean&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;; <span class="string">&quot;function&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// &quot;object&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -7362,7 +7362,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>又老了一岁</title>
-    <url>/2020/01/08/%E5%8F%88%E8%80%81%E4%BA%86%E4%B8%80%E5%B2%81/</url>
+    <url>/my-blog/2020/01/08/%E5%8F%88%E8%80%81%E4%BA%86%E4%B8%80%E5%B2%81/</url>
     <content><![CDATA[<p>2020年01月08日星期3，如往常一样上下班，下班后独自点了一份山东炒面加一份火腿鸡蛋煎饼，小撑。平时都是二选一，想着过生日，奢侈一下嘛。。</p>
 <p>回家楼底下买了一个蛋糕切片，没有生日快乐的样式，所以选了个小猪佩奇。</p>
 <p>本来是想发个朋友圈的，想了下没啥意思，自己的生日成为只有自己知道的秘密也挺有意思的。</p>
@@ -7383,7 +7383,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>mysql的processlist和explain</title>
-    <url>/2019/11/17/mysql%E7%9A%84processlist%E5%92%8Cexplain/</url>
+    <url>/my-blog/2019/11/17/mysql%E7%9A%84processlist%E5%92%8Cexplain/</url>
     <content><![CDATA[<h2 id="show-processlist"><a href="#show-processlist" class="headerlink" title="show processlist"></a>show processlist</h2><p>一般用到 <code>show processlist</code> 或 <code>show full processlist</code> 都是为了查看当前 mysql 是否有压力，都在跑什么语句，当前语句耗时多久了，有没有什么慢 SQL 正在执行之类的。</p>
 <h6 id="每一列代表的意思"><a href="#每一列代表的意思" class="headerlink" title="每一列代表的意思"></a>每一列代表的意思</h6><ul>
 <li><code>id</code>:链接mysql 服务器线程的唯一标识，可以通过kill来终止此线程的链接。</li>
@@ -7464,7 +7464,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>linux的0和1</title>
-    <url>/2019/10/26/linux%E7%9A%840%E5%92%8C1/</url>
+    <url>/my-blog/2019/10/26/linux%E7%9A%840%E5%92%8C1/</url>
     <content><![CDATA[<p>很久没写博客了，因为之前写的东西够消化很久了。而且现在也不想搬运文档之类的东西，写就写点自己的东西吧。。。</p>
 <p>虽然前面的博客搬运工居多，但也是一个知识的整理的过程吧。技术越来越好之后，尽量写一些自己体会过的东西。</p>
 <p>而且现在又到笔记用的多，博客没什么灵感。</p>
@@ -7499,7 +7499,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>mysql之事务</title>
-    <url>/2019/06/26/mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/</url>
+    <url>/my-blog/2019/06/26/mysql%E4%B9%8B%E4%BA%8B%E5%8A%A1/</url>
     <content><![CDATA[<p>本文于 2021年07月14日19:39:57 重新整理。。。之前写的自己都有点看不下去。</p>
 <h4 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h4><p>简单来说，事务就是要保证一组数据的操作，要么全部成功，要么全部失败。</p>
 <p>在 mysql 中，事务是由引擎实现的，比如 InnoDB 支持事务，而 MyISAM 就不支持事务。</p>
@@ -7551,7 +7551,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>js之你不知道的引用传递</title>
-    <url>/2019/05/22/js%E4%B9%8B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
+    <url>/my-blog/2019/05/22/js%E4%B9%8B%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
     <content><![CDATA[<p>之前有一篇文章<a href="%5Bhttps://ruomuc.gitee.io/blog/2018/06/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/%5D(https://ruomuc.gitee.io/blog/2018/06/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/)">深拷贝和浅拷贝</a>说明了js中传值和传引用，或者叫值传递和引用传递。</p>
 <p>可能是我闲的蛋疼吧。</p>
 <p>假设有这样一段代码</p>
@@ -7577,7 +7577,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>关于mysql的索引</title>
-    <url>/2019/05/11/%E5%85%B3%E4%BA%8Emysql%E7%9A%84%E7%B4%A2%E5%BC%95/</url>
+    <url>/my-blog/2019/05/11/%E5%85%B3%E4%BA%8Emysql%E7%9A%84%E7%B4%A2%E5%BC%95/</url>
     <content><![CDATA[<hr>
 <p>本篇文章于2021年7月18日15:25:27。。重构之</p>
 <p>主要最近在看一个 mysql 的课，然后看到之前写过索引相关的文章，看不下去了，重构之。（捂脸）</p>
@@ -7673,7 +7673,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>mysql之左右联结</title>
-    <url>/2019/04/14/mysql%E4%B9%8B%E5%B7%A6%E5%8F%B3%E8%81%94%E7%BB%93/</url>
+    <url>/my-blog/2019/04/14/mysql%E4%B9%8B%E5%B7%A6%E5%8F%B3%E8%81%94%E7%BB%93/</url>
     <content><![CDATA[<p>之前对联结表的看理解好像不是很明确，于是又看了一些资料。</p>
 <p>再次之前假装先建立两张表:</p>
 <ul>
@@ -7720,7 +7720,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>写了一个命令行的聊天室</title>
-    <url>/2019/03/23/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E8%81%8A%E5%A4%A9%E5%AE%A4/</url>
+    <url>/my-blog/2019/03/23/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E8%81%8A%E5%A4%A9%E5%AE%A4/</url>
     <content><![CDATA[<p><a href="https://github.com/ruomuc/test_demos/tree/master/command-chat">完整项目gihub地址传送门&gt;&gt;&gt;</a><br>基本功能：</p>
 <ul>
 <li>运行前端提示输入昵称，昵称不能和别人重复</li>
@@ -7740,7 +7740,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>人生路</title>
-    <url>/2019/03/19/%E4%BA%BA%E7%94%9F%E8%B7%AF/</url>
+    <url>/my-blog/2019/03/19/%E4%BA%BA%E7%94%9F%E8%B7%AF/</url>
     <content><![CDATA[<p>前段时间，wegame上出了一个新游戏叫《隐形守护者》，买来玩了玩。</p>
 <p>人生何尝不是一次次选择，唯一的区别是不能重选罢了。和游戏里一样，不同的选择可能会有相同的结果，但是过程不一样啊，所以又回到了一个哲学问题，结果重要还是过程重要呢。都无所谓了，人生如戏，但不是游戏，选了就选了吧。不管结果如何，过程如何，反正不知道另一个选择的结果和过程对吧。</p>
 <h6 id="木业飞舞之处，火亦生生不息。"><a href="#木业飞舞之处，火亦生生不息。" class="headerlink" title="木业飞舞之处，火亦生生不息。"></a><font color = red>木业飞舞之处，火亦生生不息。</font></h6><p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/huoying.jpg"></p>
@@ -7754,7 +7754,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>小小的总结一下</title>
-    <url>/2019/03/13/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B/</url>
+    <url>/my-blog/2019/03/13/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B/</url>
     <content><![CDATA[<p>总结一下没有回答出来或者不熟练的问题吧。</p>
 <h2 id="redis怎么备份"><a href="#redis怎么备份" class="headerlink" title="redis怎么备份"></a>redis怎么备份</h2><p>我所知道的备份就是conf文件内可以配合，它会自动定时保存一个rdb文件。<br>然鹅还有：</p>
 <ul>
@@ -7806,7 +7806,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>发现一个有意思的变量暴露问题</title>
-    <url>/2019/02/25/%E5%8F%91%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%8F%98%E9%87%8F%E6%9A%B4%E9%9C%B2%E9%97%AE%E9%A2%98/</url>
+    <url>/my-blog/2019/02/25/%E5%8F%91%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%8F%98%E9%87%8F%E6%9A%B4%E9%9C%B2%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>刚才撸代码调用一个变量，这个变量被暴露出去在其他文件改变了它的值，但是本文件调用时发现并没有改变，看了半天发现了一个问题。<br>新建一个a.js</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">&#x27;./b&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b.<span class="property">foo</span>); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">b.<span class="property">foo</span> = <span class="number">233</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>新建b.js</p>
@@ -7830,7 +7830,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>使用pm2管理node.js服务</title>
-    <url>/2019/01/10/%E4%BD%BF%E7%94%A8pm2%E7%AE%A1%E7%90%86node.js%E6%9C%8D%E5%8A%A1/</url>
+    <url>/my-blog/2019/01/10/%E4%BD%BF%E7%94%A8pm2%E7%AE%A1%E7%90%86node.js%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>今天研究了一下使用pm2来管理node服务器，这样不仅可以看到每个服务占用的内存和cpu，还可以很方便的启动和重启，也可以使用<code>--watch</code>，自动重启，而且官方说<code>pm2 reload</code>来重启服务器是‘无缝’重启的。。</p>
 <p><a href="http://pm2.keymetrics.io/docs/usage/quick-start/">官方快速入门文档传送门</a></p>
 <p>简单的使用步骤：<br>1.下载<br><code> npm install pm2 -g</code></p>
@@ -7857,7 +7857,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>git的使用</title>
-    <url>/2019/01/04/git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/my-blog/2019/01/04/git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>看了几篇很好的文章，分享一下，git我都是当svn用的。就是 <code>add .  commit  push</code>.</p>
 <p><a href="https://mp.weixin.qq.com/s/-TC07TQoiTNRUJIdBv46SQ">入门</a> :git新手入门，介绍Git的基本概念。</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU0OTE3MjE1Mw==&mid=2247484341&idx=1&sn=64bde82cd3459b07340c89a56e3fa473&chksm=fbb2a563ccc52c7584bffbdc21ef9fd70a45aa3223e1b584063ac8f0c67596060c574c66705b&scene=21#wechat_redirect">Git的奇技淫巧
@@ -7873,7 +7873,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>node的多进程</title>
-    <url>/2018/12/31/node%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B/</url>
+    <url>/my-blog/2018/12/31/node%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[<p>现行的软件架构主要有两种：多线程单进程(如：memcached、redis、mongodb等)和单线程多进程(nginx、node)。<br>多线程单进程的主要特点：</p>
 <ul>
 <li>快：线程比进程轻量，它的切换开销要少很多。进程相当于函数间切换，每个函数拥有自己的变量；线程相当于一个函数内的子函数切换，它们拥有相同的全局变量。</li>
@@ -7935,7 +7935,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>所以get和post到底有区别吗？</title>
-    <url>/2018/11/09/%E6%89%80%E4%BB%A5get%E5%92%8Cpost%E5%88%B0%E5%BA%95%E6%9C%89%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F/</url>
+    <url>/my-blog/2018/11/09/%E6%89%80%E4%BB%A5get%E5%92%8Cpost%E5%88%B0%E5%BA%95%E6%9C%89%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F/</url>
     <content><![CDATA[<h2 id="如题"><a href="#如题" class="headerlink" title="如题"></a>如题</h2><p><a href="http://www.cnblogs.com/logsharing/p/8448446.html">http://www.cnblogs.com/logsharing/p/8448446.html</a></p>
 <p>说白了就是语义区别，和大家的约定，你可以不按套路来鸭。</p>
 <p>ps:顺便整理几个问题</p>
@@ -7958,7 +7958,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>网络安全之openssl</title>
-    <url>/2018/11/06/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8Bopenssl/</url>
+    <url>/my-blog/2018/11/06/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8Bopenssl/</url>
     <content><![CDATA[<p>客户端和服务端的数据传输如果不加密就会被别人截取而泄露数据。对于开发者而言，加密和解密最好是放在传输层，而应用层的数据处理仍然是透明的。<br>node在网络安全提供了，tls、https、crypto三个模块。tls类似net、https是http安全版。crypto提供了SHA1、MD5等加密算法。</p>
 <h2 id="TLS-SSL-结构"><a href="#TLS-SSL-结构" class="headerlink" title="TLS/SSL 结构"></a>TLS/SSL 结构</h2><p>node底层采用的是openssl实现TSL/SSL的，所以可以使用openssl生成公钥和私钥。</p>
 <p>1.下载安装openssl<br>我是在<a href="http://slproweb.com/products/Win32OpenSSL.html">http://slproweb.com/products/Win32OpenSSL.html</a> 下载windows安装包。<br>然后配置环境变量。<br>然后随便在一个地方打开cmd命令提示符，输入openssl就可以进入生成秘钥操作。<br>2.生成私钥。</p>
@@ -7994,7 +7994,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>一个很有意思面试题</title>
-    <url>/2018/09/13/%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <url>/my-blog/2018/09/13/%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>原文链接：<a href="https://zhuanlan.zhihu.com/p/25407758">https://zhuanlan.zhihu.com/p/25407758</a> </p>
 <p>看了下知乎上某位大佬分享的一个题，我自己分析一下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -8052,7 +8052,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>单元测试和Mocha</title>
-    <url>/2018/09/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8CMocha/</url>
+    <url>/my-blog/2018/09/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8CMocha/</url>
     <content><![CDATA[<h2 id="单元测试的必要性"><a href="#单元测试的必要性" class="headerlink" title="单元测试的必要性"></a>单元测试的必要性</h2><p>比如创建 add.js：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//add.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a,b</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面这个代码有啥好测得？</p>
@@ -8088,7 +8088,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>深入浅出node.js之网络编程</title>
-    <url>/2018/09/08/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAnode.js%E4%B9%8B%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    <url>/my-blog/2018/09/08/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAnode.js%E4%B9%8B%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<p>好久没更博客了，最近没看书了，买了辆公路车沉迷骑行无法自拔 -.-</p>
 <h2 id="node-js网络模块"><a href="#node-js网络模块" class="headerlink" title="node.js网络模块"></a>node.js网络模块</h2><p> node.js提供提供了 <code>net 、 dgram 、 http 、https</code>这四个模块，分别用于处理<code>TCP 、 UDP 、 HTTP 、 HTTPS</code>适用于服务器端和客户端。</p>
 <h2 id="构建TCP服务"><a href="#构建TCP服务" class="headerlink" title="构建TCP服务"></a>构建TCP服务</h2><p> TCP全名为传输控制协议，在<a href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E7%B3%BB%E7%BB%9F%E4%BA%92%E8%BF%9E%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B?fromtitle=OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B&fromid=9763441">OSI</a>模型中属于传输层协议,许多应用层协议如<a href="https://baike.baidu.com/item/http">HTTP</a>、<a href="https://baike.baidu.com/item/SMTP">SMTP</a>、<a href="https://baike.baidu.com/item/imap">IMAP</a>等都是基于TCP构建的。</p>
@@ -8124,7 +8124,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>nginx+node.js实现简单的URL分发</title>
-    <url>/2018/09/03/nginx+node-js%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84URL%E5%88%86%E5%8F%91/</url>
+    <url>/my-blog/2018/09/03/nginx+node-js%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84URL%E5%88%86%E5%8F%91/</url>
     <content><![CDATA[<p>前段时间做了一个主页部署到了vps上面，当时遇到一个问题没有解决：关于URL分发的问题。刚好我重装了一个vps，之前那个太贵了，装了一个低配一点的，然后我的主站就要重新部署。</p>
 <p>之前是node监听的是一个非80端口，但是，阿里云默认解析到80端口，为了好看不再域名后面加<code>:</code>和端口号，我就只能把主站的监听端口改成了80，但是80只有一个，后面部署其他项目怎么办呢。。</p>
 <p>于是我这次准备一次解决完：</p>
@@ -8178,7 +8178,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>关于js的几种路径写法</title>
-    <url>/2018/08/30/%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84/</url>
+    <url>/my-blog/2018/08/30/%E5%85%B3%E4%BA%8E%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<p>Node.js中的文件路径大概有 __dirname, __filename, process.cwd(), ./ 或者 ../，前三个都是绝对路径。<br>关于这几个路径的意思:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__dirname：    获得当前执行文件所在目录的完整目录名</span><br><span class="line">__filename：   获得当前执行文件的带有完整绝对路径的文件名</span><br><span class="line">process.cwd()：获得当前执行node命令时候的文件夹目录名 </span><br><span class="line">./：           文件所在目录</span><br></pre></td></tr></table></figure>
 <p>我在桌面的一个新建文件夹里新建了如下目录:</p>
@@ -8204,7 +8204,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>Koa入门(一)</title>
-    <url>/2018/08/26/Koa%E5%85%A5%E9%97%A8(%E4%B8%80)/</url>
+    <url>/my-blog/2018/08/26/Koa%E5%85%A5%E9%97%A8(%E4%B8%80)/</url>
     <content><![CDATA[<h2 id="koa的安装"><a href="#koa的安装" class="headerlink" title="koa的安装"></a>koa的安装</h2><p>安装</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init </span><br><span class="line">npm install koa </span><br></pre></td></tr></table></figure>
 <h2 id="第一个hello-world"><a href="#第一个hello-world" class="headerlink" title="第一个hello world"></a>第一个hello world</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="function"><span class="params">ctx</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">request</span>,ctx.<span class="property">response</span>);</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&#x27;hello world!&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server is listen on 3000&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -8243,7 +8243,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>npm install</title>
-    <url>/2018/08/23/npm%20install/</url>
+    <url>/my-blog/2018/08/23/npm%20install/</url>
     <content><![CDATA[<h2 id="npm的几种install的区别"><a href="#npm的几种install的区别" class="headerlink" title="npm的几种install的区别"></a>npm的几种install的区别</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install moduleName # 安装模块到项目目录下</span><br><span class="line"></span><br><span class="line">npm install -g moduleName # -g 的意思是将模块安装到全局，具体安装到磁盘哪个位置，要看 npm config prefix 的位置。</span><br><span class="line"></span><br><span class="line">npm install -save moduleName # -save 的意思是将模块安装到项目目录下，并在package文件的dependencies节点写入依赖。</span><br><span class="line"></span><br><span class="line">npm install -save-dev moduleName # -save-dev 的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖。</span><br></pre></td></tr></table></figure>
 <p>那么问题来了，在项目中我们应该使用四个命令中的哪个呢？这个就要视情况而定了。下面对这四个命令进行对比，看完后你就不再这么问了。</p>
 <h2 id="npm-install-moduleName-命令"><a href="#npm-install-moduleName-命令" class="headerlink" title="npm install moduleName 命令"></a>npm install moduleName 命令</h2><ol>
@@ -8279,7 +8279,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>linux常用命令记录</title>
-    <url>/2018/08/15/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
+    <url>/my-blog/2018/08/15/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h5 id="平常常用的linux命令，持续更新。。主要是centos6-7，有差异。"><a href="#平常常用的linux命令，持续更新。。主要是centos6-7，有差异。" class="headerlink" title="平常常用的linux命令，持续更新。。主要是centos6/7，有差异。"></a>平常常用的linux命令，持续更新。。主要是centos6/7，有差异。</h5><p>查看系统版本</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line">cat /proc/version</span><br><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
 
@@ -8342,7 +8342,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>关于Buffer</title>
-    <url>/2018/08/15/%E5%85%B3%E4%BA%8EBuffer/</url>
+    <url>/my-blog/2018/08/15/%E5%85%B3%E4%BA%8EBuffer/</url>
     <content><![CDATA[<h2 id="Buffer结构"><a href="#Buffer结构" class="headerlink" title="Buffer结构"></a>Buffer结构</h2><h4 id="模块结构"><a href="#模块结构" class="headerlink" title="模块结构"></a>模块结构</h4><p>1.一个很像Array的对象。</p>
 <p>2.Buffer是典型的js和c++结合的模块，性能部分由c++实现，非性能相关由js实现。</p>
 <p>3.Buffer所占用的内存不是V8分配的，属于堆外内存。并且在nodejs启动时加载，并放在global上，无需require()就可以直接使用</p>
@@ -8437,7 +8437,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>linux部署网站</title>
-    <url>/2018/08/13/linux%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/</url>
+    <url>/my-blog/2018/08/13/linux%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>这个是真的难安，装了卸，卸了装。。。orz</p>
 <p>1.cd /usr/local/src #定位到这个目录，下载的文件会在这个目录,版本号随着下载包的改变，最简单就是官网的linux安装包下载路径复制过来。不要问我为什么是user/local/src路径，因为别的路径环境变量配置不出来，搞了一下午。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v6.9.4/node-v6.9.4-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
@@ -8497,7 +8497,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>V8的垃圾回收机制和内存限制</title>
-    <url>/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/</url>
+    <url>/my-blog/2018/07/31/V8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%92%8C%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6/</url>
     <content><![CDATA[<h2 id="内存限制"><a href="#内存限制" class="headerlink" title="内存限制"></a>内存限制</h2><p>在一般的后端开发语言，在基本的内存使用上是没有限制的。</p>
 <p>主要是因为 Node 基于 V8构建，所以在 Node 中使用的 JavaScript 对象基本是通过 V8 自己的方式来分配和管理的。</p>
 <p>V8 的内存管理机制在浏览器上使用是完全足够的，但是对服务端来讲，限制了开发者随心所欲使用内存的想法。</p>
@@ -8594,7 +8594,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>异步控制之 Bagpipe</title>
-    <url>/2018/07/30/%E5%BC%82%E6%AD%A5%E6%8E%A7%E5%88%B6%E4%B9%8B-Bagpipe/</url>
+    <url>/my-blog/2018/07/30/%E5%BC%82%E6%AD%A5%E6%8E%A7%E5%88%B6%E4%B9%8B-Bagpipe/</url>
     <content><![CDATA[<h2 id="Bagpipe"><a href="#Bagpipe" class="headerlink" title="Bagpipe"></a>Bagpipe</h2><p>朴大的bagpipe感觉是比async的解决方案好用一些。<br>基本思路：</p>
 <ul>
 <li>通过队列来控制并发量。</li>
@@ -8613,7 +8613,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>异步编程之async、step。。</title>
-    <url>/2018/07/30/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E4%B9%8Basync%E3%80%81step%E3%80%82%E3%80%82/</url>
+    <url>/my-blog/2018/07/30/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E4%B9%8Basync%E3%80%81step%E3%80%82%E3%80%82/</url>
     <content><![CDATA[<p>异步的解决方案，主要了解一下async、step加上一个比较奇葩的wind应该足够了。实在不行还可以写恶魔金字塔嘛。</p>
 <h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>安装引用</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">async</span> = <span class="built_in">require</span>(<span class="string">&#x27;async&#x27;</span>);</span><br></pre></td></tr></table></figure>
@@ -8655,7 +8655,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>理解promise</title>
-    <url>/2018/07/30/%E7%90%86%E8%A7%A3promise/</url>
+    <url>/my-blog/2018/07/30/%E7%90%86%E8%A7%A3promise/</url>
     <content><![CDATA[<h2 id="promise的基本理解"><a href="#promise的基本理解" class="headerlink" title="promise的基本理解"></a>promise的基本理解</h2><ul>
 <li>es6原生支持Promise对象</li>
 <li>Promise 是一个容器，里面保存着某个未来才会结束的事件</li>
@@ -8688,7 +8688,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>promise中的reject和catch处理上的区别</title>
-    <url>/2018/07/17/promise%E4%B8%AD%E7%9A%84reject%E5%92%8Ccatch%E5%A4%84%E7%90%86%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <url>/my-blog/2018/07/17/promise%E4%B8%AD%E7%9A%84reject%E5%92%8Ccatch%E5%A4%84%E7%90%86%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<h2 id="reject-和-catch-的处理上"><a href="#reject-和-catch-的处理上" class="headerlink" title="reject 和 catch 的处理上"></a>reject 和 catch 的处理上</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">auto.<span class="title function_">getData</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">results</span>) &#123;</span><br><span class="line">     res.<span class="title function_">send</span>(results);</span><br><span class="line">&#125;, next);</span><br><span class="line">auto.<span class="title function_">getData</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">results</span>) &#123;</span><br><span class="line">     res.<span class="title function_">send</span>(results);</span><br><span class="line">&#125;).<span class="title function_">catch</span>(next);</span><br></pre></td></tr></table></figure>
 <h6 id="第一种写法，next函数只会处理getData中的reject时的异常情况。"><a href="#第一种写法，next函数只会处理getData中的reject时的异常情况。" class="headerlink" title="第一种写法，next函数只会处理getData中的reject时的异常情况。"></a>第一种写法，next函数只会处理getData中的reject时的异常情况。</h6><p><img src="https://dn-cnode.qbox.me/FobQa2vcQxJQo_1kbvF3K71YXyDK"><br><br/></p>
 <h6 id="第二种写法，catch会捕捉到在它之前的promise链上的代码抛出的异常，不仅仅是getData，还有then-里面的异常。"><a href="#第二种写法，catch会捕捉到在它之前的promise链上的代码抛出的异常，不仅仅是getData，还有then-里面的异常。" class="headerlink" title="第二种写法，catch会捕捉到在它之前的promise链上的代码抛出的异常，不仅仅是getData，还有then()里面的异常。"></a>第二种写法，catch会捕捉到在它之前的promise链上的代码抛出的异常，不仅仅是getData，还有then()里面的异常。</h6><p><img src="https://dn-cnode.qbox.me/Fm56oEjn1Sjfn7lV1wx-dOFvwdTX"></p>
@@ -8706,7 +8706,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>require的实现原理</title>
-    <url>/2018/07/03/require%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
+    <url>/my-blog/2018/07/03/require%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<h5 id="几乎所有Node-js开发人员都可以告诉你这个require-函数的作用，但是我们中有多少人真的知道它是如何工作的？我们每天都使用它来加载库和模块，但它的行为却是一个谜。好奇，我挖掘了Node核心，了解幕后发生了什么。但是，我没有找到单一功能，而是成为Node模块系统的核心：module-js。该文件包含一个令人惊讶的功能但相对未知的核心模块，它控制所使用的每个文件的加载，编译和缓存。require-事实证明，这只是冰山一角。"><a href="#几乎所有Node-js开发人员都可以告诉你这个require-函数的作用，但是我们中有多少人真的知道它是如何工作的？我们每天都使用它来加载库和模块，但它的行为却是一个谜。好奇，我挖掘了Node核心，了解幕后发生了什么。但是，我没有找到单一功能，而是成为Node模块系统的核心：module-js。该文件包含一个令人惊讶的功能但相对未知的核心模块，它控制所使用的每个文件的加载，编译和缓存。require-事实证明，这只是冰山一角。" class="headerlink" title="几乎所有Node.js开发人员都可以告诉你这个require()函数的作用，但是我们中有多少人真的知道它是如何工作的？我们每天都使用它来加载库和模块，但它的行为却是一个谜。好奇，我挖掘了Node核心，了解幕后发生了什么。但是，我没有找到单一功能，而是成为Node模块系统的核心：module.js。该文件包含一个令人惊讶的功能但相对未知的核心模块，它控制所使用的每个文件的加载，编译和缓存。require()事实证明，这只是冰山一角。"></a><font color = grat>几乎所有Node.js开发人员都可以告诉你这个require()函数的作用，但是我们中有多少人真的知道它是如何工作的？我们每天都使用它来加载库和模块，但它的行为却是一个谜。</br>好奇，我挖掘了Node核心，了解幕后发生了什么。但是，我没有找到单一功能，而是成为Node模块系统的核心：module.js。该文件包含一个令人惊讶的功能但相对未知的核心模块，它控制所使用的每个文件的加载，编译和缓存。require()事实证明，这只是冰山一角。</font></h5><h2 id="MODULE-JS"><a href="#MODULE-JS" class="headerlink" title="MODULE.JS"></a>MODULE.JS</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Module</span>(<span class="params">id, parent</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">id</span> = id;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">exports</span> = &#123;&#125;;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">parent</span> = parent;</span><br><span class="line">  <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
 <h6 id="找到的Module类型在module-jsNode-js-中有两个主要角色。首先，它为所有Node-js模块的构建提供了基础。每个文件在加载时都会获得此基本模块的新实例，即使在文件运行后也会持续存在。这就是为什么我们可以module-exports根据需要附加属性并在以后返回它们。"><a href="#找到的Module类型在module-jsNode-js-中有两个主要角色。首先，它为所有Node-js模块的构建提供了基础。每个文件在加载时都会获得此基本模块的新实例，即使在文件运行后也会持续存在。这就是为什么我们可以module-exports根据需要附加属性并在以后返回它们。" class="headerlink" title="找到的Module类型在module.jsNode.js 中有两个主要角色。首先，它为所有Node.js模块的构建提供了基础。每个文件在加载时都会获得此基本模块的新实例，即使在文件运行后也会持续存在。这就是为什么我们可以module.exports根据需要附加属性并在以后返回它们。"></a>找到的Module类型在module.jsNode.js 中有两个主要角色。首先，它为所有Node.js模块的构建提供了基础。每个文件在加载时都会获得此基本模块的新实例，即使在文件运行后也会持续存在。这就是为什么我们可以module.exports根据需要附加属性并在以后返回它们。</h6><h6 id="该模块的第二项重要工作是处理Node的模块加载机制。require我们使用的独立函数实际上是一个抽象module-require，它本身只是一个简单的包装器Module-load。这种加载方法处理每个文件的实际加载，是我们开始旅程的地方。"><a href="#该模块的第二项重要工作是处理Node的模块加载机制。require我们使用的独立函数实际上是一个抽象module-require，它本身只是一个简单的包装器Module-load。这种加载方法处理每个文件的实际加载，是我们开始旅程的地方。" class="headerlink" title="该模块的第二项重要工作是处理Node的模块加载机制。require我们使用的独立函数实际上是一个抽象module.require，它本身只是一个简单的包装器Module._load。这种加载方法处理每个文件的实际加载，是我们开始旅程的地方。"></a>该模块的第二项重要工作是处理Node的模块加载机制。require我们使用的独立函数实际上是一个抽象module.require，它本身只是一个简单的包装器Module._load。这种加载方法处理每个文件的实际加载，是我们开始旅程的地方。</h6><h4 id="Module-load"><a href="#Module-load" class="headerlink" title="Module._load"></a>Module._load</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Module</span>.<span class="property">_load</span> = <span class="keyword">function</span>(<span class="params">request, parent, isMain</span>) &#123;</span><br><span class="line">  <span class="comment">// 1. Check Module._cache for the cached module.</span></span><br><span class="line">  <span class="comment">// 2. Create a new Module instance if cache is empty.</span></span><br><span class="line">  <span class="comment">// 3. Save it to the cache.</span></span><br><span class="line">  <span class="comment">// 4. Call module.load() with your the given filename.</span></span><br><span class="line">  <span class="comment">//    This will call module.compile() after reading the file contents.</span></span><br><span class="line">  <span class="comment">// 5. If there was an error loading/parsing the file,</span></span><br><span class="line">  <span class="comment">//    delete the bad module from the cache</span></span><br><span class="line">  <span class="comment">// 6. return module.exports</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -8730,7 +8730,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>毕业了，致终将逝去的青春</title>
-    <url>/2018/06/26/%E6%AF%95%E4%B8%9A%E4%BA%86%EF%BC%8C%E8%87%B4%E7%BB%88%E5%B0%86%E9%80%9D%E5%8E%BB%E7%9A%84%E9%9D%92%E6%98%A5/</url>
+    <url>/my-blog/2018/06/26/%E6%AF%95%E4%B8%9A%E4%BA%86%EF%BC%8C%E8%87%B4%E7%BB%88%E5%B0%86%E9%80%9D%E5%8E%BB%E7%9A%84%E9%9D%92%E6%98%A5/</url>
     <content><![CDATA[<h2 id="好不容易休一天假-旧的博客还没迁移完。休息之余，传一波照片。-皮一下"><a href="#好不容易休一天假-旧的博客还没迁移完。休息之余，传一波照片。-皮一下" class="headerlink" title="好不容易休一天假,旧的博客还没迁移完。休息之余，传一波照片。(皮一下 =.=)"></a><font color = red>好</font><font color = orange>不</font><font color = Yellow>容易</font><font color = grenn>休</font><font color = blue>一天</font><font color = purple>假</font><font color = red>,</font><font color = orange>旧</font><font color = Yellow>的</font><font color = grenn>博客</font><font color = blue>还没</font><font color = purple>迁移</font><font color = red>完</font><font color = orange>。</font><font color = Yellow>休息</font><font color = grenn>之余</font><font color = blue>，</font><font color = purple>传</font><font color = red>一波</font><font color = orange>照片</font><font color = Yellow>。</font><font size = 1>(皮一下 =.=)</font></h2><p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/IMG_20180620_191951.jpg"></p>
 <span id="more"></span>
 <p><img src="https://blog-1301153828.cos.ap-shanghai.myqcloud.com/IMG_20180619_143107.jpg"></p>
@@ -8759,7 +8759,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>关于闭包</title>
-    <url>/2018/06/26/%E5%85%B3%E4%BA%8E%E9%97%AD%E5%8C%85/</url>
+    <url>/my-blog/2018/06/26/%E5%85%B3%E4%BA%8E%E9%97%AD%E5%8C%85/</url>
     <content><![CDATA[<p>这篇文章是2018-06-26号创建的，那个时候我接触到了闭包，然后写下了自己的理解。2019年的时候我编辑过一次。因为自己对闭包有了新的理解。。</p>
 <p>现在我看了《你不知道的JavaScript》这本书的上卷后，删除了之前编辑的内容。准备重新分享我对闭包的理解。</p>
 <h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>词法作用域，又叫静态作用域。</p>
@@ -8823,7 +8823,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>深拷贝和浅拷贝</title>
-    <url>/2018/06/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</url>
+    <url>/my-blog/2018/06/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</url>
     <content><![CDATA[<h2 id="栈和堆"><a href="#栈和堆" class="headerlink" title="栈和堆"></a>栈和堆</h2><h6 id="stack为自动分配的内存空间，它由系统自动释放；而heap则是动态分配的内存，大小不定也不会自动释放。"><a href="#stack为自动分配的内存空间，它由系统自动释放；而heap则是动态分配的内存，大小不定也不会自动释放。" class="headerlink" title="stack为自动分配的内存空间，它由系统自动释放；而heap则是动态分配的内存，大小不定也不会自动释放。"></a>stack为自动分配的内存空间，它由系统自动释放；而heap则是动态分配的内存，大小不定也不会自动释放。</h6><h2 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h2><ul>
 <li>基本类型：存放在栈内存中的简单数据段，数据大小确定，内存空间大小可以分配。5种基本数据类型有Undefined、Null、Boolean、Number 和 String，它们是直接按值存放的，所以可以直接访问。</li>
 <li>引用类型：存放在堆内存中的对象，变量实际保存的是一个指针，这个指针指向另一个位置。每个空间大小不一样，要根据情况开进行特定的分配。当我们需要访问引用类型（如对象，数组，函数等）的值时，首先从栈中获得该对象的地址指针，然后再从堆内存中取得所需的数据。</li>
@@ -8860,7 +8860,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>javaScript基础问题</title>
-    <url>/2018/06/26/javaScript%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98/</url>
+    <url>/my-blog/2018/06/26/javaScript%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h6 id="ps-在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来"><a href="#ps-在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来" class="headerlink" title="ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来  =.=!"></a>ps:在社区找了个某大型互联网公司面试题，对比着知识点顺便把原来的服务器上的博客迁移过来 <font color = pink size = 6> =.=!</font></h6><h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><p>区分 js 中的undefined ，null ，“” ， 0 和 false等….根据大佬推荐 其实应该去阅读<a href="https://github.com/lodash/lodash">loadsh</a>的源码。小白表示暂时不看，以后再看。  </p>
 <p>凭自己理解分析一下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(!<span class="number">0</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="literal">false</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="literal">undefined</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="literal">null</span>); <span class="comment">//true</span></span><br><span class="line"><span class="title function_">alert</span>(!<span class="string">&#x27;&#x27;</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -8943,7 +8943,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
   </entry>
   <entry>
     <title>路漫漫其修远兮，吾将上下而求索！</title>
-    <url>/2018/06/26/%E8%B7%AF%E6%BC%AB%E6%BC%AB%E5%85%B6%E4%BF%AE%E8%BF%9C%E5%85%AE%EF%BC%8C%E5%90%BE%E5%B0%86%E4%B8%8A%E4%B8%8B%E8%80%8C%E6%B1%82%E7%B4%A2%EF%BC%81/</url>
+    <url>/my-blog/2018/06/26/%E8%B7%AF%E6%BC%AB%E6%BC%AB%E5%85%B6%E4%BF%AE%E8%BF%9C%E5%85%AE%EF%BC%8C%E5%90%BE%E5%B0%86%E4%B8%8A%E4%B8%8B%E8%80%8C%E6%B1%82%E7%B4%A2%EF%BC%81/</url>
     <content><![CDATA[<h2 id="如题"><a href="#如题" class="headerlink" title="如题"></a>如题</h2><h6 id="无人与我立黄昏，无人问我粥可温。"><a href="#无人与我立黄昏，无人问我粥可温。" class="headerlink" title="无人与我立黄昏，无人问我粥可温。"></a>无人与我立黄昏，无人问我粥可温。</h6><h6 id="无人与我捻熄灯，无人共我书半生。"><a href="#无人与我捻熄灯，无人共我书半生。" class="headerlink" title="无人与我捻熄灯，无人共我书半生。"></a>无人与我捻熄灯，无人共我书半生。</h6><h6 id="无人陪我夜已深，无人与我把酒分。"><a href="#无人陪我夜已深，无人与我把酒分。" class="headerlink" title="无人陪我夜已深，无人与我把酒分。"></a>无人陪我夜已深，无人与我把酒分。</h6><h6 id="无人拭我相思泪，无人梦我与前尘。"><a href="#无人拭我相思泪，无人梦我与前尘。" class="headerlink" title="无人拭我相思泪，无人梦我与前尘。"></a>无人拭我相思泪，无人梦我与前尘。</h6><h6 id="无人陪我顾星辰，无人醒我茶已冷。"><a href="#无人陪我顾星辰，无人醒我茶已冷。" class="headerlink" title="无人陪我顾星辰，无人醒我茶已冷。"></a>无人陪我顾星辰，无人醒我茶已冷。</h6><h6 id="无人听我述衷肠，无人解我心头梦。"><a href="#无人听我述衷肠，无人解我心头梦。" class="headerlink" title="无人听我述衷肠，无人解我心头梦。"></a>无人听我述衷肠，无人解我心头梦。</h6><h6 id="无人拘我言中泪，无人愁我独行路。"><a href="#无人拘我言中泪，无人愁我独行路。" class="headerlink" title="无人拘我言中泪，无人愁我独行路。"></a>无人拘我言中泪，无人愁我独行路。</h6><h6 id="回首向来萧瑟处，无人等在灯火阑珊处。"><a href="#回首向来萧瑟处，无人等在灯火阑珊处。" class="headerlink" title="回首向来萧瑟处，无人等在灯火阑珊处。"></a>回首向来萧瑟处，无人等在灯火阑珊处。</h6><h6 id="愿与执手立黄昏，愿与品茗粥尚温。"><a href="#愿与执手立黄昏，愿与品茗粥尚温。" class="headerlink" title="愿与执手立黄昏，愿与品茗粥尚温。"></a>愿与执手立黄昏，愿与品茗粥尚温。</h6><h6 id="愿与添香捻熄灯，愿与捧卷书半生。"><a href="#愿与添香捻熄灯，愿与捧卷书半生。" class="headerlink" title="愿与添香捻熄灯，愿与捧卷书半生。"></a>愿与添香捻熄灯，愿与捧卷书半生。</h6><h6 id="愿与剪烛夜已深，愿与对弈把酒分。"><a href="#愿与剪烛夜已深，愿与对弈把酒分。" class="headerlink" title="愿与剪烛夜已深，愿与对弈把酒分。"></a>愿与剪烛夜已深，愿与对弈把酒分。</h6><h6 id="愿与叠袖相拭泪，愿与入梦共前尘。"><a href="#愿与叠袖相拭泪，愿与入梦共前尘。" class="headerlink" title="愿与叠袖相拭泪，愿与入梦共前尘。"></a>愿与叠袖相拭泪，愿与入梦共前尘。</h6><h6 id="愿与赏月顾星辰，愿与烹茶清未冷。"><a href="#愿与赏月顾星辰，愿与烹茶清未冷。" class="headerlink" title="愿与赏月顾星辰，愿与烹茶清未冷。"></a>愿与赏月顾星辰，愿与烹茶清未冷。</h6><h6 id="愿与静听诉衷肠，愿与话君心头梦。"><a href="#愿与静听诉衷肠，愿与话君心头梦。" class="headerlink" title="愿与静听诉衷肠，愿与话君心头梦。"></a>愿与静听诉衷肠，愿与话君心头梦。</h6><h6 id="愿与解语心中泪，愿与共行天下路。"><a href="#愿与解语心中泪，愿与共行天下路。" class="headerlink" title="愿与解语心中泪，愿与共行天下路。"></a>愿与解语心中泪，愿与共行天下路。</h6><h6 id="回首灯火阑珊处，那人一如初见立中宵。"><a href="#回首灯火阑珊处，那人一如初见立中宵。" class="headerlink" title="回首灯火阑珊处，那人一如初见立中宵。"></a>回首灯火阑珊处，那人一如初见立中宵。</h6></br>
 ]]></content>
       <categories>
