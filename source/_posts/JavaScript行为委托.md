@@ -1,9 +1,9 @@
 ---
 title: JavaScript行为委托
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
   - 原型链
 date: 2021-03-21 16:04:52
 updated: 2021-03-21 16:04:52

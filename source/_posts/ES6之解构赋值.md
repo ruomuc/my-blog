@@ -1,9 +1,9 @@
 ---
 title: ES6之解构赋值
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - es6
 date: 2020-06-04 22:34:42
 updated: 2020-06-04 22:34:42

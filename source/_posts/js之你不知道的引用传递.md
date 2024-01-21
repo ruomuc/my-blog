@@ -1,9 +1,9 @@
 ---
 title: js之你不知道的引用传递
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
 date: 2019-05-22 22:49:03
 updated: 2019-05-22 22:49:03
 

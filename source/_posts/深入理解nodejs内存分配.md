@@ -146,7 +146,7 @@ oom()
 [11306:0x1048f3000]     1147 ms: Mark-sweep 5.0 (8.3) -> 4.0 (8.6) MB, 2.3 / 0.0 ms  (average mu = 0.943, current mu = 0.954) allocation failure scavenge might not succeed
 
 
-<--- JS stacktrace --->
+<--- JavaScript stacktrace --->
 
 FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation failed - JavaScript heap out of memory
  1: 0x10130d6e5 node::Abort() (.cold.1) [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]
@@ -188,8 +188,8 @@ console.log(sizeof(cat)) // 58
 
 #### 区别
 
-- JSON（JavaScript Object Notation）虽然全程含有 JavaScript，但不是只有 JavaScript 可以使用，JSON 是 JavaScript 的一个子集。
-- JSON 是一种轻量级的资料交换格式。 类似的还有 protobuf 等。
+- JavaScriptON（JavaScript Object Notation）虽然全程含有 JavaScript，但不是只有 JavaScript 可以使用，JSON 是 JavaScript 的一个子集。
+- JavaScriptON 是一种轻量级的资料交换格式。 类似的还有 protobuf 等。
 - Object 是 JavaScript 的一种 [数据类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures) 。它用于存储各种键值集合和更复杂的实体。
 - 在 JavaScript 中 json 数据可以很简单的转化为 object ，当然其它语言使用对应的解析器也可以做到。
 

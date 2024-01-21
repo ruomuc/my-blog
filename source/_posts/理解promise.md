@@ -1,9 +1,9 @@
 ---
 title: 理解promise
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
   - promise
 date: 2018-07-30 12:42:59
 updated: 2018-08-26 22:28:01

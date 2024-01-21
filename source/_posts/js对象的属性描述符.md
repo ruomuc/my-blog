@@ -1,9 +1,9 @@
 ---
 title: js对象的属性描述符
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
   - 属性描述符
 date: 2021-02-21 15:24:48
 updated: 2021-02-21 15:24:48

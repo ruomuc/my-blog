@@ -1,9 +1,9 @@
 ---
 title: javaScript基础问题
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
 date: 2018-06-26 11:34:03
 updated: 2018-06-26 11:34:03
 

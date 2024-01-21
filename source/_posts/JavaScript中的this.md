@@ -1,9 +1,9 @@
 ---
 title: JavaScript中的this
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
   - this
 date: 2020-05-24 01:11:21
 updated: 2020-05-24 01:11:21

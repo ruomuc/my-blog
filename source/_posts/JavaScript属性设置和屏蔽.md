@@ -1,9 +1,9 @@
 ---
 title: JavaScript属性设置和屏蔽
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
   - 原型链
 date: 2021-03-28 10:23:44
 updated: 2021-03-28 10:23:44

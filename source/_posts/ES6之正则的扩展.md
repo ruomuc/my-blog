@@ -1,9 +1,9 @@
 ---
 title: ES6之正则的扩展
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - es6
 date: 2020-06-30 20:24:54
 updated: 2020-06-30 20:24:54

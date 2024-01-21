@@ -1,9 +1,9 @@
 ---
 title: js判断数据类型
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
 date: 2021-03-03 21:48:38
 updated: 2021-03-03 21:48:38
 

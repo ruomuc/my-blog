@@ -1,9 +1,9 @@
 ---
 title: WeekMap和WeekSet
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
   - gc
 date: 2021-04-10 22:46:07
 updated: 2021-04-10 22:46:07

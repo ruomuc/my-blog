@@ -1,9 +1,9 @@
 ---
 title: JavaScript强制类型转换
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - js
+  - JavaScript
 date: 2021-04-09 22:33:10
 updated: 2021-04-09 22:33:10
 

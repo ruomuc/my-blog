@@ -1,9 +1,9 @@
 ---
 title: javascript原型链
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - 原型链
 date: 2020-05-21 18:33:13
 updated: 2020-05-21 18:33:13

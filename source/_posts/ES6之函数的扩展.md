@@ -1,9 +1,9 @@
 ---
 title: ES6之函数的扩展
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - es6
 date: 2020-07-11 13:51:59
 updated: 2020-07-11 13:51:59

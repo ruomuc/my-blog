@@ -1,9 +1,9 @@
 ---
 title: ES6之let和const
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - es6
 date: 2020-05-28 21:14:19
 updated: 2020-05-28 21:14:19

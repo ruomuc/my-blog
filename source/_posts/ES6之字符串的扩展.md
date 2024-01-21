@@ -1,9 +1,9 @@
 ---
 title: ES6之字符串的扩展
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - es6
 date: 2020-06-09 22:15:37
 updated: 2020-06-09 22:15:37

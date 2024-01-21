@@ -1,9 +1,9 @@
 ---
 title: 吐槽一下javascript
 categories:
-  - javascript
+  - JavaScript
 tags:
-  - javascript
+  - JavaScript
   - es6
 date: 2020-08-23 16:27:22
 updated: 2020-08-23 16:27:22
