@@ -28,6 +28,8 @@
 &lt;p&gt;首先这是一个萌新成长过程的记录，不是一个大佬的经验分享。其次懂得越多，越觉得自己写的烂，所以更新越来越慢，是因为有太多东西没有消化，不想写一些烂的东西。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;补充&lt;/strong&gt;，除部分自己分享的，还有很多整理搬运的，有一些忘记贴参考链接，后面更的能找到都会贴上。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;时间线：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;2024年01月21日15:32:20&lt;/p&gt;
+&lt;p&gt;看了下一不小心就快两年没更新博客了，可能是因为中间做的东西太杂了，也可能是进入了一段时间的舒适区懈怠了吧。&lt;br&gt;不过博客我会一直留着的，哪怕是很久以后，不写代码了，也会作为记录生活的地方吧。&lt;/p&gt;
 &lt;p&gt;2022年11月13日21:57:44&lt;/p&gt;
 &lt;p&gt;然后每回过头看一遍我的博客，就会删除一些旧的文章，会的越多不会的越多，现在还不知道写些什么，目前在学习c++，后续可能会写一些c++相关的东西?&lt;/p&gt;
 &lt;p&gt;2021年12月11日22:33:23&lt;/p&gt;
@@ -52,6 +54,34 @@
     
     
     <category term="其它" scheme="https://ruomuc.github.io/my-blog/tags/%E5%85%B6%E5%AE%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nodejs调用c++</title>
+    <link href="https://ruomuc.github.io/my-blog/2024/01/21/nodejs%E8%B0%83%E7%94%A8cpp/"/>
+    <id>https://ruomuc.github.io/my-blog/2024/01/21/nodejs%E8%B0%83%E7%94%A8cpp/</id>
+    <published>2024-01-21T07:30:16.000Z</published>
+    <updated>2024-01-21T07:30:16.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用&lt;code&gt;nodejs&lt;/code&gt;调用&lt;code&gt;c++&lt;/code&gt;的方法很简单，网上也有很多教程，但是为什么公司一般不会大规模去使用&lt;code&gt;c++&lt;/code&gt;扩展呢。&lt;/p&gt;
+&lt;h2 id=&quot;nodejs使用c-扩展的优缺点&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="node.js" scheme="https://ruomuc.github.io/my-blog/categories/node-js/"/>
+    
+    
+    <category term="node.js" scheme="https://ruomuc.github.io/my-blog/tags/node-js/"/>
+    
+    <category term="c++" scheme="https://ruomuc.github.io/my-blog/tags/c/"/>
     
   </entry>
   
@@ -480,36 +510,12 @@
     
     
     
-    <category term="javascript" scheme="https://ruomuc.github.io/my-blog/categories/javascript/"/>
+    <category term="JavaScript" scheme="https://ruomuc.github.io/my-blog/categories/JavaScript/"/>
     
     
-    <category term="js" scheme="https://ruomuc.github.io/my-blog/tags/js/"/>
+    <category term="JavaScript" scheme="https://ruomuc.github.io/my-blog/tags/JavaScript/"/>
     
     <category term="gc" scheme="https://ruomuc.github.io/my-blog/tags/gc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript强制类型转换</title>
-    <link href="https://ruomuc.github.io/my-blog/2021/04/09/JavaScript%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
-    <id>https://ruomuc.github.io/my-blog/2021/04/09/JavaScript%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</id>
-    <published>2021-04-09T14:33:10.000Z</published>
-    <updated>2021-04-09T14:33:10.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;类型转换和强制类型转换？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;类型转换发生在静态类型语言的编译阶段。&lt;/li&gt;
-&lt;li&gt;强制类型转换发生在动态类型语言的运行时。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;并且大家所说的隐式和显式，也是取决于不同开发者的认知，在JavaScript中统称为&lt;strong&gt;强制类型转换&lt;/strong&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="javascript" scheme="https://ruomuc.github.io/my-blog/categories/javascript/"/>
-    
-    
-    <category term="js" scheme="https://ruomuc.github.io/my-blog/tags/js/"/>
     
   </entry>
   

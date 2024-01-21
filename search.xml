@@ -7,6 +7,8 @@
 <p>首先这是一个萌新成长过程的记录，不是一个大佬的经验分享。其次懂得越多，越觉得自己写的烂，所以更新越来越慢，是因为有太多东西没有消化，不想写一些烂的东西。</p>
 <p><strong>补充</strong>，除部分自己分享的，还有很多整理搬运的，有一些忘记贴参考链接，后面更的能找到都会贴上。</p>
 <p><strong>时间线：</strong></p>
+<p>2024年01月21日15:32:20</p>
+<p>看了下一不小心就快两年没更新博客了，可能是因为中间做的东西太杂了，也可能是进入了一段时间的舒适区懈怠了吧。<br>不过博客我会一直留着的，哪怕是很久以后，不写代码了，也会作为记录生活的地方吧。</p>
 <p>2022年11月13日21:57:44</p>
 <p>然后每回过头看一遍我的博客，就会删除一些旧的文章，会的越多不会的越多，现在还不知道写些什么，目前在学习c++，后续可能会写一些c++相关的东西?</p>
 <p>2021年12月11日22:33:23</p>
@@ -63,6 +65,85 @@
       </categories>
       <tags>
         <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nodejs调用c++</title>
+    <url>/my-blog/2024/01/21/nodejs%E8%B0%83%E7%94%A8cpp/</url>
+    <content><![CDATA[<p>使用<code>nodejs</code>调用<code>c++</code>的方法很简单，网上也有很多教程，但是为什么公司一般不会大规模去使用<code>c++</code>扩展呢。</p>
+<h2 id="nodejs使用c-扩展的优缺点"><a href="#nodejs使用c-扩展的优缺点" class="headerlink" title="nodejs使用c++扩展的优缺点"></a>nodejs使用c++扩展的优缺点</h2><p>优点：</p>
+<ul>
+<li><code>c++</code>作为编译型语言，是执行速度最快的编程语言之一，使用<code>c++</code>扩展可以提高代码的运行效率</li>
+<li><code>c++</code>拥有丰富的开源库，如果有些功能在<code>nodejs</code>中找不到合适的库，可以使用<code>c++</code>的库</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>开发难度高、调试麻烦、维护成本高，并且跨平台时要编译多个版本</li>
+<li><code>Napi</code>将<code>nodejs</code>数据结构和<code>c++</code>数据结构相互转换是比较消耗性能的，所以使用<code>c++</code>扩展通常会比直接使用<code>nodejs</code>还要慢</li>
+</ul>
+<p>当然，还是有一些程序适合使用<code>c++</code>扩展来写的，比如一些<strong>输入输出极其简单</strong>，但是<strong>计算过程却很复杂</strong>的程序。</p>
+<p>比如nodjes的核心库 <a href="https://nodejs.org/api/crypto.html">crypto</a>，通过查看源码可以发现如下代码片段：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// node/lib/crypto.js</span></span><br><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">  getFipsCrypto,</span><br><span class="line">  setFipsCrypto,</span><br><span class="line">  timingSafeEqual,</span><br><span class="line">&#125; = <span class="title function_">internalBinding</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// lib/internal/crypto/hash.js</span></span><br><span class="line"><span class="keyword">const</span> &#123;</span><br><span class="line">  <span class="title class_">Hash</span>: _Hash,</span><br><span class="line">  <span class="title class_">HashJob</span>,</span><br><span class="line">  <span class="title class_">Hmac</span>: _Hmac,</span><br><span class="line">  kCryptoJobAsync,</span><br><span class="line">&#125; = <span class="title function_">internalBinding</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>相关文件都有这个 <code>internalBinding(&#39;crypto&#39;)</code>，这个就是说明是使用<code>c++</code>扩展实现的相关功能</p>
+<p>实际上<code>nodejs</code>是使用了<code>c++</code>的<code>OpenSSL</code>库</p>
+<h2 id="如何实现一个简单的c-扩展"><a href="#如何实现一个简单的c-扩展" class="headerlink" title="如何实现一个简单的c++扩展"></a>如何实现一个简单的c++扩展</h2><h4 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h4><ol>
+<li><p>首先需安装 <a href="https://github.com/nodejs/node-gyp">node-gyp</a></p>
+<p><code>npm install -g node-gyp</code>，    请注意，你电脑需要有python环境，看源代码仓库就知道，它主要是python写的</p>
+</li>
+<li><p>需要配置你机器系统对应的c++编译环境</p>
+</li>
+<li><p>安装nodejs库 <code>node-addon-api</code> 和 <code>bindings</code>。(ps: 当然还有<code>nan</code>、原生的<code>Node-API</code>等，这里用的是最简单的<code>node-addon-api</code>)</p>
+</li>
+</ol>
+<h4 id="编译一个hello-world"><a href="#编译一个hello-world" class="headerlink" title="编译一个hello world"></a>编译一个hello world</h4><h5 id="1-编写binding-gyp"><a href="#1-编写binding-gyp" class="headerlink" title="1. 编写binding.gyp"></a>1. 编写binding.gyp</h5><p>具体的参数比较复杂，有专门的文档，这里知道 target_name 和 sources 就行了。</p>
+<ul>
+<li>target_name：是你编译后文件的文件，以<code>.node</code>结尾，在这里编译后的文件就为<code>hello.node</code></li>
+<li>sources: 是原始c++代码文件存放的地方</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// binding.gyp</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;targets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;target_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hello&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cflags!&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-fno-exceptions&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span>  # -fno-exceptions 忽略掉编译过程中的一些报错</span><br><span class="line">            <span class="attr">&quot;cflags_cc!&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-fno-exceptions&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sources&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;addon/hello.cc&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;include_dirs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  # 头文件搜索路径，这样通过#include &lt;napi.h&gt;就可以引入napi</span><br><span class="line">                <span class="string">&quot;&lt;!@(node -p \&quot;require(&#x27;node-addon-api&#x27;).include\&quot;)&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;defines&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;NAPI_DISABLE_CPP_EXCEPTIONS&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-编写c-代码"><a href="#2-编写c-代码" class="headerlink" title="2.编写c++代码"></a>2.编写c++代码</h5><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// hello.cc</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;napi.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> __node_addon_api_hello__</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Hello方法的实现，该方法返回hello-world</span></span><br><span class="line">  <span class="function">Napi::String <span class="title">Hello</span><span class="params">(<span class="type">const</span> Napi::CallbackInfo &amp;info)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    Napi::Env env = info.<span class="built_in">Env</span>();</span><br><span class="line">    <span class="keyword">return</span> Napi::String::<span class="built_in">New</span>(env, <span class="string">&quot;hello-world&quot;</span>); <span class="comment">// 返回hello-world</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">Napi::Object <span class="title">Init</span><span class="params">(Napi::Env env, Napi::Object exports)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在exports对象挂上hello属性，其值为Hello函数，也可以用以下的Nan::Export宏实现</span></span><br><span class="line">    exports.<span class="built_in">Set</span>(Napi::String::<span class="built_in">New</span>(env, <span class="string">&quot;hello&quot;</span>),</span><br><span class="line">                Napi::Function::<span class="built_in">New</span>(env, Hello));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NODE_API_MODULE</span>(addon, Init)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-编写测试文件"><a href="#3-编写测试文件" class="headerlink" title="3.编写测试文件"></a>3.编写测试文件</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// test-hello.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hello = <span class="built_in">require</span>(<span class="string">&#x27;bindings&#x27;</span>)(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hello.<span class="title function_">hello</span>())</span><br></pre></td></tr></table></figure>
+
+<p>注意这里的 <code>.hello()</code>的函数名，对应<code>c++</code>文件中 <code>Napi::String::New(env, &quot;hello&quot;)</code></p>
+<h5 id="4-执行"><a href="#4-执行" class="headerlink" title="4. 执行"></a>4. 执行</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">node-gyp rebuild</span><br><span class="line">node test.js</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>node test-hello.js</code> 会输出 <code>hello-world</code></p>
+<p>至此，一个简单的<code>nodejs</code>调用<code>c++</code>的demo就完成了，代码我会放到文章的最后面</p>
+<h4 id="使用buffer共享内存"><a href="#使用buffer共享内存" class="headerlink" title="使用buffer共享内存"></a>使用buffer共享内存</h4><p>前面说过，nodejs和c++的数据类型相互转换其实是很耗费时间的，那有没有其他方案呢？</p>
+<p>答案确实有：</p>
+<ul>
+<li>一是我偶然想到的，因为工作中经常使用<code>nodejs</code>操作大批量数据，经常不是容器 OOM 了，就是 <code>nodejs</code> OOM了。所以有时候会把大量数据以某种格式直接存到磁盘文件上，需要的时候按需读取。那么<code>nodejs</code>和<code>c++</code>是不是也可以这样交互数据呢，但是不确定 JSON 序列化和反序列化的开销会不会大于<code>c++</code>优化的性能。</li>
+<li>还有一种更好的方案，使用 <strong>Buffer</strong> ! Buffer 是二进制数据，无需数据类型转换，而且 <code>nodejs</code> 创建的Buffer 受 v8 管理但是使用的是堆外内存。</li>
+</ul>
+<p>那么下面也写个如和用buffer传递数据的小demo：</p>
+<p><code>c++</code>代码</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// buffer.cc</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;napi.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> __node_addon_api_buffer</span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">UseBuffer</span><span class="params">(<span class="type">const</span> Napi::CallbackInfo &amp;info)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    Napi::Env env = info.<span class="built_in">Env</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取传递给函数的Buffer</span></span><br><span class="line">    Napi::Object bufferObj = info[<span class="number">0</span>].<span class="built_in">As</span>&lt;Napi::Object&gt;();</span><br><span class="line">    <span class="type">int</span> rot = info[<span class="number">1</span>].<span class="built_in">As</span>&lt;Napi::Number&gt;().<span class="built_in">Uint32Value</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取Buffer的信息</span></span><br><span class="line">    <span class="type">void</span> *data;</span><br><span class="line">    <span class="type">size_t</span> length;</span><br><span class="line">    napi_status status = <span class="built_in">napi_get_buffer_info</span>(env, bufferObj, &amp;data, &amp;length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (status != napi_ok)</span><br><span class="line">    &#123;</span><br><span class="line">      Napi::TypeError::<span class="built_in">New</span>(env, <span class="string">&quot;Failed to get buffer info&quot;</span>).<span class="built_in">ThrowAsJavaScriptException</span>();</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 直接在C++中操作Buffer的数据</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> *buffer = <span class="built_in">static_cast</span>&lt;<span class="type">unsigned</span> <span class="type">char</span> *&gt;(data);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      buffer[i] += rot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">Napi::Object <span class="title">Initialize</span><span class="params">(Napi::Env env, Napi::Object exports)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    exports.<span class="built_in">Set</span>(Napi::String::<span class="built_in">New</span>(env, <span class="string">&quot;useBuffer&quot;</span>), Napi::Function::<span class="built_in">New</span>(env, UseBuffer));</span><br><span class="line">    <span class="keyword">return</span> exports;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NODE_API_MODULE</span>(addon, Initialize)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(以上代码是ChatGPT生成的自己调了一下 ^.^)</p>
+<p>配置</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// binding.gyp</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;targets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;target_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;buffer-test&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cflags!&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-fno-exceptions&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span>  # -fno-exceptions 忽略掉编译过程中的一些报错</span><br><span class="line">            <span class="attr">&quot;cflags_cc!&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;-fno-exceptions&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sources&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;addon/buffer.cc&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;include_dirs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>  # 头文件搜索路径，这样通过#include &lt;napi.h&gt;就可以引入napi</span><br><span class="line">                <span class="string">&quot;&lt;!@(node -p \&quot;require(&#x27;node-addon-api&#x27;).include\&quot;)&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;defines&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;NAPI_DISABLE_CPP_EXCEPTIONS&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>nodejs</code>代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// test-buffer.js </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> buffer = <span class="built_in">require</span>(<span class="string">&#x27;bindings&#x27;</span>)(<span class="string">&#x27;buffer-test&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Node.js Buffer</span></span><br><span class="line"><span class="keyword">const</span> nb = <span class="title class_">Buffer</span>.<span class="title function_">from</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用C++函数并将Buffer传递给它</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(nb)</span><br><span class="line">buffer.<span class="title function_">useBuffer</span>(nb, <span class="number">12</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(nb)</span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">node test-buffer.js</span><br><span class="line"></span><br><span class="line">&lt;Buffer 01 02 03 04 05&gt;</span><br><span class="line">&lt;Buffer 0d 0e 0f 10 11&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我成功修改了Buffer中的数据</p>
+<p>demo代码地址：<a href="https://github.com/ruomuc/practice/tree/master/napi-test">https://github.com/ruomuc/practice/tree/master/napi-test</a></p>
+<p>参考链接：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/584943566">https://zhuanlan.zhihu.com/p/584943566</a></p>
+<p><a href="https://blog.risingstack.com/using-buffers-node-js-c-plus-plus/">https://blog.risingstack.com/using-buffers-node-js-c-plus-plus/</a></p>
+]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node.js</tag>
+        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
@@ -211,7 +292,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; memoryUsage &#125; = <span class="built_in">require</span>(<span class="string">&#x27;process&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">oom</span> () &#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000000000</span>; i++) &#123;</span><br><span class="line">    obj[i] = &#123; [i * i]: i * i&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">oom</span>()</span><br></pre></td></tr></table></figure>
 
 <p>日志太多了，截取一部分：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;--- Last few GCs ---&gt;</span><br><span class="line"></span><br><span class="line">[11306:0x1048f3000]     1098 ms: Mark-sweep 4.9 (8.3) -&gt; 3.9 (8.3) MB, 3.4 / 0.0 ms  (average mu = 0.932, current mu = 0.932) allocation failure scavenge might not succeed</span><br><span class="line">[11306:0x1048f3000]     1147 ms: Mark-sweep 5.0 (8.3) -&gt; 4.0 (8.6) MB, 2.3 / 0.0 ms  (average mu = 0.943, current mu = 0.954) allocation failure scavenge might not succeed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;--- JS stacktrace ---&gt;</span><br><span class="line"></span><br><span class="line">FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation failed - JavaScript heap out of memory</span><br><span class="line"> 1: 0x10130d6e5 node::Abort() (.cold.1) [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]</span><br><span class="line"> 2: 0x1000b1c49 node::Abort() [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]</span><br><span class="line"> 3: 0x1000b1daf node::OnFatalError(char const*, char const*) </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;--- Last few GCs ---&gt;</span><br><span class="line"></span><br><span class="line">[11306:0x1048f3000]     1098 ms: Mark-sweep 4.9 (8.3) -&gt; 3.9 (8.3) MB, 3.4 / 0.0 ms  (average mu = 0.932, current mu = 0.932) allocation failure scavenge might not succeed</span><br><span class="line">[11306:0x1048f3000]     1147 ms: Mark-sweep 5.0 (8.3) -&gt; 4.0 (8.6) MB, 2.3 / 0.0 ms  (average mu = 0.943, current mu = 0.954) allocation failure scavenge might not succeed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;--- JavaScript stacktrace ---&gt;</span><br><span class="line"></span><br><span class="line">FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation failed - JavaScript heap out of memory</span><br><span class="line"> 1: 0x10130d6e5 node::Abort() (.cold.1) [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]</span><br><span class="line"> 2: 0x1000b1c49 node::Abort() [/Users/zhangming/.nvm/versions/node/v14.17.0/bin/node]</span><br><span class="line"> 3: 0x1000b1daf node::OnFatalError(char const*, char const*) </span><br></pre></td></tr></table></figure>
 
 <h2 id="大对象内存占用"><a href="#大对象内存占用" class="headerlink" title="大对象内存占用"></a>大对象内存占用</h2><h3 id="如何查看对象的内存占用"><a href="#如何查看对象的内存占用" class="headerlink" title="如何查看对象的内存占用"></a>如何查看对象的内存占用</h3><ul>
 <li><a href="https://www.npmjs.com/package/object-sizeof">object-sizeof</a></li>
@@ -229,8 +310,8 @@
 
 
 <h3 id="JSON和对象"><a href="#JSON和对象" class="headerlink" title="JSON和对象"></a>JSON和对象</h3><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ul>
-<li>JSON（JavaScript Object Notation）虽然全程含有 JavaScript，但不是只有 JavaScript 可以使用，JSON 是 JavaScript 的一个子集。</li>
-<li>JSON 是一种轻量级的资料交换格式。 类似的还有 protobuf 等。</li>
+<li>JavaScriptON（JavaScript Object Notation）虽然全程含有 JavaScript，但不是只有 JavaScript 可以使用，JSON 是 JavaScript 的一个子集。</li>
+<li>JavaScriptON 是一种轻量级的资料交换格式。 类似的还有 protobuf 等。</li>
 <li>Object 是 JavaScript 的一种 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures">数据类型</a> 。它用于存储各种键值集合和更复杂的实体。</li>
 <li>在 JavaScript 中 json 数据可以很简单的转化为 object ，当然其它语言使用对应的解析器也可以做到。</li>
 </ul>
@@ -2346,10 +2427,10 @@
 <p>想了一下，那几个变量应该用不了好几M 的内存，不知道还有些什么东西没释放掉呢。。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>gc</tag>
       </tags>
   </entry>
@@ -2429,10 +2510,10 @@
 
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2489,10 +2570,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>原型链</tag>
       </tags>
   </entry>
@@ -2528,10 +2609,10 @@
 <p>ps: 因为我工作使用的第一门语言就是 JavaScript ，中间也没有怎么用过OOP，所以对于 js 的这一套是很好接受的。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>原型链</tag>
       </tags>
   </entry>
@@ -2577,10 +2658,10 @@
 <p>ps: 关于原型链的文章，后面可能还会写。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2781,10 +2862,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>属性描述符</tag>
       </tags>
   </entry>
@@ -4137,10 +4218,10 @@
 <p>ps:  真的是不得不吐槽一下<code>JavaScript</code>。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -4543,10 +4624,10 @@ emm...应该是贵吧。。毕竟服务器资源都是钱嘛。。
 <br>
 ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不是违反了使用ts的初衷，可读性和可维护性变差了？]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -4693,10 +4774,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p>ps: 正则的用法妙不可言，平时用的比较少，就记一下这些常用的吧。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -5335,10 +5416,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p>ps: 我觉得这些新特性，模板字符串我平时用的最多的，但是之前确实不知道标签模板这个功能。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -5405,10 +5486,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 
 <h4 id="输入模块的指定方法"><a href="#输入模块的指定方法" class="headerlink" title="输入模块的指定方法"></a><strong>输入模块的指定方法</strong></h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">SourceMapConsumer</span>, <span class="title class_">SourceNode</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;source-map&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -5499,10 +5580,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p>ES5 只有两种声明变量的方法：<code>var</code>命令和<code>function</code>命令。ES6 除了添加<code>let</code>和<code>const</code>命令，后面章节还会提到，另外两种声明变量的方法：<code>import</code>命令和<code>class</code>命令。所以，ES6 一共有 6 种声明变量的方法。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -5605,10 +5686,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1031549578462080">https://www.liaoxuefeng.com/wiki/1022910821149312/1031549578462080</a></p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>this</tag>
       </tags>
   </entry>
@@ -5781,10 +5862,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 </ul>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
         <tag>原型链</tag>
       </tags>
   </entry>
@@ -7569,10 +7650,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p>欢迎来怼。。。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -8043,7 +8124,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p>分析下来其实很简单，但是在我不知道这些细节之前，这个题完全是知其然不知其所以然。。现在看一下，其实很简单，不要慌，慢慢分析就行了。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
         <tag>面试题</tag>
@@ -8589,7 +8670,7 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
         <category>node.js</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -8679,10 +8760,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 <p>更新了，看到一个超级大佬写的关于promise，是在看的是一知半解，不敢搬，就贴个链接吧：<br><a href="https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a>。 我是用google翻译勉强看完的，纯英文的，我英文不好qaq。。</p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>promise</tag>
       </tags>
   </entry>
@@ -8814,10 +8895,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 </ul>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
         <tag>闭包</tag>
       </tags>
   </entry>
@@ -8852,10 +8933,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 </ul>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -8935,10 +9016,10 @@ ps:  如何在typescript中使用rest参数？定一个any[] 吗？这样岂不�
 </ul>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
